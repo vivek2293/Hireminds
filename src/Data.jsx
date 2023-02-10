@@ -10,7 +10,7 @@ const data = [
   },
   {
     rollNo: "10",
-    name: "b",
+    name: "g",
     yearOfPassingOut: "2025",
     branch: "cse",
     CGPA: "8",
