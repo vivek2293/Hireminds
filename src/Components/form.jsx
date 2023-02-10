@@ -11,9 +11,9 @@ export default function Form() {
         yearOfPassingOut: "",
         CGPA: "",
         email: "",
-        linkedIn: "",
-        github: "",
-        resumeLink: ""
+        linkedIn: "NA",
+        github: "NA",
+        resumeLink: "NA"
     });
 
     const [gender, setGender] = React.useState("");
@@ -58,7 +58,7 @@ export default function Form() {
                             <div className="form-group row m-2">
                                 <label
                                     htmlFor="colFormLabelSm"
-                                    className="col-md-4 col-form-label col-form-label-sm ps-4"
+                                    className="col-md-4 col-form-label col-form-label-sm ps-4 required"
                                 >
                                     Roll No.
                                 </label>
@@ -79,7 +79,7 @@ export default function Form() {
                             <div className="form-group row m-2">
                                 <label
                                     htmlFor="colFormLabelSm"
-                                    className="col-md-4 col-form-label col-form-label-sm ps-4"
+                                    className="col-md-4 col-form-label col-form-label-sm ps-4 required"
                                 >
                                     Student Name
                                 </label>
@@ -100,7 +100,7 @@ export default function Form() {
                             <div className="form-group row m-2">
                                 <label
                                     htmlFor="colFormLabelSm"
-                                    className="col-md-4 col-form-label col-form-label-sm ps-4"
+                                    className="col-md-4 col-form-label col-form-label-sm ps-4 required"
                                 >
                                     Branch
                                 </label>
@@ -121,7 +121,7 @@ export default function Form() {
                             <div className="form-group row m-2">
                                 <label
                                     htmlFor="colFormLabelSm"
-                                    className="col-md-4 col-form-label col-form-label-sm ps-4"
+                                    className="col-md-4 col-form-label col-form-label-sm ps-4 required"
                                 >
                                     Year of Graduation
                                 </label>
@@ -142,7 +142,7 @@ export default function Form() {
                             <div className="form-group row m-2">
                                 <label
                                     htmlFor="colFormLabelSm"
-                                    className="col-md-4 col-form-label col-form-label-sm ps-4"
+                                    className="col-md-4 col-form-label col-form-label-sm ps-4 required"
                                 >
                                     Gender
                                 </label>
@@ -162,7 +162,7 @@ export default function Form() {
                             <div className="form-group row m-2">
                                 <label
                                     htmlFor="colFormLabelSm"
-                                    className="col-md-4 col-form-label col-form-label-sm ps-4"
+                                    className="col-md-4 col-form-label col-form-label-sm ps-4 required"
                                 >
                                     CGPA
                                 </label>
@@ -184,7 +184,7 @@ export default function Form() {
                             <div className="form-group row m-2">
                                 <label
                                     htmlFor="colFormLabelSm"
-                                    className="col-md-4 col-form-label col-form-label-sm ps-4"
+                                    className="col-md-4 col-form-label col-form-label-sm ps-4 required"
                                 >
                                     Email ID
                                 </label>
