@@ -7,6 +7,7 @@ export default function Form() {
     const [formdata, setFormdata] = React.useState({
         rollNo: "",
         name: "",
+        contactNo: "",
         branch: "",
         yearOfPassingOut: "",
         CGPA: "",
@@ -16,7 +17,8 @@ export default function Form() {
         resumeLink: "NA"
     });
 
-    const [gender, setGender] = React.useState("");
+    const [gender, setGender] = React.useState("male");
+    const [degree, setDegree] = React.useState("BTech");
 
     function handleChange(event) {
         setFormdata((prevdata) => {
@@ -40,6 +42,7 @@ export default function Form() {
 
     console.log(gender);
     console.log(formdata);
+    console.log(degree);
 
     return (
         <>
@@ -92,6 +95,27 @@ export default function Form() {
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter student name"
+                                        required
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="form-group row m-2">
+                                <label
+                                    htmlFor="colFormLabelSm"
+                                    className="col-md-4 col-form-label col-form-label-sm ps-4 required"
+                                >
+                                    Contact No.
+                                </label>
+                                <div className="col-md-5">
+                                    <input
+                                        type="tel"
+                                        name="contactNo"
+                                        value={formdata.contactNo}
+                                        className="form-control form-control-sm "
+                                        id="colFormLabelSm"
+                                        onChange={handleChange}
+                                        placeholder="Enter contact Number"
                                         required
                                     />
                                 </div>
@@ -205,6 +229,27 @@ export default function Form() {
                             <div className="form-group row m-2">
                                 <label
                                     htmlFor="colFormLabelSm"
+                                    className="col-md-4 col-form-label col-form-label-sm ps-4 required"
+                                >
+                                    Degree
+                                </label>
+                                <div className="col-md-5">
+                                    <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                        onChange={(event) => setDegree(event.target.value)}
+                                    >
+                                        <option value="BTech">BTech</option>
+                                        <option value="BE">BE</option>
+                                        <option value="BSc">BSc</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div className="form-group row m-2">
+                                <label
+                                    htmlFor="colFormLabelSm"
                                     className="col-md-4 col-form-label col-form-label-sm ps-4"
                                 >
                                     LinkedIn
@@ -213,12 +258,10 @@ export default function Form() {
                                     <input
                                         type="url"
                                         name="linkedIn"
-                                        value={formdata.linkedIn}
                                         className="form-control form-control-sm"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter linkedIn link"
-                                        // required
                                     />
                                 </div>
                             </div>
@@ -234,12 +277,10 @@ export default function Form() {
                                     <input
                                         type="url"
                                         name="github"
-                                        value={formdata.github}
                                         className="form-control form-control-sm"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter github link"
-                                        // required
                                     />
                                 </div>
                             </div>
@@ -255,12 +296,10 @@ export default function Form() {
                                     <input
                                         type="url"
                                         name="resumeLink"
-                                        value={formdata.resumeLink}
                                         className="form-control form-control-sm"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter resumeLink"
-                                        // required
                                     />
                                 </div>
                             </div>
