@@ -40,6 +40,15 @@ const schema = new mongoose.Schema({
         trim: true,
         required: [true, "Must provide Email."]
     },
+    contactNo: {
+        type: String,
+        trim: true,
+        required: [true, "Must provide contact number."]
+    },
+    degree:{
+        type: String,
+        default: " ",
+    },
     linkedIn: {
         type: String,
         default: "NA"

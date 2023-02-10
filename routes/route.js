@@ -4,7 +4,7 @@ const router = express.Router();
 const { 
     getAllrecords,
     createStudentRecord
-} = require("../functions/operation");
+} = require("../functions/user.operation");
 
 router.get("/record/alldata", getAllrecords);
 router.post("/record/createData", createStudentRecord);
