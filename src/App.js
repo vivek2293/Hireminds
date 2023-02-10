@@ -7,6 +7,7 @@ import Table from './Components/Table';
 import Form from './Components/Form';
 import Graph from './Components/Graph';
 import Dashboard from './Components/Dashboard';
+import Company from './Components/Company';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/graph" element={<Graph />} />
 
           <Route exact path="/dashboard" element={<Dashboard />} /> 
+          <Route exact path="/company" element={<Company />} /> 
 
         </Routes>
         {/* <Form /> */}
