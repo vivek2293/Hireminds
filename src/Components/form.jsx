@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import "./CSS/form.css";
 
 export default function Form() {
@@ -26,6 +27,17 @@ export default function Form() {
         });
     }
 
+    function saveData () {
+        const data = { ...formdata, gender: gender, instituteName: "ABCD" };
+        console.log(data);
+        axios.post("http://localhost:8000/api/v1/record/createData", data )
+        .then(() => {
+            console.log("Sent");
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
     console.log(gender);
     console.log(formdata);
 
@@ -40,6 +52,7 @@ export default function Form() {
                         <form
                             onSubmit={(e) => {
                                 e.preventDefault();
+                                saveData();
                             }}
                         >
                             <div className="form-group row m-2">
