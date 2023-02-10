@@ -1,5 +1,5 @@
 import React from "react";
-import data from "../Data";
+import axios from "axios";
 export default function Table() {
   const [showBranch, setShowBranch] = React.useState(false);
   const [showData, setShowData] = React.useState(false);
@@ -9,6 +9,19 @@ export default function Table() {
   const [branch, setBranch] = React.useState([]);
   const [whichYear, setWhichYear] = React.useState();
   const [branchElements, setBranchElements] = React.useState([]);
+  const [data, setData] = React.useState([{}]);
+
+  React.useEffect(() => {
+    axios.post("http://localhost:8000/api/v1/record/alldata",{}).then((info) => {
+      setData(info.data);
+    })
+  }, [])
+
+  React.useEffect(() => {
+    console.log(data)
+  }, [data]);
+
+
   const numberOfYears = [];
   const numberOfBranches = [];
   const elements = data.map((myList) => numberOfYears.push(myList.year));
