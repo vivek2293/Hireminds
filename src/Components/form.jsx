@@ -29,15 +29,15 @@ export default function Form() {
         });
     }
 
-    function saveData () {
+    function saveData() {
         const data = { ...formdata, gender: gender, instituteName: "ABCD" };
         console.log(data);
-        axios.post("http://localhost:8000/api/v1/record/createData", data )
-        .then(() => {
-            console.log("Sent");
-        }).catch((err) => {
-            console.log(err);
-        })
+        axios.post("http://localhost:8000/api/v1/record/createData", data)
+            .then(() => {
+                console.log("Sent");
+            }).catch((err) => {
+                console.log(err);
+            })
     }
 
     console.log(gender);
@@ -70,7 +70,7 @@ export default function Form() {
                                         type="text"
                                         name="rollNo"
                                         value={formdata.rollNo}
-                                        className="form-control form-control-sm"
+                                        className="form-control form-control-sm p-1"
                                         id="colFormLabelSm"
                                         placeholder="Enter Roll No."
                                         onChange={handleChange}
@@ -91,7 +91,7 @@ export default function Form() {
                                         type="text"
                                         name="name"
                                         value={formdata.name}
-                                        className="form-control form-control-sm "
+                                        className="form-control form-control-sm p-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter student name"
@@ -112,7 +112,7 @@ export default function Form() {
                                         type="tel"
                                         name="contactNo"
                                         value={formdata.contactNo}
-                                        className="form-control form-control-sm "
+                                        className="form-control form-control-sm p-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter contact Number"
@@ -133,7 +133,7 @@ export default function Form() {
                                         type="text"
                                         name="branch"
                                         value={formdata.branch}
-                                        className="form-control form-control-sm"
+                                        className="form-control form-control-sm p-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter branch name"
@@ -154,7 +154,7 @@ export default function Form() {
                                         type="number"
                                         name="yearOfPassingOut"
                                         value={formdata.yearOfPassingOut}
-                                        className="form-control form-control-sm"
+                                        className="form-control form-control-sm p-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter graduation year"
@@ -172,7 +172,7 @@ export default function Form() {
                                 </label>
                                 <div className="col-md-5">
                                     <select
-                                        className="form-select"
+                                        className="form-select p-1"
                                         aria-label="Default select example"
                                         onChange={(event) => setGender(event.target.value)}
                                     >
@@ -196,7 +196,7 @@ export default function Form() {
                                         step="0.01"
                                         name="CGPA"
                                         value={formdata.CGPA}
-                                        className="form-control form-control-sm"
+                                        className="form-control form-control-sm p-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter CGPA"
@@ -217,7 +217,7 @@ export default function Form() {
                                         type="email"
                                         name="email"
                                         value={formdata.email}
-                                        className="form-control form-control-sm"
+                                        className="form-control form-control-sm p-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter Email ID"
@@ -235,7 +235,7 @@ export default function Form() {
                                 </label>
                                 <div className="col-md-5">
                                     <select
-                                        className="form-select"
+                                        className="form-select p-1"
                                         aria-label="Default select example"
                                         onChange={(event) => setDegree(event.target.value)}
                                     >
@@ -258,7 +258,7 @@ export default function Form() {
                                     <input
                                         type="url"
                                         name="linkedIn"
-                                        className="form-control form-control-sm"
+                                        className="form-control form-control-sm p-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter linkedIn link"
@@ -277,7 +277,7 @@ export default function Form() {
                                     <input
                                         type="url"
                                         name="github"
-                                        className="form-control form-control-sm"
+                                        className="form-control form-control-sm p-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter github link"
@@ -296,7 +296,7 @@ export default function Form() {
                                     <input
                                         type="url"
                                         name="resumeLink"
-                                        className="form-control form-control-sm"
+                                        className="form-control form-control-sm p-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter resumeLink"
@@ -305,7 +305,7 @@ export default function Form() {
                             </div>
 
                             <div className="btn-div d-flex justify-content-center" id="btn-div">
-                            <button type="submit" className="btn btn-custom1">Click Me</button>
+                                <button type="submit" className="btn btn-custom1 p-1">Click Me</button>
                             </div>
 
                         </form>
