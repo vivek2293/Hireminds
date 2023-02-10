@@ -1,15 +1,8 @@
 const mongoose = require("mongoose");
 
-const idSchema = new mongoose.Schema({
-    selectedId: {
-        type: String,
-    }
-})
-
 const schema = new mongoose.Schema({
-    list: [idSchema]
+    list: Array,
+    createdAt: { type: Date, expires: '5m', index: true, default: Date.now }
 });
-
-schema.index({createdAt: 1},{expireAfterSeconds: 3600});
 
 module.exports = mongoose.model("shortlistedCandidates", schema);
