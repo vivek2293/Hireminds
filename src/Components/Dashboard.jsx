@@ -2,34 +2,61 @@ import React from "react";
 import "./CSS/dashboard.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOut, faUser, faHome, faList, faMessage, faCartShopping, faChartLine, faCog} from "@fortawesome/free-solid-svg-icons";
-
+import Table from "./Table";
+import Form from "./form";
+import Graph from "./Graph";
 export default function Dashboard() {
+    const [showData,setShowData] = React.useState();
+    const [showRegister,setShowRegister] = React.useState();
+    const [showPlacementStats,setShowPlacementStats] = React.useState();
+    const [showFilterCandidates,setShowFilterCandidates] = React.useState();
+    const [showPastRecuriters,setShowPastRecuriters] = React.useState();
+    const [showCompanyStats,setShowCompanyStats] = React.useState();
+
+    
+    function handleClick1(){
+        setShowData(true);
+        setShowRegister(false);
+        setShowPlacementStats(false);
+        setShowCompanyStats(false);
+        setShowFilterCandidates(false);
+        setShowPastRecuriters(false);
+    }
+    function handleClick2(){
+        setShowData(false);
+        setShowRegister(true);
+        setShowPlacementStats(false);
+        setShowCompanyStats(false);
+        setShowFilterCandidates(false);
+        setShowPastRecuriters(false); 
+    }
+    function handleClick3(){
+        setShowData(false);
+        setShowRegister(false);
+        setShowPlacementStats(true);
+        setShowCompanyStats(false);
+        setShowFilterCandidates(false);
+        setShowPastRecuriters(false); 
+    }
+
     return (
         <>
             <div className="main-div row">
                 <div className="col-md-2 left-div">
                     <div className="profile-div mt-4">
-                        <FontAwesomeIcon icon={faUser}></FontAwesomeIcon> <span className="mx-2">Rutwik Dhale</span>
+                        <FontAwesomeIcon icon={faUser}></FontAwesomeIcon> <span className="mx-2">College Name</span>
                     </div>
-                    <div className="options-div my-5">
-                        <div className="home-div my-3">
-                            <FontAwesomeIcon icon={faHome}></FontAwesomeIcon> <span className="mx-2">Dashboard</span>
-                        </div>
-                        <div className="listing-div my-3">
-                            <FontAwesomeIcon icon={faList}></FontAwesomeIcon> <span className="mx-2">Listings</span>
-                        </div>
-                        <div className="messages-div my-3">
-                            <FontAwesomeIcon icon={faMessage}></FontAwesomeIcon> <span className="mx-2">Messages</span>
-                        </div>
-                        <div className="orders my-3">
-                            <FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon> <span className="mx-2">Orders</span>
-                        </div>
-                        <div className="stats my-3">
-                            <FontAwesomeIcon icon={faChartLine}></FontAwesomeIcon> <span className="mx-2">Statistics</span>
-                        </div>
-                        <div className="settings my-3">
-                            <FontAwesomeIcon icon={faCog}></FontAwesomeIcon> <span className="mx-2">Settings</span>
-                        </div>
+                    <div className="options-div my-5 d-flex justify-content-center align-items-center" style={{flexDirection :' column'}}>
+                        <button className="btn btn-success my-3" name="showData" onClick={handleClick1}>Student Data</button>
+                        <button className="btn btn-success my-3" name="showRegister" onClick={handleClick2} >Register</button>
+                        <button className="btn btn-success my-3" name="showPlacementStats" onClick={handleClick3}>Placement Statistics</button>
+                        <button className="btn btn-success my-3">Filter Coffee</button>
+                        <button className="btn btn-success my-3">Past Recruiters</button>
+                        <button className="btn btn-success my-3">Company Statistics</button>
+                        <button className="btn btn-success my-3">Add Company</button>
+
+
+
                     </div>
                 </div>
                 <div className="col-md-10 right-div">
@@ -40,17 +67,12 @@ export default function Dashboard() {
                                 <FontAwesomeIcon icon={faSignOut}></FontAwesomeIcon> <span>Logout</span>
                             </div>
                         </div>
-                        <div className="up2-div row p-3">
-                            <div className="col-12 col-md-3 things shadow p-3 mb-5 bg-white rounded"></div>
-                            <div className="col-12 col-md-3 things shadow p-3 mb-5 bg-white rounded"></div>
-                            <div className="col-12 col-md-3 things shadow p-3 mb-5 bg-white rounded"></div>
-                        </div>
                     </div>
-                    <div className="right-low row">
-                        <div className=" col-md-6 low1-div mt-5 shadow p-3 mb-5 bg-white rounded"></div>
-                        <div className=" col-md-3 low2-div mt-5 shadow p-3 mb-5 bg-white rounded">
-                            <center>Most Ordered</center>
-                        </div>
+                    <div className="p-1">
+                        {showData && <Table />}
+                        {showRegister && <Form />}
+                        {showPlacementStats && <Graph />}
+                        
                     </div>
                 </div>
             </div>

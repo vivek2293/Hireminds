@@ -9,6 +9,15 @@ const data = [
     contactNo : "1234567890"
   },
   {
+    rollNo: "10",
+    name: "b",
+    yearOfPassingOut: "2025",
+    branch: "cse",
+    CGPA: "8",
+    email: "sdjgdsjfgsdgfjsdgfjhsdghjfhgsdjfgsdjhgfu",
+    contactNo : "1234567890"
+  },
+  {
     rollNo : "2",
     name : "b",
     yearOfPassingOut: "2025",
@@ -38,10 +47,10 @@ const data = [
   {
     rollNo : "5",
     name : "e",
-    yearOfPassingOut: "2020",
+    yearOfPassingOut: "2010",
     branch: "civil",
     CGPA: "8.6",
-    email: "sdjgdsjfgssssssssssssdgfjsdgfjhsdghjfhgsdjfgsdjhgfu",
+    email: "sdjgdsjfgdgfjsdgfjhsdghjfhgsdjfgsdjhgfu",
     contactNo : "1234567890"
   },
   {

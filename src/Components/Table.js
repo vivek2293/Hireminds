@@ -1,21 +1,23 @@
 import React from "react";
 import axios from "axios";
 import data from "../Data";
-import "./CSS/Table.css"
+import "./CSS/Table.css";
 export default function Table() {
   const [showBranch, setShowBranch] = React.useState(false);
   const [showData, setShowData] = React.useState(false);
-  const [roll, setRoll] = React.useState([]);
-  const [name, setName] = React.useState([]);
-  const [year, setYear] = React.useState([]);
-  const [contact, setContact] = React.useState([]);
-  const [email, setEmail] = React.useState([]);
-  const [cgpa, setCgpa] = React.useState([]);
-  const [branch, setBranch] = React.useState([]);
   const [whichYear, setWhichYear] = React.useState();
   const [branchElements, setBranchElements] = React.useState([]);
   const [yearElements, setYearElements] = React.useState([]);
   const [show, setShow] = React.useState(false);
+  const [data1, setData1] = React.useState({
+    roll: "",
+    name: "",
+    year: "",
+    contact: "",
+    branch: "",
+    CGPA: "",
+    email: "",
+  });
   // const [data, setData] = React.useState([{}]);
   // React.useEffect(() => {
   //   axios
@@ -27,21 +29,25 @@ export default function Table() {
   // }, []);
 
   React.useEffect(() => {
-    console.log(data);
     const numberOfYears = [];
     const elements = data.map((myList) =>
       numberOfYears.push(myList.yearOfPassingOut)
     );
     let years = [...new Set(numberOfYears)];
     const tempYearElements = years.map((myList) => (
-      <button onClick={() => handleClick(myList)} key={myList}>
-        {myList}
-      </button>
+      //   <button className="mx-3" onClick={() => handleClick(myList)} key={myList}>
+      //     {myList}
+      //   </button>
+      <option key={myList} value={myList}>{myList}</option>
     ));
     setYearElements(tempYearElements);
   }, [data]);
   function handleClick(params) {
+    if(params != "default"){
+    console.log("hello");
+
     setWhichYear(params);
+    }
   }
   React.useEffect(() => {
     setShow(true);
@@ -50,7 +56,6 @@ export default function Table() {
   React.useEffect(() => {
     console.log(whichYear);
     const numberOfBranches = [];
-    // let tempData = [];
     const tempElements = data.map((myList) => {
       if (whichYear == myList.yearOfPassingOut) {
         numberOfBranches.push(myList.branch);
@@ -58,21 +63,28 @@ export default function Table() {
     });
     let branches = [...new Set(numberOfBranches)];
     const tempBranchElements = branches.map((myList) => (
-      <button onClick={() => handleClick2(myList)}>{myList}</button>
+    //   <button onClick={() => handleClick2(myList)}>{myList}</button>
+        <option key={myList} value={myList}>{myList}</option>
     ));
 
     setBranchElements(tempBranchElements);
   }, [whichYear]);
   React.useEffect(() => {
-    console.log("hello");
-    console.log(branchElements);
     setShowBranch(true);
   }, [branchElements]);
   function handleClick2(props) {
-    setRoll([]);
-    setBranch([]);
-    setYear([]);
-    setName([]);
+    setData1((prevData) => {
+      return {
+        ...prevData,
+        roll: "",
+        name: "",
+        year: "",
+        contact: "",
+        branch: "",
+        CGPA: "",
+        email: "",
+      };
+    });
     const tempRoll = [];
     const tempYear = [];
     const tempBranch = [];
@@ -83,138 +95,185 @@ export default function Table() {
     const tempElements = data.map((myList) => {
       if (props == myList.branch && myList.yearOfPassingOut == whichYear) {
         tempRoll.push(
-          <p key={myList.roll} style={{ listStyle: "none" }}>
+          <li key={myList.roll} style={{ listStyle: "none" }}>
             {myList.rollNo}
-          </p>
+          </li>
         );
         tempName.push(
-          <p key={myList.roll} style={{ listStyle: "none" }}>
+          <li key={myList.roll} style={{ listStyle: "none" }}>
             {myList.name}
-          </p>
+          </li>
         );
         tempYear.push(
-          <p key={myList.roll} style={{ listStyle: "none" }}>
+          <li key={myList.roll} style={{ listStyle: "none" }}>
             {myList.yearOfPassingOut}
-          </p>
+          </li>
         );
         tempBranch.push(
-          <p key={myList.roll} style={{ listStyle: "none" }}>
+          <li key={myList.roll} style={{ listStyle: "none" }}>
             {myList.branch}
-          </p>
+          </li>
         );
         tempContact.push(
-          <p key={myList.roll} style={{ listStyle: "none" }}>
+          <li key={myList.roll} style={{ listStyle: "none" }}>
             {myList.contactNo}
-          </p>
+          </li>
         );
         tempCgpa.push(
-          <p key={myList.roll} style={{ listStyle: "none" }}>
+          <li key={myList.roll} style={{ listStyle: "none" }}>
             {myList.CGPA}
-          </p>
+          </li>
         );
         tempEmail.push(
-          <p key={myList.roll} style={{ listStyle: "none" }}>
+          <li key={myList.roll} style={{ listStyle: "none" }}>
             {myList.email}
-          </p>
+          </li>
         );
       }
-      setBranch(tempBranch);
-      setRoll(tempRoll);
-      setName(tempName);
-      setYear(tempYear);
-      setCgpa(tempCgpa);
-      setEmail(tempEmail);
-      setContact(tempContact);
+      setData1((prevData) => {
+        return {
+          ...prevData,
+          roll: tempRoll,
+          name: tempName,
+          year: tempYear,
+          contact: tempContact,
+          branch: tempBranch,
+          CGPA: tempCgpa,
+          email: tempEmail,
+        };
+      });
       setShowData(true);
     });
   }
-
+  React.useEffect(() => {
+    setShow(true);
+  }, [data1]);
   return (
     <>
-    <section style={{minWidth : '100vw'}}>
-      {console.log(yearElements)}
-      {setShow && yearElements}
-      {showBranch && branchElements}
-      {showData && (
-        <section className="d-flex justify-content-start align-items-center">
-          <div
-            className=" d-flex justify-content-center align-items-center"
-            style={{
-             
-              minHeight: "10vh",
-              flexDirection: "column",
-              border: "1px solid black",
-            }}
-            id = "rollNumberDiv"
-          >
-            <p>Roll Number</p>
-            {roll}
+      <section className="card p-3">
+        {setShow && (
+          <div className="my-3">
+            <p className="my-2">Please select year</p>
+            <div className="d-flex justify-content-center align-items-center"></div>
+            {/* {yearElements}
+             */}
+            <select
+              className="form-select p-1"
+              aria-label="Default select example"
+              onChange={(event) => handleClick(event.target.value)}
+            >
+            <option value="default">Select Year</option>
+              {yearElements}
+            </select>
           </div>
-          <div
-            className=" d-flex justify-content-center align-items-center"
-            style={{
-              minHeight: "10vh",
-              flexDirection: "column",
-              border: "1px solid black",
-            }}
-          >
-            Name
-            {name}
+        )}
+        {showBranch && (
+            <div className="my-3">
+            <p className="my-2">Please select Branch</p>
+            <div className="d-flex justify-content-center align-items-center"></div>
+            {/* {yearElements}
+             */}
+            <select
+              className="form-select p-1"
+              aria-label="Default select example"
+              onChange={(event) => handleClick2(event.target.value)}
+            >
+             <option>Select Branch</option>
+              {branchElements}
+            </select>
           </div>
-          <div
-            className=" d-flex justify-content-center align-items-center"
-            style={{
-              minHeight: "10vh",
-              flexDirection: "column",
-              border: "1px solid black",
-            }}
-          >
-            Year
-            {year}
-          </div>
-          <div
-            className=" d-flex justify-content-center align-items-center"
-            style={{
-              minHeight: "10vh",
-              flexDirection: "column",
-              border: "1px solid black",
-            }}
-          >
-            Branch
-            {branch}
-          </div>
-          <div
-            className=" d-flex justify-content-center align-items-center"
-            style={{
-              minHeight: "10vh",
-              flexDirection: "column",
-              border: "1px solid black",
-            }}
-          >
-            Contact{contact}
-          </div>
-          <div
-            className=" d-flex justify-content-center align-items-center"
-            style={{
-              minHeight: "10vh",
-              flexDirection: "column",
-              border: "1px solid black",
-            }}
-          >
-            CGPA{cgpa}
-          </div>
-          <div
-            className=" d-flex justify-content-center align-items-center"
-            style={{
-              minHeight: "10vh",
-              flexDirection: "column",
-              border: "1px solid black",
-            }}
-          >
-            Email{email}
-          </div>
-        </section>
-      )}
+        )}
+        {showData && (
+          <section className="d-flex justify-content-start align-items-center">
+            <div
+              className=" d-flex justify-content-center align-items-center"
+              style={{
+                minHeight: "10vh",
+                flexDirection: "column",
+                border: "1px solid black",
+                minWidth: '7vw'
+
+              }}
+              id="rollNumberDiv"
+            >
+              <h6>Roll Number</h6>
+              {show && data1.roll}
+            </div>
+            <div
+              className=" d-flex justify-content-center align-items-center"
+              style={{
+                minHeight: "10vh",
+                flexDirection: "column",
+                border: "1px solid black",
+                minWidth: '20vw'
+
+              }}
+            >
+              <h6>Name</h6>
+              {data1.name}
+            </div>
+            <div
+              className=" d-flex justify-content-center align-items-center"
+              style={{
+                minHeight: "10vh",
+                flexDirection: "column",
+                border: "1px solid black",
+                minWidth: '5vw'
+
+              }}
+            >
+              <h6>Year</h6>
+              {data1.year}
+            </div>
+            <div
+              className=" d-flex justify-content-center align-items-center"
+              style={{
+                minHeight: "10vh",
+                flexDirection: "column",
+                border: "1px solid black",
+                minWidth: '5vw'
+
+              }}
+            >
+              <h6>Branch</h6>
+              {data1.branch}
+            </div>
+            <div
+              className=" d-flex justify-content-center align-items-center"
+              style={{
+                minHeight: "10vh",
+                flexDirection: "column",
+                border: "1px solid black",
+                minWidth: '10vw'
+
+              }}
+            >
+              <h6> Contact</h6>{data1.contact}
+            </div>
+            <div
+              className="  d-flex justify-content-center align-items-center"
+              style={{
+                minHeight: "10vh",
+                flexDirection: "column",
+                border: "1px solid black",
+                minWidth: '6vw'
+              }}
+            >
+              <h6>CGPA</h6>{data1.CGPA}
+            </div>
+            <div
+              className=" d-flex justify-content-center align-items-center"
+              style={{
+                minHeight: "10vh",
+                flexDirection: "column",
+                border: "1px solid black",
+                minWidth: '27vw'
+              }}
+            >
+              <h6>Email</h6>{data1.email}
+            </div>
+          </section>
+        )}
       </section>
     </>
   );
