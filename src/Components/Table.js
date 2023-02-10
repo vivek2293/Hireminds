@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import data from "../Data";
+// import data from "../Data";
 export default function Table() {
   const [showBranch, setShowBranch] = React.useState(false);
   const [showData, setShowData] = React.useState(false);
@@ -12,15 +12,16 @@ export default function Table() {
   const [branchElements, setBranchElements] = React.useState([]);
   const [yearElements, setYearElements] = React.useState([]);
   const [show, setShow] = React.useState(false);
-  //   const [data, setData] = React.useState([{}]);
+    const [data, setData] = React.useState([{}]);
   //   let yearElements = [];
-  //   React.useEffect(() => {
-  //     axios
-  //       .post("http://localhost:8000/api/v1/record/alldata", {})
-  //       .then((info) => {
-  //         setData(info.data);
-  //       });
-  //   }, []);
+    React.useEffect(() => {
+      axios
+        .post("http://localhost:8000/api/v1/record/alldata", {})
+        .then((info) => {
+          console.log(info)
+          setData(info.data);
+        });
+    }, []);
 
   React.useEffect(() => {
     console.log(data);
@@ -35,9 +36,7 @@ export default function Table() {
       </button>
     ));
     setYearElements(tempYearElements);
-    // console.log(yearElements)
-    
-  }, []);
+  }, [data]);
   function handleClick(params) {
     setWhichYear(params);
   }
