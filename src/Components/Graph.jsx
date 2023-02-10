@@ -6,10 +6,13 @@ function Graph() {
 
   const [example,setExample]=React.useState({
     series: [{
+      name: "Highest",
       data: [44, 55, 41, 64, 22, 43, 21]
     }, {
+      name: "Average",
       data: [53, 32, 33, 52, 13, 44, 32]
     }, {
+      name: "Median",
       data: [50, 3, 23, 25, 53, 94, 30]
     }
   ],
