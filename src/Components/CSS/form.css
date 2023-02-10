@@ -1,0 +1,8 @@
+.btn-custom1 {
+    background: rgb(134, 115, 255);
+    background: linear-gradient(180deg, rgba(134, 115, 255, 1) 0%, rgba(135, 118, 255, 1) 17%, rgba(134, 127, 254, 1) 34%, rgba(132, 131, 255, 1) 51%, rgba(130, 142, 254, 1) 68%, rgba(130, 146, 254, 1) 85%, rgba(130, 155, 254, 1) 100%);
+    border-radius: 4px;
+    height: 6vh;
+    width: 8vw;
+    color: white;
+}
