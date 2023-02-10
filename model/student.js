@@ -60,7 +60,19 @@ const schema = new mongoose.Schema({
     resumeLink: {
         type: String,
         default: "NA"
-    }
+    },
+    isSelected: {
+        type: Boolean,
+        default: false,
+    },
+    currentStatus: {
+        type: String,
+        default: "NA"
+    },
+    selectedBy: {
+        type: String,
+        default: "NA"
+    },
 });
 
 

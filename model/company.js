@@ -20,6 +20,12 @@ const schema = new mongoose.Schema({
     websiteUrl: {
         type: String,
         trim: true
+    },
+    totalCTC:{
+        type: String
+    },
+    totalStudents:{
+        type: String
     }
 });
 
