@@ -41,7 +41,7 @@ const data = [
     yearOfPassingOut: "2020",
     branch: "civil",
     CGPA: "8.6",
-    email: "sdjgdsjfgsdgfjsdgfjhsdghjfhgsdjfgsdjhgfu",
+    email: "sdjgdsjfgssssssssssssdgfjsdgfjhsdghjfhgsdjfgsdjhgfu",
     contactNo : "1234567890"
   },
   {

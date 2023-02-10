@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import data from "../Data";
+import "./CSS/Table.css"
 export default function Table() {
   const [showBranch, setShowBranch] = React.useState(false);
   const [showData, setShowData] = React.useState(false);
@@ -53,7 +54,6 @@ export default function Table() {
     const tempElements = data.map((myList) => {
       if (whichYear == myList.yearOfPassingOut) {
         numberOfBranches.push(myList.branch);
-        // tempData.push(myList);
       }
     });
     let branches = [...new Set(numberOfBranches)];
@@ -83,39 +83,39 @@ export default function Table() {
     const tempElements = data.map((myList) => {
       if (props == myList.branch && myList.yearOfPassingOut == whichYear) {
         tempRoll.push(
-          <li key={myList.roll} style={{ listStyle: "none" }}>
+          <p key={myList.roll} style={{ listStyle: "none" }}>
             {myList.rollNo}
-          </li>
+          </p>
         );
         tempName.push(
-          <li key={myList.roll} style={{ listStyle: "none" }}>
+          <p key={myList.roll} style={{ listStyle: "none" }}>
             {myList.name}
-          </li>
+          </p>
         );
         tempYear.push(
-          <li key={myList.roll} style={{ listStyle: "none" }}>
+          <p key={myList.roll} style={{ listStyle: "none" }}>
             {myList.yearOfPassingOut}
-          </li>
+          </p>
         );
         tempBranch.push(
-          <li key={myList.roll} style={{ listStyle: "none" }}>
+          <p key={myList.roll} style={{ listStyle: "none" }}>
             {myList.branch}
-          </li>
+          </p>
         );
         tempContact.push(
-          <li key={myList.roll} style={{ listStyle: "none" }}>
+          <p key={myList.roll} style={{ listStyle: "none" }}>
             {myList.contactNo}
-          </li>
+          </p>
         );
         tempCgpa.push(
-          <li key={myList.roll} style={{ listStyle: "none" }}>
+          <p key={myList.roll} style={{ listStyle: "none" }}>
             {myList.CGPA}
-          </li>
+          </p>
         );
         tempEmail.push(
-          <li key={myList.roll} style={{ listStyle: "none" }}>
+          <p key={myList.roll} style={{ listStyle: "none" }}>
             {myList.email}
-          </li>
+          </p>
         );
       }
       setBranch(tempBranch);
@@ -131,24 +131,27 @@ export default function Table() {
 
   return (
     <>
+    <section style={{minWidth : '100vw'}}>
       {console.log(yearElements)}
       {setShow && yearElements}
       {showBranch && branchElements}
       {showData && (
-        <section className="d-flex justify-content-center align-items-center">
+        <section className="d-flex justify-content-start align-items-center">
           <div
-            className="col-1 d-flex justify-content-center align-items-center"
+            className=" d-flex justify-content-center align-items-center"
             style={{
+             
               minHeight: "10vh",
               flexDirection: "column",
               border: "1px solid black",
             }}
+            id = "rollNumberDiv"
           >
-            Roll Number
+            <p>Roll Number</p>
             {roll}
           </div>
           <div
-            className="col-3 d-flex justify-content-center align-items-center"
+            className=" d-flex justify-content-center align-items-center"
             style={{
               minHeight: "10vh",
               flexDirection: "column",
@@ -159,7 +162,7 @@ export default function Table() {
             {name}
           </div>
           <div
-            className="col-1 d-flex justify-content-center align-items-center"
+            className=" d-flex justify-content-center align-items-center"
             style={{
               minHeight: "10vh",
               flexDirection: "column",
@@ -170,7 +173,7 @@ export default function Table() {
             {year}
           </div>
           <div
-            className="col-1 d-flex justify-content-center align-items-center"
+            className=" d-flex justify-content-center align-items-center"
             style={{
               minHeight: "10vh",
               flexDirection: "column",
@@ -181,7 +184,7 @@ export default function Table() {
             {branch}
           </div>
           <div
-            className="col-2 d-flex justify-content-center align-items-center"
+            className=" d-flex justify-content-center align-items-center"
             style={{
               minHeight: "10vh",
               flexDirection: "column",
@@ -191,7 +194,7 @@ export default function Table() {
             Contact{contact}
           </div>
           <div
-            className="col-1 d-flex justify-content-center align-items-center"
+            className=" d-flex justify-content-center align-items-center"
             style={{
               minHeight: "10vh",
               flexDirection: "column",
@@ -201,7 +204,7 @@ export default function Table() {
             CGPA{cgpa}
           </div>
           <div
-            className="col-3 d-flex justify-content-center align-items-center"
+            className=" d-flex justify-content-center align-items-center"
             style={{
               minHeight: "10vh",
               flexDirection: "column",
@@ -212,6 +215,7 @@ export default function Table() {
           </div>
         </section>
       )}
+      </section>
     </>
   );
 }
