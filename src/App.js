@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import "./App.css"
 import Table from './Components/Table';
-import Form from './Components/Form';
+import Form from './Components/form';
 import Graph from './Components/Graph';
 import Dashboard from './Components/Dashboard';
 
