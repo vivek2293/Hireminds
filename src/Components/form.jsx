@@ -1,4 +1,5 @@
 import React from "react";
+import "./CSS/form.css";
 
 export default function Form() {
 
@@ -252,12 +253,7 @@ export default function Form() {
                             </div>
 
                             <div className="btn-div d-flex justify-content-center" id="btn-div">
-                                <button type="submit" className="btn btn-primary">
-                                    Create
-                                </button>
-                                {/* <button type="button" className="btn primary-btn ms-3">
-                                    Back
-                                </button> */}
+                            <button type="submit" className="btn btn-custom1">Click Me</button>
                             </div>
 
                         </form>
