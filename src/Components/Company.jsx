@@ -44,8 +44,9 @@ export default function Company() {
 
     console.log(show);
     React.useEffect(() => {
-        if(elements1)
-        setShow(true);
+        if (elements1) {
+            setShow(true);
+        }
     }, [elements1])
 
     return (
