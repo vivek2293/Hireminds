@@ -23,7 +23,7 @@ const schema = new mongoose.Schema({
         required: [true, "Must provide branch."]
     },
     yearOfPassingOut: {
-        type: String,
+        type: Number,
         trim: true,
         required: [true, "Must provide year of graduation."]
     },
@@ -32,8 +32,12 @@ const schema = new mongoose.Schema({
         required: [true, "Must provide gender."]
     },
     CGPA: {
-        type: String,
-        default: "0.00"
+        type: mongoose.Decimal128,
+        default: 0.00
+    },
+    age:{
+        type: Number,
+        required: [true, "Must provide age."]
     },
     email: {
         type: String,
@@ -61,6 +65,8 @@ const schema = new mongoose.Schema({
         type: String,
         default: "NA"
     },
+
+    // selection attributes
     isSelected: {
         type: Boolean,
         default: false,
@@ -73,6 +79,10 @@ const schema = new mongoose.Schema({
         type: String,
         default: "NA"
     },
+    CTC_offered:{
+        type: String,
+        default: "NA"
+    }
 });
 
 
