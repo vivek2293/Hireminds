@@ -1,50 +1,50 @@
 const data = [
   {
-    roll: "1",
+    rollNo: "1",
     name: "a",
-    year: "2025",
+    yearOfPassingOut: "2025",
     branch: "cse",
   },
   {
-    roll : "2",
+    rollNo : "2",
     name : "b",
-    year: "2025",
+    yearOfPassingOut: "2025",
     branch: "ece"
   },
   {
-    roll : "3",
+    rollNo : "3",
     name : "c",
-    year: "2024",
+    yearOfPassingOut: "2024",
     branch: "cse"
   },
   {
-    roll : "4",
+    rollNo : "4",
     name : "d",
-    year: "2024",
+    yearOfPassingOut: "2024",
     branch: "ece"
   },
   {
-    roll : "5",
+    rollNo : "5",
     name : "e",
-    year: "2020",
+    yearOfPassingOut: "2020",
     branch: "civil"
   },
   {
-    roll : "6",
+    rollNo : "6",
     name : "f",
-    year: "2020",
+    yearOfPassingOut: "2020",
     branch: "cse"
   },
   {
-    roll : "7",
+    rollNo : "7",
     name : "g",
-    year: "2020",
+    yearOfPassingOut: "2020",
     branch: "ece"
   },
   {
-    roll : "8",
+    rollNo : "8",
     name : "h",
-    year: "2021",
+    yearOfPassingOut: "2021",
     branch: "cse"
   }
 ];
