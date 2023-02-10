@@ -10,8 +10,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Table />} />
-
-
         </Routes>
       </BrowserRouter>
     </>
