@@ -6,7 +6,13 @@ const {
     createStudentRecord
 } = require("../functions/user.operation");
 
-router.get("/record/alldata", getAllrecords);
+const { 
+    getAllCompanyrecords, createCompanyRecord
+} = require("../functions/company.operation");
+
+router.post("/record/alldata", getAllrecords);
 router.post("/record/createData", createStudentRecord);
+router.post("/company/alldata", getAllCompanyrecords);
+router.post("/company/createCompanyRecord", createCompanyRecord);
 
 module.exports = router;

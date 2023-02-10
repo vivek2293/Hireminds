@@ -20,4 +20,5 @@ const createStudentRecord = async(req, res) => {
     });
 };
 
+
 module.exports = { getAllrecords, createStudentRecord };

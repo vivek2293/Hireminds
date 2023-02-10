@@ -17,7 +17,7 @@ const schema = new mongoose.Schema({
         trim: true,
         required: [true, "Must provide location for the company."]
     },
-    website_url: {
+    websiteUrl: {
         type: String,
         trim: true
     }
