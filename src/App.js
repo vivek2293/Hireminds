@@ -5,6 +5,7 @@ import "bootstrap/dist/js/bootstrap.bundle.js";
 import "./App.css"
 import Table from './Components/Table';
 import Form from './Components/Form';
+import Dashboard from './Components/Dashboard';
 
 function App() {
   return (
@@ -12,8 +13,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Form />} />
-          <Route exact path="/display" element={<Table />} />
-
+          <Route exact path="/display" element={<Table />} /> 
+          <Route exact path="/dashboard" element={<Dashboard />} /> 
 
         </Routes>
         {/* <Form /> */}

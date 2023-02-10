@@ -1,0 +1,54 @@
+* {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.left-div {
+    height: 100vh;
+    background-color: rgb(37,52,107);
+}
+
+.right-up {
+    /* min-height: 70vh; */
+    background-color: rgb(57,71,136);
+}
+
+.right-low {
+    /* height: 60vh; */
+    background-color: rgb(38,54,114);
+}
+
+.up1-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.up2-div{
+    justify-content: space-evenly;
+}
+
+.things {
+    background-color: white;
+    height: 16vh;
+}
+
+.low1-div {
+    background-color: white;
+    height: 45vh;
+}
+
+.low2-div {
+    background-color: white;
+    height: 45vh;
+}
+
+.right-low {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.left-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
