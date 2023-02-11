@@ -20,6 +20,14 @@ const shortlistedCandidateslist = async(req, res) => {
     })
 };
 
+const markAllShortlisted = async(arr) => {
+    for(let i = 0;i < arr.length;i++){
+        const filter = { _id: arr[i] }
+        await studentData.findOneAndUpdate( filter, { currentStatus: "In Progress" }, { new: true })
+        .catch((err) => { message = err });
+    }
+}
+
 const getEligibileCandidateList = async(req, res) => {
     // CGPA // year // age
     const { companyName, CGPA, year, age } = req.body;
@@ -27,7 +35,8 @@ const getEligibileCandidateList = async(req, res) => {
     studentData.find({
         CGPA: { $gt: CGPA},
         age: { $lt: age},
-        yearOfPassingOut: year
+        yearOfPassingOut: year,
+        isSelected: false
     })
     .select({})
     .exec(function (err, info){
@@ -37,6 +46,8 @@ const getEligibileCandidateList = async(req, res) => {
             for(let i = 0;i < info.length;i++){
                 arr.push(info[i]._id);
             }
+
+            markAllShortlisted(arr);
 
             try{
                 shortlistedCandidates.create({
