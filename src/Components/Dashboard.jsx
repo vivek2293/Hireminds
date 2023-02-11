@@ -81,9 +81,8 @@ export default function Dashboard() {
                         <button className="btn btn-success my-3 p-2" style={{borderRadius : '20px'}}>Past Recruiters</button>
                         <button className="btn btn-success my-3 p-2" style={{borderRadius : '20px'}} onClick={handleClick6}>Company Statistics</button>
                         <button className="btn btn-success my-3 p-2" style={{borderRadius : '20px'}} onClick={handleClick7}>Add Company</button>
-
-
-
+                        <button className="btn btn-success my-3 p-2" style={{borderRadius : '20px'}} onClick={handleClick7}>Update</button>
+                        <button className="btn btn-success my-3 p-2" style={{borderRadius : '20px'}} onClick={handleClick7}>Delete</button>
                     </div>
                 </div>
                 <div className="col-md-10 right-div">
