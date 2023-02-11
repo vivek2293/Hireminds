@@ -110,14 +110,12 @@ const shortlistedCandidate = async(req,res) => {
     const { time, date, token } = req.body;
 
     const payload = jwt.decode(token , process.env.JWT_SECRET);
-
-    const { companyName } = payload.companyName;
+    const companyName = payload.companyName;
     
     const arr = [];
     for(let i = 0;i < ids_list.length;i++){
-        arr.push(ids_list[i]._id);
+        arr.push(ids_list[i]);
     }
-    console.log(arr);
 
     //Shortlisted Candidates
     const record = await eligibleCandidates.create({
@@ -131,11 +129,10 @@ const shortlistedCandidate = async(req,res) => {
         _id: record._id
     }
 
-    const accesstoken = jwt.sign( data, process.env.JWT_SECRET, { expiresIn: "15d" })
-
     const query = await studentData.find().where("_id").in(ids_list).exec();
     await studentData.updateMany({query}, { currentStatus: "Shortlisted", interviewDate: date, interviewTiming: time }).then(() => {
-        return res.status(200).json({ token: acesstoken })
+        const accesstoken = jwt.sign( data, process.env.JWT_SECRET, { expiresIn: "15d" });
+        return res.status(200).json({ token: accesstoken })
     }).catch((err) => {
         return res.status(400).json({ msg: err });
     })
