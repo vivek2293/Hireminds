@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 export default function Filter() {
     const [formdata, setFormdata] = React.useState({
@@ -8,6 +9,18 @@ export default function Filter() {
         age: "",
         email: ""
     })
+
+    function saveData() {
+        const data = { ...formdata };
+        console.log("hello");
+        console.log(data);
+        axios.post("http://localhost:8000/api/v1/interaction/getEligibileCandidateList", data)
+            .then(() => {
+                console.log("Sent");
+            }).catch((err) => {
+                console.log(err);
+            })
+    }
 
     function handleChange(event) {
         setFormdata((prevdata) => {
@@ -31,7 +44,7 @@ export default function Filter() {
                         <form
                             onSubmit={(e) => {
                                 e.preventDefault();
-                                // saveData();
+                                saveData();
                             }}
                         >
                             <div className="form-group row m-2">
