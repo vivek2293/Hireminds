@@ -13,7 +13,7 @@ function Shortlisting() {
         ids : "",
         time: "",
         date: "",
-        token : "",
+        token : "", 
     })
     React.useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -30,11 +30,18 @@ function Shortlisting() {
 
     }, [])
    
-    function handleSelect(prop){
+    function handleSelect(prop,checked){
+        if(checked){
         const tempData = Ids;
         tempData.push(prop);
         setIds(tempData);
-    
+        }
+        else{
+            console.log(prop);
+            const index = Ids.indexOf(prop);
+
+            const x = Ids.splice(index, 1);
+        }
     }
     
     React.useEffect(()=>{
@@ -51,7 +58,7 @@ function Shortlisting() {
                 <td>{items.linkedIn}</td>
                 <td>{items.github}</td>
                 <td>{items.resumeLink}</td>
-                <td ><input type="checkbox" value={items._id} onChange = {(e)=>handleSelect(e.target.value)}></input></td>
+                <td ><input type="checkbox" value={items._id} onChange = {(e)=>handleSelect(e.target.value,e.target.checked)}></input></td>
             </tr>
         ))
         setElements(elements1);
