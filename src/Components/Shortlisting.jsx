@@ -64,14 +64,14 @@ function Shortlisting() {
         selected.ids = Ids;
         selected.time = time;
         selected.date = date;
-        selected.token = token
+        selected.token = token;
         console.log(selected)
-        axios.post("http://localhost:8000/api/v1/interaction/shortlistedCandidate", { selected })
+        axios.post("http://localhost:8000/api/v1/interaction/shortlistedCandidate",  selected )
         .then((res) => {
             console.log("Sent");
             console.log(res);
-            if (typeof res.token !== "undefined")
-             localStorage.setItem("user", res.token);
+            if (typeof res.data.token !== "undefined")
+             localStorage.setItem("user", res.data.token);
             //res.token
             window.location.href = "/selection"
             // setData(res.data);
