@@ -37,7 +37,7 @@ return (
     <>
         <section className="" style={{ width: "85vw" }}>
             <div className="form-div d-flex justify-content-center ">
-                <div className="card col-md-5 p-2 shadow p-3 mb-5 bg-white rounded">
+                <div className="card col-md-5 p-2 shadow p-3 mb-5 bg-white rounded w-50">
                     <div className="d-flex justify-content-center pt-2 pb-2">
                         <h4>Company Details</h4>
                     </div>
@@ -136,7 +136,7 @@ return (
 
 
                         <div className="btn-div d-flex justify-content-center" id="btn-div">
-                            <button type="submit" className="btn btn-custom1 p-1">Click Me</button>
+                            <button type="submit" className="btn btn-custom1 p-1 mt-2">Click Me</button>
                         </div>
 
                     </form>

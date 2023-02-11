@@ -1,7 +1,7 @@
 import React from "react";
 import "./CSS/dashboard.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOut, faUser, faHome, faList, faMessage, faCartShopping, faChartLine, faCog} from "@fortawesome/free-solid-svg-icons";
+import { faSignOut, faUniversity} from "@fortawesome/free-solid-svg-icons";
 import Table from "./Table";
 import Form from "./form";
 import Graph from "./Graph";
@@ -80,7 +80,7 @@ export default function Dashboard() {
             <div className="main-div row">
                 <div className=" shadow-lg col-md-2 left-div ">
                     <div className="profile-div mt-4">
-                        <FontAwesomeIcon icon={faUser} style={{color : 'rgb(160,90,255)'}}></FontAwesomeIcon> <span className="mx-2" style={{color : 'rgb(160,90,255)'}}>College Name</span>
+                        <FontAwesomeIcon icon={faUniversity} style={{color : 'rgb(160,90,255)'}}></FontAwesomeIcon> <span className="mx-2" style={{color : 'rgb(160,90,255)'}}>College Name</span>
                     </div>
                     <div className="options-div my-5 d-flex justify-content-center align-items-center" style={{flexDirection :' column'}}>
                         <button className="diff-btn my-3 p-2" style={{borderRadius : '20px'   }} name="showData" onClick={handleClick1}>Student Data</button>
