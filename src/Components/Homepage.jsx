@@ -26,8 +26,8 @@ function Homepage() {
             className=" col-md-12 d-flex justify-content-center align-items-start"
           >
             <div className="col-md-6" id="logo-div">
-            {/* <img src={logo}></img> */}
-            <h1>Logo</h1>
+            <img src={logo} style={{height : '13vh'}} className = "mt-2"></img>
+            {/* <h1>Logo</h1> */}
             {/* <Lottie animationData={animatelogo} style={{ height: "10vh" }} /> */}
 
             </div>
@@ -60,7 +60,7 @@ function Homepage() {
           <div>
             <div className="row ">
               <div className="col-md-7 ">
-                <h1 className="ms-2 mb-3 px-3">Heading</h1>
+                <h1 className="ms-2 mb-3 px-3" style={{color : 'rgb(120,123,206)'}}>Heading</h1>
                 <p className="ms-2 col-8 px-3">
                   "But I must explain to you how all this mistaken idea of
                   denouncing pleasure and pra But I must explain to you how all
@@ -77,7 +77,7 @@ function Homepage() {
               </div>
               <div className="col-md-7 justify-content-end">
                 <div className="row justify-content-end">
-                  <h1 className="ms-2 mb-3 col-8 px-3">Heading</h1>
+                  <h1 className="ms-2 mb-3 col-8 px-3" style={{color : 'rgb(120,123,206)'}}>Heading</h1>
                   <p className="ms-2 col-8 px-3">
                     "But I must explain to you how all this mistaken idea of
                     denouncing pleasure and pra But I must explain to you how
@@ -88,7 +88,7 @@ function Homepage() {
             </div>
             <div className="row ">
               <div className="col-md-7 ">
-                <h1 className="ms-2 mb-3 px-3">Heading</h1>
+                <h1 className="ms-2 mb-3 px-3" style={{color : 'rgb(120,123,206)'}}>Heading</h1>
                 <p className="ms-2 col-8 px-3">
                   "But I must explain to you how all this mistaken idea of
                   denouncing pleasure and pra But I must explain to you how all
