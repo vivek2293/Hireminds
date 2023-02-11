@@ -7,8 +7,13 @@ function Shortlisting() {
     const [data,setData] = React.useState();
     const [date,setDate] = React.useState();
     const [time,setTime] = React.useState();
-    const [ids,setIds] = React.useState([]);
+    const [Ids,setIds] = React.useState([]);
     const [elements,setElements] = React.useState();
+    const [selected, setSelected] = React.useState({
+        ids : "",
+        time: "",
+        date: ""
+    })
     React.useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         const token = urlParams.get('token');
@@ -25,16 +30,13 @@ function Shortlisting() {
     }, [])
    
     function handleSelect(prop){
-        const tempData = ids;
+        const tempData = Ids;
         tempData.push(prop);
         setIds(tempData);
-        console.log(ids);
     
     }
     
     React.useEffect(()=>{
-        console.log("hello");
-        console.log(data);
         if(data){
              const elements1 = data.map((items)=>(
             <tr key = {items.rollNo}>
@@ -56,6 +58,10 @@ function Shortlisting() {
        
     },[data]);
     function handleClick(){
+        selected.ids = Ids;
+        selected.time = time;
+        selected.date = date;
+        console.log(selected)
         // axios.post("http://localhost:8000/api/v1/interaction/renderEligible", { ids })
         // .then((res) => {
         //     console.log("Sent");
