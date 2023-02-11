@@ -45,6 +45,7 @@ function Homepage() {
                   type="submit"
                   className="btn btn-custom1 p-1"
                   style={{ height: "6vh", width: "5vw" }}
+                  onClick = {() => window.location.href = "/login"}
                 >
                   Login
                 </button>

@@ -89,6 +89,7 @@ export default function Table() {
       <section className="card p-3">
         {setShow && (
           <div className="my-3">
+          <h2>Student Data</h2>
             <p className="my-2">Please select year</p>
             <div className="d-flex justify-content-center align-items-center"></div>
             {/* {yearElements}

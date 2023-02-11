@@ -12,21 +12,27 @@ import AddCompany from './Components/AddCompany';
 import Homepage from './Components/Homepage';
 import Filter from './Components/Filter';
 import Shortlisting from './Components/Shortlisting';
+import Login from './Components/Login';
+import Selection from './Components/Selection';
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<Form />} />
-          <Route exact path="/display" element={<Table />} /> 
-          <Route exact path="/graph" element={<Graph />} />
+          <Route exact path="/" element={<Homepage />} />
+          {/* <Route exact path="/display" element={<Table />} />  */}
+          {/* <Route exact path="/graph" element={<Graph />} /> */}
           <Route exact path="/dashboard" element={<Dashboard />} /> 
-          <Route exact path="/company" element={<Company />} /> 
-          <Route exact path="/add" element={<AddCompany />} /> 
-          <Route exact path="/landing" element={<Homepage />} /> 
-          <Route exact path="/filter" element={<Filter />} /> 
+          {/* <Route exact path="/company" element={<Company />} />  */}
+          {/* <Route exact path="/add" element={<AddCompany />} />  */}
+          {/* <Route exact path="/landing" element={<Homepage />} />  */}
+          {/* <Route exact path="/filter" element={<Filter />} />  */}
           <Route exact path="/shortlisted" element={<Shortlisting />} /> 
+          <Route exact path="/login" element={<Login />} /> 
+          <Route exact path="/selection" element={<Selection />} /> 
+
+
 
 
         </Routes>

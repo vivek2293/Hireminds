@@ -12,7 +12,8 @@ function Shortlisting() {
     const [selected, setSelected] = React.useState({
         ids : "",
         time: "",
-        date: ""
+        date: "",
+        token : "",
     })
     React.useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -58,18 +59,25 @@ function Shortlisting() {
        
     },[data]);
     function handleClick(){
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get('token');
         selected.ids = Ids;
         selected.time = time;
         selected.date = date;
+        selected.token = token
         console.log(selected)
-        // axios.post("http://localhost:8000/api/v1/interaction/renderEligible", { ids })
-        // .then((res) => {
-        //     console.log("Sent");
-        //     console.log(res);
-        //     setData(res.data);
-        // }).catch((err) => {
-        //     console.log(err);
-        // }) 
+        axios.post("http://localhost:8000/api/v1/interaction/shortlistedCandidate", { selected })
+        .then((res) => {
+            console.log("Sent");
+            console.log(res);
+            if (typeof res.token !== "undefined")
+             localStorage.setItem("user", res.token);
+            //res.token
+            window.location.href = "/selection"
+            // setData(res.data);
+        }).catch((err) => {
+            console.log(err);
+        }) 
 
     }
     
