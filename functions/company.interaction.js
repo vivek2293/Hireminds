@@ -39,7 +39,7 @@ const createListOfEligibleCandidates = async(arr, companyName, email) => {
         companyName,
         email,
         _id: task._id
-    }, process.env.JWT_SECRET, { expiresIn: "15 day"});
+    }, process.env.JWT_SECRET, { expiresIn: "15d"});
     // console.log(token)
     const subject = "List of shortlisted candidates."
     const message = 
@@ -87,7 +87,6 @@ const getEligibileCandidateList = async(req, res) => {
 
 const renderEligibleCandidate = async(req, res) => {
     const { token } = req.body;
-    console.log(token);
     const payload = jwt.decode( token , process.env.JWT_SECRET, (err, authData) => {
         console.log(authData);
     })
@@ -104,6 +103,11 @@ const renderEligibleCandidate = async(req, res) => {
     catch (err){
         return res.status(400).json({ "msg": err })
     }
+}
+
+const shortlistedCandidate = async(req,res) => {
+    const list = req.body.list;
+
 }
 
 module.exports = { eligibleCandidateslist, getEligibileCandidateList, renderEligibleCandidate };

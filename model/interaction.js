@@ -6,7 +6,7 @@ const schema = new mongoose.Schema({
         required: [true, "Must provide company name."]
     },
     list: Array,
-    createdAt: { type: Date, expires: '5m', index: true, default: Date.now }
+    createdAt: { type: Date, expires: '15d', index: true, default: Date.now }
 });
 
 module.exports = mongoose.model("eligibleCandidates", schema);
