@@ -17,6 +17,7 @@ const {
   eligibleCandidateslist,
   getEligibileCandidateList,
   renderEligibleCandidate,
+  shortlistedCandidate
 } = require("../functions/company.interaction");
 
 router.post("/record/alldata", getAllrecords);
@@ -28,5 +29,6 @@ router.post("/interaction/getEligibileCandidateList", getEligibileCandidateList 
 router.post("/interaction/renderEligible", renderEligibleCandidate);
 router.post("/company/getAllCompanyname", getAllCompanyname);
 router.post("/record/getPlacementData", getPlacementData);
+router.post("/interaction/shortlistedCandidate", shortlistedCandidate);
 
 module.exports = router;

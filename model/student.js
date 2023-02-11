@@ -83,6 +83,10 @@ const schema = new mongoose.Schema({
         type: String,
         default: "NA"
     },
+    interviewDate:{
+        type: String,
+        default: "NA"
+    },
     CTC_offered:{
         type: String,
         default: "NA"

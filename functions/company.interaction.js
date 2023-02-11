@@ -106,8 +106,16 @@ const renderEligibleCandidate = async(req, res) => {
 }
 
 const shortlistedCandidate = async(req,res) => {
-    const list = req.body.list;
+    const ids_list = req.body.ids;
+    const { time, date } = req.body;
+
+    const query = await studentData.find().where("_id").in(ids_list).exec();
+    await studentData.updateMany({query}, { currentStatus: "Shortlisted", interviewDate: date, interviewTiming: time }).then(() => {
+        return res.status(200).json({ msg: "Updation successful."})
+    }).catch((err) => {
+        return res.status(400).json({ msg: err });
+    })
 
 }
 
-module.exports = { eligibleCandidateslist, getEligibileCandidateList, renderEligibleCandidate };
+module.exports = { eligibleCandidateslist, getEligibileCandidateList, renderEligibleCandidate, shortlistedCandidate };
