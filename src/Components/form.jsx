@@ -12,6 +12,7 @@ export default function Form() {
         yearOfPassingOut: "",
         CGPA: "",
         email: "",
+        age: "",
         linkedIn: "NA",
         github: "NA",
         resumeLink: "NA"
@@ -200,6 +201,27 @@ export default function Form() {
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter CGPA"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                            <div className="form-group row m-2">
+                                <label
+                                    htmlFor="colFormLabelSm"
+                                    className="col-md-4 col-form-label col-form-label-sm ps-4 required"
+                                >
+                                    Age
+                                </label>
+                                <div className="col-md-5">
+                                    <input
+                                        type="number"
+                                        step="0.01"
+                                        name="Age"
+                                        value={formdata.age}
+                                        className="form-control form-control-sm p-1"
+                                        id="colFormLabelSm"
+                                        onChange={handleChange}
+                                        placeholder="Enter Age"
                                         required
                                     />
                                 </div>
