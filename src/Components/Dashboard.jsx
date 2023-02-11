@@ -15,7 +15,6 @@ export default function Dashboard() {
     const [showPastRecuriters,setShowPastRecuriters] = React.useState();
     const [showCompanyStats,setShowCompanyStats] = React.useState();
     const [showCompanyRegister,setCompanyRegister] = React.useState();
-    
     function handleClick1(){
         setShowData(true);
         setShowRegister(false);

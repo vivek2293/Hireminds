@@ -9,15 +9,7 @@ export default function Table() {
   const [branchElements, setBranchElements] = React.useState([]);
   const [yearElements, setYearElements] = React.useState([]);
   const [show, setShow] = React.useState(false);
-  const [data1, setData1] = React.useState({
-    roll: "",
-    name: "",
-    year: "",
-    contact: "",
-    branch: "",
-    CGPA: "",
-    email: "",
-  });
+  const [elements, setElements] = React.useState();
   const [data, setData] = React.useState([{}]);
   React.useEffect(() => {
     axios
@@ -35,9 +27,6 @@ export default function Table() {
     );
     let years = [...new Set(numberOfYears)];
     const tempYearElements = years.map((myList) => (
-      //   <button className="mx-3" onClick={() => handleClick(myList)} key={myList}>
-      //     {myList}
-      //   </button>
       <option key={myList} value={myList}>
         {myList}
       </option>
@@ -46,8 +35,6 @@ export default function Table() {
   }, [data]);
   function handleClick(params) {
     if (params != "default") {
-      console.log("hello");
-
       setWhichYear(params);
     }
   }
@@ -56,7 +43,6 @@ export default function Table() {
   }, [yearElements]);
 
   React.useEffect(() => {
-    console.log(whichYear);
     const numberOfBranches = [];
     const tempElements = data.map((myList) => {
       if (whichYear == myList.yearOfPassingOut) {
@@ -65,7 +51,6 @@ export default function Table() {
     });
     let branches = [...new Set(numberOfBranches)];
     const tempBranchElements = branches.map((myList) => (
-      //   <button onClick={() => handleClick2(myList)}>{myList}</button>
       <option key={myList} value={myList}>
         {myList}
       </option>
@@ -77,110 +62,28 @@ export default function Table() {
     setShowBranch(true);
   }, [branchElements]);
   function handleClick2(props) {
-    setData1((prevData) => {
-      return {
-        ...prevData,
-        roll: "",
-        name: "",
-        year: "",
-        contact: "",
-        branch: "",
-        CGPA: "",
-        email: "",
-      };
-    });
-    const tempRoll = [];
-    const tempYear = [];
-    const tempBranch = [];
-    const tempName = [];
-    const tempContact = [];
-    const tempCgpa = [];
-    const tempEmail = [];
-    console.log("hello");
-    // for(var i in data){
-    //   console.log(i);
-
-    //   for(var j in data[i]){
-    //     if( j == "CGPA"){
-    //       // console.log(data[i][j][$numberDecimal]);
-    //       for(var k in data[i][j]){
-    //         console.log(k);
-    //       }
-    //         // data[i] = data[i].toString();
-    //         // console.log(data[i]);
-    //       }
-    //   }
-    // }
-    console.log(data);
     const tempElements = data.map((myList) => {
       if (props == myList.branch && myList.yearOfPassingOut == whichYear) {
-        tempRoll.push(
-          <li key={myList.roll} style={{ listStyle: "none" }}>
-            {myList.rollNo}
-          </li>
-        );
-        tempName.push(
-          <li key={myList.roll} style={{ listStyle: "none" }}>
-            {myList.name}
-          </li>
-        );
-        tempYear.push(
-          <li key={myList.roll} style={{ listStyle: "none" }}>
-            {myList.yearOfPassingOut}
-          </li>
-        );
-        tempBranch.push(
-          <li key={myList.roll} style={{ listStyle: "none" }}>
-            {myList.branch}
-          </li>
-        );
-        tempContact.push(
-          <li key={myList.roll} style={{ listStyle: "none" }}>
-            {myList.contactNo}
-          </li>
-        );
-        tempCgpa.push(
-          <li key={myList.roll} style={{ listStyle: "none" }}>
-            {myList.CGPA}
-          </li>
-        );
-        tempEmail.push(
-          <li key={myList.roll} style={{ listStyle: "none" }}>
-            {myList.email}
-          </li>
+        return (
+          <tr key={myList.rollNo}>
+            <td>{myList.rollNo}</td>
+            <td>{myList.name}</td>
+            <td>{myList.yearOfPassingOut}</td>
+            <td>{myList.branch}</td>
+            <td>{myList.contactNo}</td>
+            <td>{myList.CGPA}</td>
+            <td>{myList.email}</td>
+          </tr>
         );
       }
-      setData1((prevData) => {
-        return {
-          ...prevData,
-          roll: tempRoll,
-          name: tempName,
-          year: tempYear,
-          contact: tempContact,
-          branch: tempBranch,
-          CGPA: tempCgpa,
-          email: tempEmail,
-        };
-      });
-      setShowData(true);
     });
+    setElements(tempElements);
   }
-  // React.useEffect(() => {
-  //   setShow(true);
-  // }, [data1]);
-  // React.useEffect(()=>{
-  //   var count = 0;
-  //   for(var i in data1){
-  //     console.log(i);
-  //     for(var j in i){
-  //       console.log(i[j]);
-  //     }
-  //   }
-
-  //  console.log("sdhsd");
-  // //  console.log(elements);
-       
-  // },[showData])
+  React.useEffect(() => {
+    if (elements) {
+      setShowData(true);
+    }
+  }, [elements]);
   return (
     <>
       <section className="card p-3">
@@ -219,7 +122,64 @@ export default function Table() {
           </div>
         )}
         {showData && (
-          <section className="d-flex justify-content-start align-items-center">
+          <table className="my-3">
+            <thead style={{ width: "100%", border: "1px solid black" }}>
+              <tr>
+                <th style={{ border: "1px solid black" }}>Roll number</th>
+                <th style={{ border: "1px solid black" }}>Name</th>
+                <th style={{ border: "1px solid black" }}>Year</th>
+                <th style={{ border: "1px solid black" }}>branch</th>
+                <th style={{ border: "1px solid black" }}>Contact</th>
+                <th style={{ border: "1px solid black" }}>CGPA</th>
+                <th style={{ border: "1px solid black" }}>Email</th>
+              </tr>
+            </thead>
+            <tbody>{elements}</tbody>
+          </table>
+        )}
+        {/* {showData && (
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">RollNumber</th>
+                <th scope="col">Name</th>
+                <th scope="col">year</th>
+                <th scope="col">contact</th>
+                <th scope="col">branch</th>
+                <th scope="col">CGPA</th>
+                <th scope="col">email</th>
+
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {
+
+                }
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+        )} */}
+      </section>
+    </>
+  );
+}
+
+{
+  /* <section className="d-flex justify-content-start align-items-center">
             <div
               className=" d-flex justify-content-center align-items-center"
               style={{
@@ -307,45 +267,5 @@ export default function Table() {
             >
               <h6 className="mb-3">Email</h6>{data1.email}
             </div>
-          </section>
-        )}
-        {/* {showData && (
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">RollNumber</th>
-                <th scope="col">Name</th>
-                <th scope="col">year</th>
-                <th scope="col">contact</th>
-                <th scope="col">branch</th>
-                <th scope="col">CGPA</th>
-                <th scope="col">email</th>
-
-
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                {
-
-                }
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
-        )} */}
-      </section>
-    </>
-  );
+          </section> */
 }
