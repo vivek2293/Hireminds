@@ -39,7 +39,7 @@ export default function Filter() {
                 <div className="form-div d-flex justify-content-center ">
                     <div className="card col-md-5 p-2 shadow p-3 mb-5 bg-white rounded">
                         <div className="d-flex justify-content-center pt-2 pb-2">
-                            <h4>Shortlisted Candidates</h4>
+                            <h4>Eligibility Criteria</h4>
                         </div>
                         <form
                             onSubmit={(e) => {
