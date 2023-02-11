@@ -30,12 +30,9 @@ function Homepage() {
           >
             <div className="col-md-6" id="logo-div">
               <img src={logo} style={{ height: '13vh' }} className="mt-2"></img>
-              {/* <h1>Logo</h1> */}
-              {/* <Lottie animationData={animatelogo} style={{ height: "10vh" }} /> */}
 
             </div>
             <div className="col-md-6" id="login-div">
-              {/* <button className='btn btn-success mx-2' >Login</button> */}
 
               <div
                 className="btn-div d-flex justify-content-center mx-2 my-1"
@@ -43,21 +40,20 @@ function Homepage() {
               >
                 <button
                   type="submit"
-                  className="btn btn-custom1 p-1"
-                  style={{ height: "6vh", width: "5vw" }}
-                  onClick = {() => window.location.href = "/login"}
+                  className="btn btn-custom1 p-1 mt-1 shadow bg-white rounded"
+                  style={{ height: "6vh", width: "9vw" }}
+                  onClick={() => window.location.href = "/login"}
                 >
                   Login
                 </button>
               </div>
-              {/* <button className='btn btn-success mx-2'>Register</button> */}
               <div
                 className="btn-div d-flex justify-content-center mx-2 my-1"
                 id="btn-div2"
               >
                 <button type="submit"
-                  className="btn btn-custom1 p-1"
-                  style={{ height: "6vh", width: "5vw" }}>
+                  className="btn btn-custom1 p-1 mt-1 shadow bg-white rounded"
+                  style={{ height: "6vh", width: "9vw" }}>
                   Register
                 </button>
               </div>
@@ -69,7 +65,7 @@ function Homepage() {
                 <div className="head-div">
                   <h1 className="ms-2 px-3 mt-1" style={{ color: 'rgb(120,123,206)' }}>Heading</h1>
                 </div>
-                <div className="text-div d-flex align-items-center" style={{ height: '70%' }}>
+                <div className="d-flex align-items-center mainpg-text-div" style={{ height: '70%' }}>
                   <p className="ms-2 col-8 px-3">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit deserunt sapiente dolore, ratione quam placeat voluptas nobis aspernatur esse animi accusamus dicta veritatis deleniti doloribus ea explicabo eos doloremque repellendus quasi eligendi autem totam sed. Quasi similique facere saepe quidem!
                   </p>
@@ -88,7 +84,7 @@ function Homepage() {
                   <div className="head-div1 d-flex justify-content-center">
                     <h1 className="ms-2 mb-3 col-8 px-3" style={{ color: 'rgb(120,123,206)' }}>Heading</h1>
                   </div>
-                  <div className="text-div1 d-flex justify-content-center align-items-center" style={{ height: '25vh' }}>
+                  <div className="d-flex justify-content-center align-items-center mainpg-text-div1" style={{ height: '25vh' }}>
                     <p className="ms-2 col-8 px-3">
                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit deserunt sapiente dolore, ratione quam placeat voluptas nobis aspernatur esse animi accusamus dicta veritatis deleniti doloribus ea explicabo eos doloremque repellendus quasi eligendi autem totam sed. Quasi similique facere saepe quidem!
                     </p>
@@ -101,7 +97,7 @@ function Homepage() {
                 <div className="head-div2">
                   <h1 className="ms-2 px-3" style={{ color: 'rgb(120,123,206)' }}>Heading</h1>
                 </div>
-                <div className="text-div2 d-flex align-items-center" style={{ height: '70%' }}>
+                <div className="d-flex align-items-center mainpg-text-div2" style={{ height: '70%' }}>
                   <p className="ms-2 col-8 px-3">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit deserunt sapiente dolore, ratione quam placeat voluptas nobis aspernatur esse animi accusamus dicta veritatis deleniti doloribus ea explicabo eos doloremque repellendus quasi eligendi autem totam sed. Quasi similique facere saepe quidem!
                   </p>
@@ -111,7 +107,7 @@ function Homepage() {
                 <img src={image4}></img>
               </div>
             </div>
-            <div className="footer-upperdiv">
+            <div className="footer-upperdiv pb-3">
               <div className="d-flex row justify-content-around">
                 <div className="col-md-3" id="first-one">
                   <div className="logo mt-5 mb-1"><h4 id="Main-head">Team Byte Bandits</h4></div>

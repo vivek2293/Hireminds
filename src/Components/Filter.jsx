@@ -154,7 +154,7 @@ export default function Filter() {
                             </div>
 
                             <div className="btn-div d-flex justify-content-center" id="btn-div">
-                                <button type="submit" className="btn btn-custom1 p-1">Submit</button>
+                                <button type="submit" className="btn btn-custom1 mt-2 p-1">Submit</button>
                             </div>
 
                         </form>
