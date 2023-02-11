@@ -145,7 +145,7 @@ function Homepage() {
                 </div>
             </div>
             <div className="footer-lowerdiv row">
-                <div className="col-md-3 copyright">UpSales Copyright © 2022 Sensei Vivek</div>
+                <div className="col-md-3 copyright">Lorem Copyright © 2022 Byte Bandits</div>
                 <div className="col-md-3"></div>
                 <div className="col-md-3 row social-media" id="testing">
                     <ul id="display">
