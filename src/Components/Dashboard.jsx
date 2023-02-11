@@ -7,6 +7,7 @@ import Form from "./form";
 import Graph from "./Graph";
 import Company from "./Company";
 import AddCompany from "./AddCompany";
+import Filter from "./Filter";
 export default function Dashboard() {
     const [showData,setShowData] = React.useState();
     const [showRegister,setShowRegister] = React.useState();
@@ -64,6 +65,15 @@ export default function Dashboard() {
         setCompanyRegister(true);
 
     }
+    function handleClick4(){
+        setShowData(false);
+        setShowRegister(false);
+        setShowPlacementStats(false);
+        setShowCompanyStats(false);
+        setShowFilterCandidates(true);
+        setShowPastRecuriters(false);  
+        setCompanyRegister(false);
+    }
 
     return (
         <>
@@ -76,7 +86,7 @@ export default function Dashboard() {
                         <button className="diff-btn my-3 p-2" style={{borderRadius : '20px'   }} name="showData" onClick={handleClick1}>Student Data</button>
                         <button className="diff-btn my-3 p-2" style={{borderRadius : '20px'   }} name="showRegister" onClick={handleClick2} >Register</button>
                         <button className="diff-btn my-3 p-2" style={{borderRadius : '20px'    }} name="showPlacementStats" onClick={handleClick3}>Placement Statistics</button>
-                        <button className="diff-btn my-3 p-2" style={{borderRadius : '20px'    }}>Filter Coffee</button>
+                        <button className="diff-btn my-3 p-2" style={{borderRadius : '20px'    }} onClick={handleClick4}>Filter Students</button>
                         <button className="diff-btn my-3 p-2" style={{borderRadius : '20px'    }}>Past Recruiters</button>
                         <button className="diff-btn my-3 p-2" style={{borderRadius : '20px'    }} onClick={handleClick6}>Company Statistics</button>
                         <button className="diff-btn my-3 p-2" style={{borderRadius : '20px'   }} onClick={handleClick7}>Add Company</button>
@@ -99,7 +109,7 @@ export default function Dashboard() {
                         {showPlacementStats && <Graph />}
                         {showCompanyStats && <Company />}
                         {showCompanyRegister && <AddCompany />}
-                        
+                        {showFilterCandidates && <Filter />}
                     </div>
                 </div>
             </div>
