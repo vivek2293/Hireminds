@@ -148,7 +148,7 @@ const renderShortlistedCandidate = async(req, res) => {
     try{
         const query = await eligibleCandidates.find({ _id: payload._id }).limit(1);
         const listOfAllCandidates = query[0].list;
-        studentData.find().where("_id").in(listOfAllCandidates).select("rollNo name branch gender degree CGPA email contactNo linkedIn resumeLink interviewDate interviewTiming").exec((err, records) => {
+        studentData.find().where("_id").in(listOfAllCandidates).select("rollNo name branch gender degree CGPA email contactNo linkedIn resumeLink interviewDate interviewTiming isSelected").exec((err, records) => {
             if(err) return res.status(400).json({ "msg": err });
             return res.status(200).json(records);
         });
