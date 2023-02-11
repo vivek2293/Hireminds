@@ -37,7 +37,7 @@ export default function Filter() {
         <>
             <section className="" style={{ width: "85vw" }}>
                 <div className="form-div d-flex justify-content-center ">
-                    <div className="card col-md-5 p-2 shadow p-3 mb-5 bg-white rounded">
+                    <div className="card col-md-5 p-2 shadow p-3 mb-5 bg-white rounded w-50">
                         <div className="d-flex justify-content-center pt-2 pb-2">
                             <h4>Eligibility Criteria</h4>
                         </div>

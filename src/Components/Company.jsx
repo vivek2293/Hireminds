@@ -51,9 +51,12 @@ export default function Company() {
     return (
         <>
             <div className="card col-md-12 p-2 shadow p-3 mb-5 bg-white rounded">
-                <div className="d-flex justify-content-center align-items-center" style={{flexDirection: "column"}}>
+                <div className="d-flex justify-content-center align-items-center" style={{ flexDirection: "column" }}>
+                    <div className="heading-div d-flex justify-content-center pt-2 pb-2 my-1">
+                        <h4>Statistics of the Visited Companies</h4>
+                    </div>
                     <label className="" htmlFor="Companyfield">Enter company name:</label>
-                    <div className="mx-2">
+                    <div className="">
                         <input
                             type="text"
                             id="Companyfield"
