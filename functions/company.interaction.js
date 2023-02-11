@@ -1,5 +1,8 @@
 const shortlistedCandidates = require("../model/interaction");
 const studentData = require("../model/student");
+const mail = require("../middlewares/mailer");
+const jwt = require("jsonwebtoken");
+const server = "http://localhost:3000/shortlisted";
 
 const shortlistedCandidateslist = async(req, res) => {
     const { companyName } = req.body
@@ -28,10 +31,30 @@ const markAllShortlisted = async(arr) => {
     }
 }
 
+const createListOfShortlistedCandidates = async(arr, companyName, email) => {
+    const task = await shortlistedCandidates.create({
+        companyName,
+        list: arr
+    });
+    const token = jwt.sign({
+        companyName,
+        email,
+        _id: task._id
+    }, process.env.JWT_SECRET, { expiresIn: "30 day"});
+    // console.log(token)
+    const message = 
+    `
+    Hello Sir, 
+    We are providing you the list of the shortlisted students on the basis of the shortlisting criteria provided by you.
+    Link: ${server + "?token" + token}.
+    `
+    console.log(message)
+    // mail( email, subject, )
+}
+
 const getEligibileCandidateList = async(req, res) => {
-    // CGPA // year // age
-    const { companyName, CGPA, year, age } = req.body;
-    console.log(req.body)
+    // CGPA // year // age // email
+    const { companyName, CGPA, year, age, email } = req.body;
     studentData.find({
         CGPA: { $gt: CGPA},
         age: { $lt: age},
@@ -50,10 +73,7 @@ const getEligibileCandidateList = async(req, res) => {
             markAllShortlisted(arr);
 
             try{
-                shortlistedCandidates.create({
-                    companyName,
-                    list: arr
-                });
+                createListOfShortlistedCandidates(arr, companyName, email);
             }
             catch(err){
                 return res.status(400).json({ "msg": err });

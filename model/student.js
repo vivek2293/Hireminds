@@ -32,7 +32,7 @@ const schema = new mongoose.Schema({
         required: [true, "Must provide gender."]
     },
     CGPA: {
-        type: mongoose.Decimal128,
+        type: Number,
         default: 0.00
     },
     age:{
