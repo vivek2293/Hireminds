@@ -5,6 +5,8 @@ import { faSignOut, faUser, faHome, faList, faMessage, faCartShopping, faChartLi
 import Table from "./Table";
 import Form from "./form";
 import Graph from "./Graph";
+import Company from "./Company";
+import AddCompany from "./AddCompany";
 export default function Dashboard() {
     const [showData,setShowData] = React.useState();
     const [showRegister,setShowRegister] = React.useState();
@@ -12,7 +14,7 @@ export default function Dashboard() {
     const [showFilterCandidates,setShowFilterCandidates] = React.useState();
     const [showPastRecuriters,setShowPastRecuriters] = React.useState();
     const [showCompanyStats,setShowCompanyStats] = React.useState();
-
+    const [showCompanyRegister,setCompanyRegister] = React.useState();
     
     function handleClick1(){
         setShowData(true);
@@ -21,6 +23,7 @@ export default function Dashboard() {
         setShowCompanyStats(false);
         setShowFilterCandidates(false);
         setShowPastRecuriters(false);
+        setCompanyRegister(false);
     }
     function handleClick2(){
         setShowData(false);
@@ -29,6 +32,8 @@ export default function Dashboard() {
         setShowCompanyStats(false);
         setShowFilterCandidates(false);
         setShowPastRecuriters(false); 
+        setCompanyRegister(false);
+
     }
     function handleClick3(){
         setShowData(false);
@@ -37,6 +42,28 @@ export default function Dashboard() {
         setShowCompanyStats(false);
         setShowFilterCandidates(false);
         setShowPastRecuriters(false); 
+        setCompanyRegister(false);
+
+    }
+    function handleClick6(){
+        setShowData(false);
+        setShowRegister(false);
+        setShowPlacementStats(false);
+        setShowCompanyStats(true);
+        setShowFilterCandidates(false);
+        setShowPastRecuriters(false); 
+        setCompanyRegister(false);
+
+    }
+    function handleClick7(){
+        setShowData(false);
+        setShowRegister(false);
+        setShowPlacementStats(false);
+        setShowCompanyStats(false);
+        setShowFilterCandidates(false);
+        setShowPastRecuriters(false);  
+        setCompanyRegister(true);
+
     }
 
     return (
@@ -44,16 +71,16 @@ export default function Dashboard() {
             <div className="main-div row">
                 <div className="col-md-2 left-div">
                     <div className="profile-div mt-4">
-                        <FontAwesomeIcon icon={faUser}></FontAwesomeIcon> <span className="mx-2">College Name</span>
+                        <FontAwesomeIcon icon={faUser} style={{color : 'white'}}></FontAwesomeIcon> <span className="mx-2" style={{color : 'white'}}>College Name</span>
                     </div>
                     <div className="options-div my-5 d-flex justify-content-center align-items-center" style={{flexDirection :' column'}}>
-                        <button className="btn btn-success my-3" name="showData" onClick={handleClick1}>Student Data</button>
-                        <button className="btn btn-success my-3" name="showRegister" onClick={handleClick2} >Register</button>
-                        <button className="btn btn-success my-3" name="showPlacementStats" onClick={handleClick3}>Placement Statistics</button>
-                        <button className="btn btn-success my-3">Filter Coffee</button>
-                        <button className="btn btn-success my-3">Past Recruiters</button>
-                        <button className="btn btn-success my-3">Company Statistics</button>
-                        <button className="btn btn-success my-3">Add Company</button>
+                        <button className="btn btn-success my-3 p-2" style={{borderRadius : '20px'}} name="showData" onClick={handleClick1}>Student Data</button>
+                        <button className="btn btn-success my-3 p-2" style={{borderRadius : '20px'}} name="showRegister" onClick={handleClick2} >Register</button>
+                        <button className="btn btn-success my-3 p-2" style={{borderRadius : '20px'}} name="showPlacementStats" onClick={handleClick3}>Placement Statistics</button>
+                        <button className="btn btn-success my-3 p-2" style={{borderRadius : '20px'}}>Filter Coffee</button>
+                        <button className="btn btn-success my-3 p-2" style={{borderRadius : '20px'}}>Past Recruiters</button>
+                        <button className="btn btn-success my-3 p-2" style={{borderRadius : '20px'}} onClick={handleClick6}>Company Statistics</button>
+                        <button className="btn btn-success my-3 p-2" style={{borderRadius : '20px'}} onClick={handleClick7}>Add Company</button>
 
 
 
@@ -62,7 +89,7 @@ export default function Dashboard() {
                 <div className="col-md-10 right-div">
                     <div className="right-up">
                         <div className="up1-div">
-                            <div className="name-div m-4"><h5>Good Afternoon, Rutwik</h5></div>
+                            <div className="name-div m-4"><h5 style={{color: 'white'}}>Hola! College Name</h5></div>
                             <div className="logout-div m-4">
                                 <FontAwesomeIcon icon={faSignOut}></FontAwesomeIcon> <span>Logout</span>
                             </div>
@@ -72,6 +99,8 @@ export default function Dashboard() {
                         {showData && <Table />}
                         {showRegister && <Form />}
                         {showPlacementStats && <Graph />}
+                        {showCompanyStats && <Company />}
+                        {showCompanyRegister && <AddCompany />}
                         
                     </div>
                 </div>

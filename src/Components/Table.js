@@ -196,7 +196,7 @@ export default function Table() {
               }}
               id="rollNumberDiv"
             >
-              <h6>Roll Number</h6>
+              <h6 className="mb-3">Roll Number</h6>
               {show && data1.roll}
             </div>
             <div
@@ -209,7 +209,7 @@ export default function Table() {
 
               }}
             >
-              <h6>Name</h6>
+              <h6 className="mb-3">Name</h6>
               {data1.name}
             </div>
             <div
@@ -222,7 +222,7 @@ export default function Table() {
 
               }}
             >
-              <h6>Year</h6>
+              <h6 className="mb-3">Year</h6>
               {data1.year}
             </div>
             <div
@@ -235,7 +235,7 @@ export default function Table() {
 
               }}
             >
-              <h6>Branch</h6>
+              <h6 className="mb-3">Branch</h6>
               {data1.branch}
             </div>
             <div
@@ -248,7 +248,7 @@ export default function Table() {
 
               }}
             >
-              <h6> Contact</h6>{data1.contact}
+              <h6 className="mb-3"> Contact</h6>{data1.contact}
             </div>
             <div
               className="  d-flex justify-content-center align-items-center"
@@ -259,7 +259,7 @@ export default function Table() {
                 minWidth: '6vw'
               }}
             >
-              <h6>CGPA</h6>{data1.CGPA}
+              <h6 className="mb-3">CGPA</h6>{data1.CGPA}
             </div>
             <div
               className=" d-flex justify-content-center align-items-center"
@@ -270,7 +270,7 @@ export default function Table() {
                 minWidth: '27vw'
               }}
             >
-              <h6>Email</h6>{data1.email}
+              <h6 className="mb-3">Email</h6>{data1.email}
             </div>
           </section>
         )}
