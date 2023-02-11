@@ -8,6 +8,9 @@ import Lottie from "lottie-react";
 
 import animatelogo from "./Assets/logo.json"
 import "./CSS/Homepage.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebookF, faInstagram, faLinkedin, faTwitter, faSkype, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faMapLocationDot, faPhone, faMailReply } from "@fortawesome/free-solid-svg-icons";
 
 function Homepage() {
   return (
@@ -99,8 +102,60 @@ function Homepage() {
                 <img src={image4}></img>
               </div>
             </div>
-            <div className="row " style={{minHeight : '30vh', backgroundColor : 'rgb(155,151,241)'}}>
-                <h1>FOOTER</h1>
+            <div className="footer-upperdiv">
+                <div className="d-flex row justify-content-around">
+                    <div className="col-md-3" id="first-one">
+                        <div className="logo mt-5 mb-1"><h4 id="Main-head">Team Byte Bandits</h4></div>
+                        <div className="text my-3"><p id="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui non corrupti, possimus deserunt sunt maxime impedit magni vero vitae itaque.</p></div>
+                        <div className="team"><h6 id="Team-head">Our Team</h6></div>
+                    </div>
+                    <div className="col-md-3">
+                        <div className="contact-me mt-5 mb-1">
+                            <h5 id="contact">Contact Us</h5>
+                        </div>
+                        <div className="social-links">
+                            <ul className="mt-4">
+                                <li className="random my-2"><FontAwesomeIcon icon={faMapLocationDot} className="icons media-links me-2"></FontAwesomeIcon>Via Rossini 10, 10136 Turin Italy</li>
+                                <li className="random my-2"><FontAwesomeIcon icon={faPhone} className="icons media-links me-2"></FontAwesomeIcon> Phone: (0039) 333 12 68 347</li>
+                                <li className="random my-2"><FontAwesomeIcon icon={faMailReply} className="icons media-links me-2"></FontAwesomeIcon>Email: hello@domain.com</li>
+                                <li className="random my-2"><FontAwesomeIcon icon={faSkype} className="icons media-links me-2"></FontAwesomeIcon>Skype: you_online</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="col-md-3">
+                        <div className="link mt-5 mb-1"><h5 id="links">Links</h5></div>
+                        <div className="content d-flex">
+                            <div className="col-md-6">
+                                <ul>
+                                    <li className="mt-3 mb-2 lists">Home</li>
+                                    <li className="my-2 lists">Feature</li>
+                                    <li className="my-2 lists">Method</li>
+                                    <li className="my-2 lists">Our Clients</li>
+                                </ul>
+                            </div>
+                            <div className="col-md-6">
+                                <ul>
+                                    <li className="mt-3 mb-2 lists">Plans & Pricing</li>
+                                    <li className="my-2 lists">Affiliates</li>
+                                    <li className="my-2 lists">Terms</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="footer-lowerdiv row">
+                <div className="col-md-3 copyright">UpSales Copyright © 2022 Sensei Vivek</div>
+                <div className="col-md-3"></div>
+                <div className="col-md-3 row social-media" id="testing">
+                    <ul id="display">
+                        <li className="m-2 handles"><FontAwesomeIcon icon={faFacebookF}></FontAwesomeIcon></li>
+                        <li className="m-2 handles"><FontAwesomeIcon icon={faInstagram}></FontAwesomeIcon></li>
+                        <li className="m-2 handles"><FontAwesomeIcon icon={faLinkedin}></FontAwesomeIcon></li>
+                        <li className="m-2 handles"><FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon></li>
+                        <li className="m-2 handles"><FontAwesomeIcon icon={faGithub}></FontAwesomeIcon></li>
+                    </ul>
+                </div>
             </div>
           </div>
         </div>
