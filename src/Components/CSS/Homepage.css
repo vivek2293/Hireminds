@@ -31,10 +31,7 @@ body {
 }
 
 .footer-lowerdiv {
-    /* height: 12vh; */
-    /* background-color: rgb(68,69,68); */
     background-color: rgb(165, 162, 250);
-    /* background-color: rgb(146, 142, 249); */
 }
 
 #first-one {
@@ -108,43 +105,3 @@ ul {
 .handles {
     color: black;
 }
-
-/* .upper-div {
-    background-color: lightblue;
-    height: 10vh;
-}
-
-.left-lower {
-    background-color: aliceblue;
-    height: 90vh;
-}
-
-.right-lower {
-    background-color: bisque;
-    height: 90vh;
-}
-
-.lower-up {
-    align-items: center;
-    justify-content: space-around;
-    height: 40vh;
-}
-
-.zaroori {
-    height: 13vh;
-    width: 15vw;
-    background-color: burlywood;
-}
-
-.lower-lower {
-    height: 50vh;
-    background-color: beige;
-}
-
-.zaroor1 {
-    background-color: cornflowerblue;
-}
-
-.zaroor2 {
-    background-color: darkgoldenrod;
-} */

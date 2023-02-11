@@ -51,9 +51,9 @@ export default function Company() {
     return (
         <>
             <div className="card col-md-12 p-2 shadow p-3 mb-5 bg-white rounded">
-                <div className="d-flex justify-content-center align-items-center" style={{ flexDirection: 'column' }}>
-                    <label className="my-3" htmlFor="Companyfield">Please enter company name:</label>
-                    <div>
+                <div className="d-flex justify-content-center align-items-center" >
+                    <label className="my-3" htmlFor="Companyfield">Enter company name:</label>
+                    <div className="mx-2">
                         <input
                             type="text"
                             id="Companyfield"
@@ -63,18 +63,18 @@ export default function Company() {
                             className="my-3"
                         />
                     </div>
-                    <div className="btn-div d-flex justify-content-center" id="btn-div">
-                        <button type="submit" className="btn btn-custom1 p-1" onClick={handleChange1}>Submit</button>
-                    </div>
                 </div>
-                <div id="companyData">
+                <div className="btn-div d-flex justify-content-center" id="btn-div">
+                    <button type="submit" className="btn btn-custom1 p-1" onClick={handleChange1}>Submit</button>
+                </div>
+                <div id="companyData" className="mt-4">
                     {show && (
                         <table className="table table-striped border">
                             <thead>
                                 <tr>
                                     <th scope="col">Year</th>
                                     <th scope="col" className="d-flex justify-content-center">Highest</th>
-                                    <th scope="col">Average</th>
+                                    <th scope="col"><center>Average</center></th>
                                 </tr>
                             </thead>
                             <tbody>{elements1}</tbody>
