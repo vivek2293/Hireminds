@@ -74,15 +74,15 @@ export default function Dashboard() {
                         <FontAwesomeIcon icon={faUser} style={{color : 'rgb(160,90,255)'}}></FontAwesomeIcon> <span className="mx-2" style={{color : 'rgb(160,90,255)'}}>College Name</span>
                     </div>
                     <div className="options-div my-5 d-flex justify-content-center align-items-center" style={{flexDirection :' column'}}>
-                        <button className="  my-3 p-2" style={{borderRadius : '20px', backgroundColor :  'lightblue'}} name="showData" onClick={handleClick1}>Student Data</button>
-                        <button className="  my-3 p-2" style={{borderRadius : '20px', backgroundColor :  'lightblue' }} name="showRegister" onClick={handleClick2} >Register</button>
-                        <button className="  my-3 p-2" style={{borderRadius : '20px' , backgroundColor :  'lightblue'}} name="showPlacementStats" onClick={handleClick3}>Placement Statistics</button>
-                        <button className="  my-3 p-2" style={{borderRadius : '20px' , backgroundColor :  'lightblue'}}>Filter Coffee</button>
-                        <button className="  my-3 p-2" style={{borderRadius : '20px' , backgroundColor :  'lightblue'}}>Past Recruiters</button>
-                        <button className="  my-3 p-2" style={{borderRadius : '20px' , backgroundColor :  'lightblue'}} onClick={handleClick6}>Company Statistics</button>
-                        <button className="  my-3 p-2" style={{borderRadius : '20px' , backgroundColor :  'lightblue'}} onClick={handleClick7}>Add Company</button>
-                        <button className="  my-3 p-2" style={{borderRadius : '20px' , backgroundColor :  'lightblue'}} onClick={handleClick7}>Update</button>
-                        <button className="  my-3 p-2" style={{borderRadius : '20px' , backgroundColor :  'lightblue'}} onClick={handleClick7}>Delete</button>
+                        <button className="  my-3 p-2" style={{borderRadius : '20px'   }} name="showData" onClick={handleClick1}>Student Data</button>
+                        <button className="  my-3 p-2" style={{borderRadius : '20px'   }} name="showRegister" onClick={handleClick2} >Register</button>
+                        <button className="  my-3 p-2" style={{borderRadius : '20px'    }} name="showPlacementStats" onClick={handleClick3}>Placement Statistics</button>
+                        <button className="  my-3 p-2" style={{borderRadius : '20px'    }}>Filter Coffee</button>
+                        <button className="  my-3 p-2" style={{borderRadius : '20px'    }}>Past Recruiters</button>
+                        <button className="  my-3 p-2" style={{borderRadius : '20px'    }} onClick={handleClick6}>Company Statistics</button>
+                        <button className="  my-3 p-2" style={{borderRadius : '20px'   }} onClick={handleClick7}>Add Company</button>
+                        <button className="  my-3 p-2" style={{borderRadius : '20px'    }} onClick={handleClick7}>Update</button>
+                        <button className="  my-3 p-2" style={{borderRadius : '20px'    }} onClick={handleClick7}>Delete</button>
                     </div>
                 </div>
                 <div className="col-md-10 right-div">

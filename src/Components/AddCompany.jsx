@@ -20,11 +20,12 @@ function handleChange(event) {
 }
 
 function saveData() {
-    const data = { ...formdata, instituteName: "ABCD" };
+    const data = { ...formdata};
     console.log(data);
     axios.post("http://localhost:8000/api/v1/company/createCompanyRecord", data)
-        .then(() => {
+        .then((res) => {
             console.log("Sent");
+            console.log(res.status);
         }).catch((err) => {
             console.log(err);
         })
@@ -79,7 +80,7 @@ return (
                             <div className="col-md-5">
                                 <input
                                     type="text"
-                                    name="branch"
+                                    name="location"
                                     value={formdata.branch}
                                     className="form-control form-control-sm p-1"
                                     id="colFormLabelSm"

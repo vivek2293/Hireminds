@@ -25,13 +25,24 @@ export default function Form() {
         setFormdata((prevdata) => {
             return {
                 ...prevdata,
-                [event.target.name]: event.target.value
+                [event.target.name]: (event.target.value)
             };
         });
     }
 
     function saveData() {
         const data = { ...formdata, gender: gender, instituteName: "ABCD" };
+        console.log("hello");
+        for(var i in data){
+        if(i=="yearOfPassingOut" || i == "age"){
+            data[i] = Number(data[i]);
+            console.log("came");
+            // console.log(i);
+        }
+        else if(i == "CGPA"){
+            data[i] = parseFloat(data[i]);
+        }
+        }
         console.log(data);
         axios.post("http://localhost:8000/api/v1/record/createData", data)
             .then(() => {
@@ -215,9 +226,9 @@ export default function Form() {
                                 <div className="col-md-5">
                                     <input
                                         type="number"
-                                        step="0.01"
-                                        name="Age"
-                                        value={formdata.age}
+                                        // step="0.01"
+                                        name="age"
+                                        // value={formdata.age}
                                         className="form-control form-control-sm p-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}

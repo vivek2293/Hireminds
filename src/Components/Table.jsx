@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import data from "../Data";
+// import data from "../Data";
 import "./CSS/Table.css";
 export default function Table() {
   const [showBranch, setShowBranch] = React.useState(false);
@@ -18,15 +18,15 @@ export default function Table() {
     CGPA: "",
     email: "",
   });
-  // const [data, setData] = React.useState([{}]);
-  // React.useEffect(() => {
-  //   axios
-  //     .post("http://localhost:8000/api/v1/record/alldata", {})
-  //     .then((info) => {
-  //       console.log(info)
-  //       setData(info.data);
-  //     });
-  // }, []);
+  const [data, setData] = React.useState([{}]);
+  React.useEffect(() => {
+    axios
+      .post("http://localhost:8000/api/v1/record/alldata", {})
+      .then((info) => {
+        console.log(info)
+        setData(info.data);
+      });
+  }, []);
 
   React.useEffect(() => {
     const numberOfYears = [];
@@ -92,6 +92,22 @@ export default function Table() {
     const tempContact = [];
     const tempCgpa = [];
     const tempEmail = [];
+    console.log("hello");
+    // for(var i in data){
+    //   console.log(i);
+      
+    //   for(var j in data[i]){
+    //     if( j == "CGPA"){
+    //       // console.log(data[i][j][$numberDecimal]); 
+    //       for(var k in data[i][j]){
+    //         console.log(k);
+    //       }
+    //         // data[i] = data[i].toString();
+    //         // console.log(data[i]);
+    //       }
+    //   }
+    // }
+    console.log(data);
     const tempElements = data.map((myList) => {
       if (props == myList.branch && myList.yearOfPassingOut == whichYear) {
         tempRoll.push(
@@ -162,7 +178,7 @@ export default function Table() {
               aria-label="Default select example"
               onChange={(event) => handleClick(event.target.value)}
             >
-            <option value="default">Select Year</option>
+            <option value="default" key="defaultYear">Select Year</option>
               {yearElements}
             </select>
           </div>
@@ -178,7 +194,7 @@ export default function Table() {
               aria-label="Default select example"
               onChange={(event) => handleClick2(event.target.value)}
             >
-             <option>Select Branch</option>
+             <option key="selectBranch">Select Branch</option>
               {branchElements}
             </select>
           </div>
