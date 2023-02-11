@@ -150,9 +150,9 @@ export default function Table() {
   }, [data1]);
   return (
     <>
-      <section className="card p-3">
+      <section className="card p-3" >
         {setShow && (
-          <div className="my-3">
+          <div className="my-3" >
             <p className="my-2">Please select year</p>
             <div className="d-flex justify-content-center align-items-center"></div>
             {/* {yearElements}
