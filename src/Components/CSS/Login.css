@@ -1,27 +1,43 @@
 .gradient-custom-2 {
-    background: rgb(120,123,206);
-background: linear-gradient(90deg, rgba(120,123,206,1) 0%, rgba(153,154,209,1) 35%, rgba(187,188,209,1) 100%);
-  }
-  #login2{
-    display: none !important;
-  }
-  @media(max-width : 900px){
-    #login1{
-        display: none !important;
+  background: rgb(120, 123, 206);
+  background: linear-gradient(90deg, rgba(120, 123, 206, 1) 0%, rgba(153, 154, 209, 1) 35%, rgba(187, 188, 209, 1) 100%);
+}
 
-    }
-    #login2{
-        display: flex !important;
-    }
+#login2 {
+  display: none !important;
+}
+
+@media(max-width : 900px) {
+  #login1 {
+    display: none !important;
+
   }
-  @media (min-width: 768px) {
-    .gradient-form {
-      height: 100vh !important;
-    }
+
+  #login2 {
+    display: flex !important;
   }
-  @media (min-width: 769px) {
-    .gradient-custom-2 {
-      border-top-right-radius: .3rem;
-      border-bottom-right-radius: .3rem;
-    }
+}
+
+@media (min-width: 768px) {
+  .gradient-form {
+    height: 100vh !important;
   }
+}
+
+@media (min-width: 769px) {
+  .gradient-custom-2 {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+  }
+}
+
+#heelo {
+  height: 30vh;
+  z-index: -10;
+}
+
+.text-glad {
+  z-index: 10;
+  position: relative;
+  margin-top: -8vh !important;
+}

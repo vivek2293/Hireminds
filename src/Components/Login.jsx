@@ -1,9 +1,10 @@
 import React from "react";
-// import "../Styles/LoginPage2.css";
+import Lottie from "lottie-react";
+import login from "../Components/Assets/login.json";
+import hello from "../Components/Assets/hello.json";
 import "./CSS/Login.css"
-// import Logo3 from "../Logo3.png";
 import axios from "axios";
-// import host from "../host";
+
 function Login() {
   const [userName, setUserName] = React.useState();
   const [passWord, setPassWrod] = React.useState();
@@ -35,115 +36,54 @@ function Login() {
     //     window.alert(err);
     //   });
   }
-  function handleClick2(){
+  function handleClick2() {
     window.location.href = "/register"
   }
   return (
     <>
       <div
         className=" container-fluid gradient-form d-flex justify-content-center align-items-center"
-        style={{ overflow: "hidden", position: "relative", width: "100%", padding : '0px !important'}}
+        style={{ overflow: "hidden", position: "relative", width: "100%", padding: '0px !important' }}
         id="login1"
       >
-        <div className="mb-5 col-6 d-flex justify-content-center align-items-center">
-          <div className="d-flex flex-column ms-5">
-            <div className="text-center">
-              {/* <img
-                src={Logo3}
-                style={{ width: "120px" }}
-                alt="logo"
-                className="mb-2"
-              /> */}
-              <h4 className="mt-1 mb-5 pb-1">We are The Team Byte Bandits</h4>
-            </div>
-
-            <p>Please login to your account</p>
-            <div className="my-1">Username:</div>
-            <input
-              type="text"
-              className="my-2 p-2"
-              style={{ height: "5vh", borderRadius: "10px" }}
-              onChange={(e) => setUserName(e.target.value)}
-            />
-            <div className="my-1">Password:</div>
-            <input
-              type="Password"
-              className="my-2 p-2"
-              style={{ height: "5vh", borderRadius: "10px" }}
-              onChange={(e) => setPassWrod(e.target.value)}
-            />
-            <div className="text-center pt-1 mb-5 pb-1">
-              <button
-                type="button"
-                className="btn w-100 gradient-custom-2"
-                style={{ color: "white" }}
-                onClick={handleClick}
-              >
-                Sign in
-              </button>
-              <a className="text-muted" href="#!">
-                Forgot password?
-              </a>
-            </div>
-
-            <div className="d-flex flex-row align-items-center justify-content-center pb-4 mb-4">
-              <p className="mb-0">Don't have an account?</p>
-              <button type="button" className="btn btn-danger mx-3" onClick={handleClick2}>
-                Create one
-              </button>
-            </div>
-          </div>
-        </div>
-
         <div
           className="col-6 gradient-custom-2 d-flex justify-content-center align-items-center"
           style={{ height: "100%" }}
         >
           <div className="text-white px-3 py-4 p-md-5 mx-md-4">
-            <h4 className="mb-4">
-              We are more than just a Team, We have Bibek sir
-            </h4>
-            <p className="small mb-0">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </p>
+            <Lottie animationData={login} />
           </div>
         </div>
-      </div>
-      <div className="d-flex justify-content-center align-items-center" style={{height: '100vh', width: '100vw'}} id="login2">
-          <div className="d-flex justify-content-center align-items-center p-2" style={{flexDirection: 'column', border: '1px solid black', boxShadow:'5px 5px 5px 5px'}}>
+        <div className="mb-5 col-6 d-flex justify-content-center align-items-center">
+          <div className="d-flex flex-column ">
             <div className="text-center">
-              {/* <img
-                src={Logo3}
-                style={{ width: "120px" }}
-                alt="logo"
-                className="mb-2"
-              /> */}
-              <h4 className="mt-1 mb-5 pb-1">We are The Team Byte Bandits</h4>
+              <Lottie animationData={hello} id="heelo" />
+              <p className="text-glad">Glad to have you back</p>
             </div>
-
-            <p>Please login to your account</p>
-            <div className="my-1">Username:</div>
+            {/* <h3>Welcome back</h3>
+            <p className="my-2">Please enter your details</p> */}
             <input
-              type="text"
+              type="email"
               className="my-2 p-2"
-              style={{ height: "5vh", borderRadius: "10px" }}
+              style={{ height: "5vh", borderRadius: "6px" }}
+              onChange={(e) => setUserName(e.target.value)}
+              placeholder="Email"
             />
-            <div className="my-1">Password:</div>
             <input
               type="Password"
               className="my-2 p-2"
-              style={{ height: "5vh", borderRadius: "10px" }}
+              style={{ height: "5vh", borderRadius: "6px" }}
+              onChange={(e) => setPassWrod(e.target.value)}
+              placeholder="Password"
             />
-            <div className="text-center pt-1 mb-5 pb-1">
+            <div className="text-center pt-1 mb-3 pb-1">
               <button
                 type="button"
-                className="btn w-100 gradient-custom-2"
-                style={{ color: "white" }}
+                className="btn w-100 gradient-custom-2 mb-1"
+                style={{ color: "white", height: "5vh" }}
+                onClick={handleClick}
               >
-                Sign in
+                Login
               </button>
               <a className="text-muted" href="#!">
                 Forgot password?
@@ -151,12 +91,12 @@ function Login() {
             </div>
 
             <div className="d-flex flex-row align-items-center justify-content-center pb-4 mb-4">
-              <p className="mb-0">Don't have an account?</p>
-              <button type="button" className="btn btn-danger mx-3" onClick={handleClick2}>
-                Create one
-              </button>
+              <p className="mx-1">Don't have an account?</p>
+              <a className="" style={{textDecoration:'none', color:'#797CCE'}}>Sign Up</a>
             </div>
           </div>
+        </div>
+
       </div>
     </>
   );
