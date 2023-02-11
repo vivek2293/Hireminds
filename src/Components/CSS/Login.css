@@ -41,3 +41,7 @@
   position: relative;
   margin-top: -8vh !important;
 }
+
+.signup-link:hover {
+  cursor: pointer;
+}

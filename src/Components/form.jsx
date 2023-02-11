@@ -338,7 +338,7 @@ export default function Form() {
                             </div>
 
                             <div className="btn-div d-flex justify-content-center" id="btn-div">
-                                <button type="submit" className="btn btn-custom1 p-1 mt-2">Submit</button>
+                                <button type="submit" className="btn btn-custom1 p-1 mt-3">Submit</button>
                             </div>
 
                         </form>

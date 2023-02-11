@@ -92,7 +92,7 @@ function Login() {
 
             <div className="d-flex flex-row align-items-center justify-content-center pb-4 mb-4">
               <p className="mx-1">Don't have an account?</p>
-              <a className="" style={{textDecoration:'none', color:'#797CCE'}}>Sign Up</a>
+              <a className="signup-link" style={{textDecoration:'none', color:'#797CCE'}}>Sign Up</a>
             </div>
           </div>
         </div>
