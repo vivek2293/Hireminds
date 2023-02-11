@@ -136,7 +136,27 @@ const shortlistedCandidate = async(req,res) => {
     }).catch((err) => {
         return res.status(400).json({ msg: err });
     })
-
 }
 
-module.exports = { eligibleCandidateslist, getEligibileCandidateList, renderEligibleCandidate, shortlistedCandidate };
+const renderShortlistedCandidate = async(req, res) => {
+    const { token } = req.body;
+    const payload = jwt.decode( token , process.env.JWT_SECRET, (err, authData) => {
+        console.log(authData);
+    })
+    
+    //find
+    try{
+        const query = await eligibleCandidates.find({ _id: payload._id }).limit(1);
+        const listOfAllCandidates = query[0].list;
+        studentData.find().where("_id").in(listOfAllCandidates).select("rollNo name branch gender degree CGPA email contactNo linkedIn resumeLink interviewDate interviewTiming").exec((err, records) => {
+            if(err) return res.status(400).json({ "msg": err });
+            return res.status(200).json(records);
+        });
+    }
+    catch (err){
+        return res.status(400).json({ "msg": err })
+    }
+}
+
+
+module.exports = { eligibleCandidateslist, getEligibileCandidateList, renderEligibleCandidate, shortlistedCandidate, renderShortlistedCandidate };
