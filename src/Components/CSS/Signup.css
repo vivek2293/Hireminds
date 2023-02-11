@@ -1,0 +1,13 @@
+.gradient-custom-21 {
+    background: rgb(120, 123, 206);
+    background: linear-gradient(90deg, rgba(120, 123, 206, 1) 0%, rgba(153, 154, 209, 1) 40%, rgba(187, 188, 209, 1) 100%);
+}
+
+.login-link:hover {
+    cursor: pointer;
+}
+
+.main-head {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 700;
+}
