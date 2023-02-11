@@ -79,6 +79,64 @@ const data = [
     CGPA: "8.3",
     email: "sdjgdsjfgsdgfjsdgfjhsdghjfhgsdjfgsdjhgfu",
     contactNo : "1234567890"
+  },
+  {
+    companyName: "Google",
+    year:"2020",
+    number: 12,
+    money: 36000000,
+    highest: 12000000,
+    avg: 3000000,
+  },
+  {
+    companyName: "Google",
+    year:"2021",
+    number: 15,
+    money: 36000000,
+    highest: 12000000,
+    avg: 2400000,
+  },
+  {
+    companyName: "Google",
+    year:"2022",
+    number: 8,
+    money: 36000000,
+    highest: 12000000,
+    avg: 4000000,
+  },
+  {
+    companyName: "CodeNation",
+    year:"2021",
+    number: 7,
+    money: 49000000,
+    highest: 10000000,
+    avg: 7000000,
+  },
+  {
+    companyName: "Microsoft",
+    year:"2021",
+    number: 10,
+    money: 25000000,
+    highest: 10000000,
+    avg: 6767676,
+  },
+  {
+    companyName: "Amazon",
+    year:"2020",
+    number: 20,
+    money: 360000000,
+    highest: 120000000,
+    avg: 1020838,
+  },
+  {
+    companyName: "Oracle",
+    year:"2019",
+    number: 5,
+    money: 36000000,
+    highest: 10000000,
+    avg: 87134813,
   }
 ];
 module.exports = data; 
+
+
