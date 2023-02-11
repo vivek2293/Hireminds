@@ -10,9 +10,6 @@ function AddCompany() {
 
 });
 
-const [gender, setGender] = React.useState("male");
-const [degree, setDegree] = React.useState("BTech");
-
 function handleChange(event) {
     setFormdata((prevdata) => {
         return {
@@ -23,9 +20,9 @@ function handleChange(event) {
 }
 
 function saveData() {
-    const data = { ...formdata, gender: gender, instituteName: "ABCD" };
+    const data = { ...formdata, instituteName: "ABCD" };
     console.log(data);
-    axios.post("http://localhost:8000/api/v1/record/createData", data)
+    axios.post("http://localhost:8000/api/v1/company/createCompanyRecord", data)
         .then(() => {
             console.log("Sent");
         }).catch((err) => {
@@ -33,9 +30,7 @@ function saveData() {
         })
 }
 
-console.log(gender);
 console.log(formdata);
-console.log(degree);
 
 return (
     <>
