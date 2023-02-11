@@ -23,7 +23,7 @@ export default function Table() {
     axios
       .post("http://localhost:8000/api/v1/record/alldata", {})
       .then((info) => {
-        console.log(info)
+        console.log(info);
         setData(info.data);
       });
   }, []);
@@ -38,15 +38,17 @@ export default function Table() {
       //   <button className="mx-3" onClick={() => handleClick(myList)} key={myList}>
       //     {myList}
       //   </button>
-      <option key={myList} value={myList}>{myList}</option>
+      <option key={myList} value={myList}>
+        {myList}
+      </option>
     ));
     setYearElements(tempYearElements);
   }, [data]);
   function handleClick(params) {
-    if(params != "default"){
-    console.log("hello");
+    if (params != "default") {
+      console.log("hello");
 
-    setWhichYear(params);
+      setWhichYear(params);
     }
   }
   React.useEffect(() => {
@@ -63,8 +65,10 @@ export default function Table() {
     });
     let branches = [...new Set(numberOfBranches)];
     const tempBranchElements = branches.map((myList) => (
-    //   <button onClick={() => handleClick2(myList)}>{myList}</button>
-        <option key={myList} value={myList}>{myList}</option>
+      //   <button onClick={() => handleClick2(myList)}>{myList}</button>
+      <option key={myList} value={myList}>
+        {myList}
+      </option>
     ));
 
     setBranchElements(tempBranchElements);
@@ -95,10 +99,10 @@ export default function Table() {
     console.log("hello");
     // for(var i in data){
     //   console.log(i);
-      
+
     //   for(var j in data[i]){
     //     if( j == "CGPA"){
-    //       // console.log(data[i][j][$numberDecimal]); 
+    //       // console.log(data[i][j][$numberDecimal]);
     //       for(var k in data[i][j]){
     //         console.log(k);
     //       }
@@ -161,14 +165,27 @@ export default function Table() {
       setShowData(true);
     });
   }
-  React.useEffect(() => {
-    setShow(true);
-  }, [data1]);
+  // React.useEffect(() => {
+  //   setShow(true);
+  // }, [data1]);
+  // React.useEffect(()=>{
+  //   var count = 0;
+  //   for(var i in data1){
+  //     console.log(i);
+  //     for(var j in i){
+  //       console.log(i[j]);
+  //     }
+  //   }
+
+  //  console.log("sdhsd");
+  // //  console.log(elements);
+       
+  // },[showData])
   return (
     <>
-      <section className="card p-3" >
+      <section className="card p-3">
         {setShow && (
-          <div className="my-3" >
+          <div className="my-3">
             <p className="my-2">Please select year</p>
             <div className="d-flex justify-content-center align-items-center"></div>
             {/* {yearElements}
@@ -178,13 +195,15 @@ export default function Table() {
               aria-label="Default select example"
               onChange={(event) => handleClick(event.target.value)}
             >
-            <option value="default" key="defaultYear">Select Year</option>
+              <option value="default" key="defaultYear">
+                Select Year
+              </option>
               {yearElements}
             </select>
           </div>
         )}
         {showBranch && (
-            <div className="my-3">
+          <div className="my-3">
             <p className="my-2">Please select Branch</p>
             <div className="d-flex justify-content-center align-items-center"></div>
             {/* {yearElements}
@@ -194,7 +213,7 @@ export default function Table() {
               aria-label="Default select example"
               onChange={(event) => handleClick2(event.target.value)}
             >
-             <option key="selectBranch">Select Branch</option>
+              <option key="selectBranch">Select Branch</option>
               {branchElements}
             </select>
           </div>
@@ -290,6 +309,42 @@ export default function Table() {
             </div>
           </section>
         )}
+        {/* {showData && (
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">RollNumber</th>
+                <th scope="col">Name</th>
+                <th scope="col">year</th>
+                <th scope="col">contact</th>
+                <th scope="col">branch</th>
+                <th scope="col">CGPA</th>
+                <th scope="col">email</th>
+
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {
+
+                }
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+        )} */}
       </section>
     </>
   );
