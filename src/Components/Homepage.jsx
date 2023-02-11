@@ -54,7 +54,9 @@ function Homepage() {
                 className="btn-div d-flex justify-content-center mx-2 my-1"
                 id="btn-div2"
               >
-                <button type="submit" className="btn btn-custom1 p-1">
+                <button type="submit"
+                  className="btn btn-custom1 p-1"
+                  style={{ height: "6vh", width: "5vw" }}>
                   Register
                 </button>
               </div>
@@ -63,12 +65,14 @@ function Homepage() {
           <div>
             <div className="row ">
               <div className="col-md-7 example-div">
-                <h1 className="ms-2 mb-3 px-3" style={{ color: 'rgb(120,123,206)' }}>Heading</h1>
-                <p className="ms-2 col-8 px-3">
-                  "But I must explain to you how all this mistaken idea of
-                  denouncing pleasure and pra But I must explain to you how all
-                  this mistaken idea of denouncing pleasure and pra "
-                </p>
+                <div className="head-div">
+                  <h1 className="ms-2 px-3 mt-1" style={{ color: 'rgb(120,123,206)' }}>Heading</h1>
+                </div>
+                <div className="text-div d-flex align-items-center" style={{ height: '70%' }}>
+                  <p className="ms-2 col-8 px-3">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit deserunt sapiente dolore, ratione quam placeat voluptas nobis aspernatur esse animi accusamus dicta veritatis deleniti doloribus ea explicabo eos doloremque repellendus quasi eligendi autem totam sed. Quasi similique facere saepe quidem!
+                  </p>
+                </div>
               </div>
               <div className="col-md-5">
                 <img src={image2}></img>
@@ -80,23 +84,27 @@ function Homepage() {
               </div>
               <div className="col-md-7 justify-content-end">
                 <div className="row justify-content-end">
-                  <h1 className="ms-2 mb-3 col-8 px-3" style={{ color: 'rgb(120,123,206)' }}>Heading</h1>
-                  <p className="ms-2 col-8 px-3">
-                    "But I must explain to you how all this mistaken idea of
-                    denouncing pleasure and pra But I must explain to you how
-                    all this mistaken idea of denouncing pleasure and pra "
-                  </p>
+                  <div className="head-div1 d-flex justify-content-center">
+                    <h1 className="ms-2 mb-3 col-8 px-3" style={{ color: 'rgb(120,123,206)' }}>Heading</h1>
+                  </div>
+                  <div className="text-div1 d-flex justify-content-center align-items-center" style={{ height: '25vh' }}>
+                    <p className="ms-2 col-8 px-3">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit deserunt sapiente dolore, ratione quam placeat voluptas nobis aspernatur esse animi accusamus dicta veritatis deleniti doloribus ea explicabo eos doloremque repellendus quasi eligendi autem totam sed. Quasi similique facere saepe quidem!
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
             <div className="row ">
               <div className="col-md-7 ">
-                <h1 className="ms-2 mb-3 px-3" style={{ color: 'rgb(120,123,206)' }}>Heading</h1>
-                <p className="ms-2 col-8 px-3">
-                  "But I must explain to you how all this mistaken idea of
-                  denouncing pleasure and pra But I must explain to you how all
-                  this mistaken idea of denouncing pleasure and pra "
-                </p>
+                <div className="head-div2">
+                  <h1 className="ms-2 px-3" style={{ color: 'rgb(120,123,206)' }}>Heading</h1>
+                </div>
+                <div className="text-div2 d-flex align-items-center" style={{ height: '70%' }}>
+                  <p className="ms-2 col-8 px-3">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit deserunt sapiente dolore, ratione quam placeat voluptas nobis aspernatur esse animi accusamus dicta veritatis deleniti doloribus ea explicabo eos doloremque repellendus quasi eligendi autem totam sed. Quasi similique facere saepe quidem!
+                  </p>
+                </div>
               </div>
               <div className="col-md-5">
                 <img src={image4}></img>
@@ -107,7 +115,6 @@ function Homepage() {
                 <div className="col-md-3" id="first-one">
                   <div className="logo mt-5 mb-1"><h4 id="Main-head">Team Byte Bandits</h4></div>
                   <div className="text my-3"><p id="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui non corrupti, possimus deserunt sunt maxime impedit magni vero vitae itaque.</p></div>
-                  <div className="team"><h6 id="Team-head">Our Team</h6></div>
                 </div>
                 <div className="col-md-3">
                   <div className="contact-me mt-5 mb-1">
@@ -115,7 +122,7 @@ function Homepage() {
                   </div>
                   <div className="social-links">
                     <ul className="mt-4">
-                      <li className="random my-2"><FontAwesomeIcon icon={faMapLocationDot} className="icons media-links me-2"></FontAwesomeIcon>Via Rossini 10, 10136 Turin Italy</li>
+                      <li className="random my-2"><FontAwesomeIcon icon={faMapLocationDot} className="icons media-links me-2"></FontAwesomeIcon>Via Vesu, Surat India</li>
                       <li className="random my-2"><FontAwesomeIcon icon={faPhone} className="icons media-links me-2"></FontAwesomeIcon> Phone: (0039) 333 12 68 347</li>
                       <li className="random my-2"><FontAwesomeIcon icon={faMailReply} className="icons media-links me-2"></FontAwesomeIcon>Email: hello@domain.com</li>
                       <li className="random my-2"><FontAwesomeIcon icon={faSkype} className="icons media-links me-2"></FontAwesomeIcon>Skype: you_online</li>
@@ -144,8 +151,8 @@ function Homepage() {
                 </div>
               </div>
             </div>
-            <div className="footer-lowerdiv row">
-              <div className="col-md-3 copyright">Lorem Copyright © 2022 Byte Bandits</div>
+            <div className="footer-lowerdiv row py-3">
+              <div className="col-md-3 copyright">HireMinds Copyright © 2023 Byte Bandits</div>
               <div className="col-md-3"></div>
               <div className="col-md-3 row social-media" id="testing">
                 <ul id="display">

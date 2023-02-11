@@ -65,7 +65,7 @@ export default function Company() {
                     </div>
                 </div>
                 <div className="btn-div d-flex justify-content-center" id="btn-div">
-                    <button type="submit" className="btn btn-custom1 p-1" onClick={handleChange1}>Submit</button>
+                    <button type="submit" className="btn btn-custom1 p-1 my-1" onClick={handleChange1}>Submit</button>
                 </div>
                 <div id="companyData" className="mt-4">
                     {show && (
