@@ -10,6 +10,7 @@ import Dashboard from './Components/Dashboard';
 import Company from './Components/Company';
 import AddCompany from './Components/AddCompany';
 import Homepage from './Components/Homepage';
+import Shortlisting from './Components/Shortlisting';
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
           <Route exact path="/company" element={<Company />} /> 
           <Route exact path="/add" element={<AddCompany />} /> 
           <Route exact path="/landing" element={<Homepage />} /> 
+          <Route exact path="/shortlist" element={<Shortlisting />} /> 
+
 
         </Routes>
       </BrowserRouter>
