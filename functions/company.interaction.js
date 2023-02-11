@@ -21,28 +21,36 @@ const shortlistedCandidateslist = async(req, res) => {
 };
 
 const getEligibileCandidateList = async(req, res) => {
-    // CGPA // year // skills // age
-    const { CGPA, year, age } = req.body;
+    // CGPA // year // age
+    const { companyName, CGPA, year, age } = req.body;
     console.log(req.body)
-    const arr = [];
-    try{
-        const query = studentData.find({
-            CGPA: { $gt: CGPA},
-            age: { $lt: age},
-            yearOfPassingOut: year
-        })
-        .select({});
-        query.exec(function (err, info){
-            if (err) return handleError(err);
-            arr.push(info);
-        });
-        
-    }
-    catch(err){
-        console.log(err);
-    }
-    
-    res.send(arr)
+    studentData.find({
+        CGPA: { $gt: CGPA},
+        age: { $lt: age},
+        yearOfPassingOut: year
+    })
+    .select({})
+    .exec(function (err, info){
+        if (err) return res.status(400).json({ "msg": err });
+        else {
+            const arr = [];
+            for(let i = 0;i < info.length;i++){
+                arr.push(info[i]._id);
+            }
+
+            try{
+                shortlistedCandidates.create({
+                    companyName,
+                    list: arr
+                });
+            }
+            catch(err){
+                return res.status(400).json({ "msg": err });
+            }
+
+            return res.status(200).json(arr);
+        }
+    });
 }
 
 

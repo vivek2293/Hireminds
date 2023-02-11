@@ -5,6 +5,14 @@ const getAllCompanyrecords = async(req, res) => {
     res.send(data);
 };
 
+const getAllCompanyname = async(req, res) => {
+    const query = companyData.find({});
+    query.select("companyName").exec(function(err, info) {
+        if(err) return res.status(400).json({ msg: err });
+        return res.status(200).json(info);
+    })
+}
+
 const createCompanyRecord = async(req, res) => {
     const {
         companyName, email, location, websiteUrl
@@ -20,4 +28,4 @@ const createCompanyRecord = async(req, res) => {
     });
 };
 
-module.exports = { getAllCompanyrecords, createCompanyRecord };
+module.exports = { getAllCompanyrecords, createCompanyRecord, getAllCompanyname };

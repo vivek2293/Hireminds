@@ -82,6 +82,10 @@ const schema = new mongoose.Schema({
     CTC_offered:{
         type: String,
         default: "NA"
+    },
+    selectionYear:{
+        type: Number,
+        default: 0,
     }
 });
 

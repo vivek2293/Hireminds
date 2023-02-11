@@ -3,11 +3,12 @@ const router = express.Router();
 
 const { 
     getAllrecords,
-    createStudentRecord
+    createStudentRecord,
+    getPlacementData
 } = require("../functions/user.operation");
 
 const { 
-    getAllCompanyrecords, createCompanyRecord
+    getAllCompanyrecords, createCompanyRecord, getAllCompanyname
 } = require("../functions/company.operation");
 
 const { shortlistedCandidateslist, getEligibileCandidateList } = require("../functions/company.interaction");
@@ -18,5 +19,7 @@ router.post("/company/alldata", getAllCompanyrecords);
 router.post("/company/createCompanyRecord", createCompanyRecord);
 router.post("/interaction/shortlistedList", shortlistedCandidateslist);
 router.post("/interaction/getEligibileCandidateList", getEligibileCandidateList);
+router.post("/company/getAllCompanyname", getAllCompanyname);
+router.post("/record/getPlacementData", getPlacementData);
 
 module.exports = router;
