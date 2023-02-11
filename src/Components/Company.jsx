@@ -51,8 +51,8 @@ export default function Company() {
     return (
         <>
             <div className="card col-md-12 p-2 shadow p-3 mb-5 bg-white rounded">
-                <div className="d-flex justify-content-center align-items-center" >
-                    <label className="my-3" htmlFor="Companyfield">Enter company name:</label>
+                <div className="d-flex justify-content-center align-items-center" style={{flexDirection: "column"}}>
+                    <label className="" htmlFor="Companyfield">Enter company name:</label>
                     <div className="mx-2">
                         <input
                             type="text"
@@ -60,7 +60,7 @@ export default function Company() {
                             placeholder="Company Name"
                             name="companyName"
                             onChange={handleChange}
-                            className="my-3"
+                            className="my-1 p-1"
                         />
                     </div>
                 </div>

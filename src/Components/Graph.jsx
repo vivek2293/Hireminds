@@ -7,13 +7,16 @@ function Graph() {
   const [example,setExample]=React.useState({
     series: [{
       name: "Highest",
-      data: [44, 55, 41, 64, 22, 43, 21]
+      data: [44, 55, 41, 64, 22, 43, 21],
+      color: '#6F42C1'
     }, {
       name: "Average",
-      data: [53, 32, 33, 52, 13, 44, 32]
+      data: [53, 32, 33, 52, 13, 44, 32],
+      color: '#007BFF'
     }, {
       name: "Median",
-      data: [50, 3, 23, 25, 53, 94, 30]
+      data: [50, 3, 23, 25, 53, 94, 30],
+      color:'#00CCCC'
     }
   ],
     options: {
