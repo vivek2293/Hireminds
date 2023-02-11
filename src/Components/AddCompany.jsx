@@ -55,7 +55,7 @@ return (
                             >
                                 Company Name
                             </label>
-                            <div className="col-md-5">
+                            <div className="col-md-5 mx-2">
                                 <input
                                     type="text"
                                     name="companyName"
@@ -77,7 +77,7 @@ return (
                             >
                                 Location
                             </label>
-                            <div className="col-md-5">
+                            <div className="col-md-5 mx-2">
                                 <input
                                     type="text"
                                     name="location"
@@ -101,7 +101,7 @@ return (
                             >
                                 Email ID
                             </label>
-                            <div className="col-md-5">
+                            <div className="col-md-5 mx-2">
                                 <input
                                     type="email"
                                     name="email"
@@ -122,7 +122,7 @@ return (
                             >
                                 Website url
                             </label>
-                            <div className="col-md-5">
+                            <div className="col-md-5 mx-2">
                                 <input
                                     type="url"
                                     name="websiteUrl"

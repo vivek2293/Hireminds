@@ -60,8 +60,8 @@ export default function Form() {
         <>
             <section className="" style={{ width: "85vw" }}>
                 <div className="form-div d-flex justify-content-center ">
-                    <div className="card col-md-5 p-2 shadow p-3 mb-5 bg-white rounded">
-                        <div className="d-flex justify-content-center pt-2 pb-2">
+                    <div className="card col-md-5 p-2 shadow p-3 mb-5 bg-white rounded w-75">
+                        <div className="d-flex justify-content-center pt-2 pb-2 mb-2 mt-1">
                             <h4>Student Details</h4>
                         </div>
                         <form
@@ -82,7 +82,7 @@ export default function Form() {
                                         type="text"
                                         name="rollNo"
                                         value={formdata.rollNo}
-                                        className="form-control form-control-sm p-1"
+                                        className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
                                         placeholder="Enter Roll No."
                                         onChange={handleChange}
@@ -103,7 +103,7 @@ export default function Form() {
                                         type="text"
                                         name="name"
                                         value={formdata.name}
-                                        className="form-control form-control-sm p-1"
+                                        className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter student name"
@@ -124,7 +124,7 @@ export default function Form() {
                                         type="tel"
                                         name="contactNo"
                                         value={formdata.contactNo}
-                                        className="form-control form-control-sm p-1"
+                                        className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter contact Number"
@@ -145,7 +145,7 @@ export default function Form() {
                                         type="text"
                                         name="branch"
                                         value={formdata.branch}
-                                        className="form-control form-control-sm p-1"
+                                        className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter branch name"
@@ -166,7 +166,7 @@ export default function Form() {
                                         type="number"
                                         name="yearOfPassingOut"
                                         value={formdata.yearOfPassingOut}
-                                        className="form-control form-control-sm p-1"
+                                        className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter graduation year"
@@ -208,7 +208,7 @@ export default function Form() {
                                         step="0.01"
                                         name="CGPA"
                                         value={formdata.CGPA}
-                                        className="form-control form-control-sm p-1"
+                                        className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter CGPA"
@@ -229,7 +229,7 @@ export default function Form() {
                                         // step="0.01"
                                         name="age"
                                         // value={formdata.age}
-                                        className="form-control form-control-sm p-1"
+                                        className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter Age"
@@ -250,7 +250,7 @@ export default function Form() {
                                         type="email"
                                         name="email"
                                         value={formdata.email}
-                                        className="form-control form-control-sm p-1"
+                                        className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter Email ID"
@@ -291,7 +291,7 @@ export default function Form() {
                                     <input
                                         type="url"
                                         name="linkedIn"
-                                        className="form-control form-control-sm p-1"
+                                        className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter linkedIn link"
@@ -310,7 +310,7 @@ export default function Form() {
                                     <input
                                         type="url"
                                         name="github"
-                                        className="form-control form-control-sm p-1"
+                                        className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter github link"
@@ -329,7 +329,7 @@ export default function Form() {
                                     <input
                                         type="url"
                                         name="resumeLink"
-                                        className="form-control form-control-sm p-1"
+                                        className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter resumeLink"
@@ -338,7 +338,7 @@ export default function Form() {
                             </div>
 
                             <div className="btn-div d-flex justify-content-center" id="btn-div">
-                                <button type="submit" className="btn btn-custom1 p-1">Click Me</button>
+                                <button type="submit" className="btn btn-custom1 p-1 mt-2">Submit</button>
                             </div>
 
                         </form>
