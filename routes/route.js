@@ -14,18 +14,18 @@ const {
 } = require("../functions/company.operation");
 
 const {
-  shortlistedCandidateslist,
+  eligibleCandidateslist,
   getEligibileCandidateList,
-  renderShortlistedCandidate,
+  renderEligibleCandidate,
 } = require("../functions/company.interaction");
 
 router.post("/record/alldata", getAllrecords);
 router.post("/record/createData", createStudentRecord);
 router.post("/company/alldata", getAllCompanyrecords);
 router.post("/company/createCompanyRecord", createCompanyRecord);
-router.post("/interaction/shortlistedList", shortlistedCandidateslist);
+router.post("/interaction/eligibleList", eligibleCandidateslist);
 router.post("/interaction/getEligibileCandidateList", getEligibileCandidateList );
-router.post("/interaction/renderShortlisted", renderShortlistedCandidate);
+router.post("/interaction/renderEligible", renderEligibleCandidate);
 router.post("/company/getAllCompanyname", getAllCompanyname);
 router.post("/record/getPlacementData", getPlacementData);
 

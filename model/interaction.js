@@ -9,4 +9,4 @@ const schema = new mongoose.Schema({
     createdAt: { type: Date, expires: '5m', index: true, default: Date.now }
 });
 
-module.exports = mongoose.model("shortlistedCandidates", schema);
+module.exports = mongoose.model("eligibleCandidates", schema);

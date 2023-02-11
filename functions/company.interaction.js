@@ -1,9 +1,9 @@
-const shortlistedCandidates = require("../model/interaction");
+const eligibleCandidates = require("../model/interaction");
 const studentData = require("../model/student");
 const { mail } = require("../middlewares/mailer");
 const jwt = require("jsonwebtoken");
 
-const shortlistedCandidateslist = async(req, res) => {
+const eligibleCandidateslist = async(req, res) => {
     const { companyName } = req.body
     // will get Array of Strings containing Ids 
     const record = req.body.record;
@@ -12,7 +12,7 @@ const shortlistedCandidateslist = async(req, res) => {
         arr.push(record[i]);
     }
     console.log(arr);
-    await shortlistedCandidates.create({
+    await eligibleCandidates.create({
         companyName,
         list: arr
     }).then(() => {
@@ -22,7 +22,7 @@ const shortlistedCandidateslist = async(req, res) => {
     })
 };
 
-const markAllShortlisted = async(arr) => {
+const markAllEligible = async(arr) => {
     for(let i = 0;i < arr.length;i++){
         const filter = { _id: arr[i] }
         await studentData.findOneAndUpdate( filter, { currentStatus: "In Progress" }, { new: true })
@@ -30,8 +30,8 @@ const markAllShortlisted = async(arr) => {
     }
 }
 
-const createListOfShortlistedCandidates = async(arr, companyName, email) => {
-    const task = await shortlistedCandidates.create({
+const createListOfEligibleCandidates = async(arr, companyName, email) => {
+    const task = await eligibleCandidates.create({
         companyName,
         list: arr
     });
@@ -71,10 +71,10 @@ const getEligibileCandidateList = async(req, res) => {
                 arr.push(info[i]._id);
             }
 
-            markAllShortlisted(arr);
+            markAllEligible(arr);
 
             try{
-                createListOfShortlistedCandidates(arr, companyName, email);
+                createListOfEligibleCandidates(arr, companyName, email);
             }
             catch(err){
                 return res.status(400).json({ "msg": err });
@@ -85,7 +85,7 @@ const getEligibileCandidateList = async(req, res) => {
     });
 }
 
-const renderShortlistedCandidate = async(req, res) => {
+const renderEligibleCandidate = async(req, res) => {
     const { token } = req.body;
     console.log(token);
     const payload = jwt.decode( token , process.env.JWT_SECRET, (err, authData) => {
@@ -94,7 +94,7 @@ const renderShortlistedCandidate = async(req, res) => {
     
     //find
     try{
-        const query = await shortlistedCandidates.find({ _id: payload._id }).limit(1);
+        const query = await eligibleCandidates.find({ _id: payload._id }).limit(1);
         const listOfAllCandidates = query[0].list;
         studentData.find().where("_id").in(listOfAllCandidates).select("rollNo name branch gender degree CGPA email contactNo linkedIn github resumeLink").exec((err, records) => {
             if(err) return res.status(400).json({ "msg": err });
@@ -104,8 +104,6 @@ const renderShortlistedCandidate = async(req, res) => {
     catch (err){
         return res.status(400).json({ "msg": err })
     }
-    
 }
 
-
-module.exports = { shortlistedCandidateslist, getEligibileCandidateList, renderShortlistedCandidate };
+module.exports = { eligibleCandidateslist, getEligibileCandidateList, renderEligibleCandidate };
