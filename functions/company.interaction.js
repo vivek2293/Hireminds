@@ -39,7 +39,7 @@ const createListOfEligibleCandidates = async(arr, companyName, email) => {
         companyName,
         email,
         _id: task._id
-    }, process.env.JWT_SECRET, { expiresIn: "15d"});
+    }, process.env.JWT_SECRET, { expiresIn: "15d" });
     // console.log(token)
     const subject = "List of shortlisted candidates."
     const message = 
@@ -107,11 +107,35 @@ const renderEligibleCandidate = async(req, res) => {
 
 const shortlistedCandidate = async(req,res) => {
     const ids_list = req.body.ids;
-    const { time, date } = req.body;
+    const { time, date, token } = req.body;
+
+    const payload = jwt.decode(token , process.env.JWT_SECRET);
+
+    const { companyName } = payload.companyName;
+    
+    const arr = [];
+    for(let i = 0;i < ids_list.length;i++){
+        arr.push(ids_list[i]._id);
+    }
+    console.log(arr);
+
+    //Shortlisted Candidates
+    const record = await eligibleCandidates.create({
+        companyName,
+        list: arr
+    });
+
+    const data = {
+        companyName: payload.companyName,
+        email: payload.email,
+        _id: record._id
+    }
+
+    const accesstoken = jwt.sign( data, process.env.JWT_SECRET, { expiresIn: "15d" })
 
     const query = await studentData.find().where("_id").in(ids_list).exec();
     await studentData.updateMany({query}, { currentStatus: "Shortlisted", interviewDate: date, interviewTiming: time }).then(() => {
-        return res.status(200).json({ msg: "Updation successful."})
+        return res.status(200).json({ token: acesstoken })
     }).catch((err) => {
         return res.status(400).json({ msg: err });
     })
