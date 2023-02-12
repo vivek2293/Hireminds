@@ -161,10 +161,15 @@ const updateUserData = async(req, res) => {
 }
 
 const deleteUser = async(req, res) => {
-  // give id 
-  // check if there is a user
-  // delete the user
+  const { _id } = req.body;
+  try{
+    await studentData.findByIdAndRemove({ _id });
+  }
+  catch(err){
+    return res.status(400).json(err);
+  }
 
+  return res.status(200).json( {"msg": "User deleted."})
 }
 
 module.exports = {
