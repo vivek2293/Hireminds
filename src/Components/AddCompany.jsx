@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
 
 // Made states for all the entries in the form
 
@@ -31,7 +32,7 @@ function AddCompany() {
         axios.post("http://localhost:8000/api/v1/company/createCompanyRecord", data)
             .then((res) => {
                 console.log("Sent");
-                window.alert("Company added")
+                toast.success("Company added")
             }).catch((err) => {
                 console.log(err);
             })
@@ -143,6 +144,17 @@ function AddCompany() {
 
                         </form>
                     </div>
+                    <ToastContainer
+                        position="top-center"
+                        autoClose={3000}
+                        hideProgressBar={false}
+                        newestOnTop={true}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                    />
                 </div>
             </section>
         </>
