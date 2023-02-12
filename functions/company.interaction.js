@@ -369,6 +369,33 @@ const selectedCandidate = async (req, res) => {
   return res.status(200).json({ msg: "Updated successfully." });
 };
 
+const getCurrentStatusCompany = async(req, res) => {
+  const { companyName } = req.body;
+  
+  try{
+    const doc = await eligibleCandidates.find({ companyName }).exec();
+    const arr = [];
+    for(let i = 0; i < doc.length; i++){
+      const temp = doc[i].list;
+      for(let j = 0;j < temp.length; j++){
+        arr.push(temp[j]);
+      }
+    }
+    const tmp = [];
+    for(let k = 0;k < arr.length; k++){
+      const doc = await studentData.findById(arr[k]).select("name rollNo branch yearOfPassingOut currentStatus interviewDate");
+      tmp.push(doc);
+    }
+    console.log(tmp)
+
+    return res.status(200).json(tmp);
+  }
+  catch(err){
+    return res.status(400).json(err);
+  }
+  
+}
+
 module.exports = {
   eligibleCandidateslist,
   getEligibileCandidateList,
@@ -376,4 +403,5 @@ module.exports = {
   shortlistedCandidate,
   renderShortlistedCandidate,
   selectedCandidate,
+  getCurrentStatusCompany
 };

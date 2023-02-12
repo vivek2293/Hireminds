@@ -22,7 +22,8 @@ const {
   renderEligibleCandidate,
   shortlistedCandidate,
   renderShortlistedCandidate,
-  selectedCandidate
+  selectedCandidate,
+  getCurrentStatusCompany
 } = require("../functions/company.interaction");
 
 const {
@@ -43,7 +44,7 @@ const {
 } = require("../middlewares/refresh_token");
 
 // Auth routes
-router.get("/auth/getData", getRequest);
+router.get("/auth/getData", verifyToken, refreshToken, getRequest);
 router.post("/auth/create", register);
 router.post("/auth/login", login);
 router.post("/auth/verify", verify);
@@ -71,5 +72,6 @@ router.post("/interaction/renderEligible", renderEligibleCandidate);
 router.post("/interaction/shortlistedCandidate", shortlistedCandidate);
 router.post("/interaction/renderShortlistedCandidate", renderShortlistedCandidate);
 router.post("/interaction/selectedCandidate", selectedCandidate);
+router.post("/interaction/getCurrentStatusCompany", getCurrentStatusCompany);
 
 module.exports = router;
