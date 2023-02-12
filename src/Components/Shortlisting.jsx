@@ -8,12 +8,10 @@ function Shortlisting() {
 
   const [data, setData] = React.useState();
   const [date, setDate] = React.useState();
-  const [time, setTime] = React.useState();
   const [Ids, setIds] = React.useState([]);
   const [elements, setElements] = React.useState();
   const [selected, setSelected] = React.useState({
     ids: "",
-    time: "",
     date: "",
     token: "",
     rejected: "",
@@ -96,7 +94,6 @@ function Shortlisting() {
       }
     }
     selected.ids = Ids;
-    selected.time = time;
     selected.date = date;
     selected.token = token;
     selected.rejected = rejected;
@@ -152,29 +149,6 @@ function Shortlisting() {
             </thead>
             <tbody>{elements}</tbody>
           </table>
-        </div>
-        <div
-          className="my-3 d-flex justify-content-center align-items-center"
-          style={{ flexDirection: "column" }}
-        >
-          <label>Please Scheduled Interview Rounds</label>
-          <input
-            type="date"
-            min="2018-01-01"
-            max="2050"
-            onChange={(e) => setDate(e.target.value)}
-            required
-            className="my-3"
-          ></input>
-          <label>Start time : </label>
-          <input
-            type="time"
-            min="09:00"
-            max="18:00"
-            required
-            onChange={(e) => setTime(e.target.value)}
-            className="my-3"
-          ></input>
         </div>
         <button onClick={handleClick}>Submit</button>
       </section>
