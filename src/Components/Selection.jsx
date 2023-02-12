@@ -2,18 +2,14 @@ import React from "react";
 import axios from "axios";
 
 function Selection() {
-
-  // Made states for all the entries in the form
-
+  //States to store Data's
   const [token, setToken] = React.useState();
   const [data, setData] = React.useState();
   const [elements, setElements] = React.useState();
   const [ids, setIds] = React.useState([]);
 
-  // This hook is basically used to prevent website to re-render and render only when a particular state/field is varied hence contributing in overall performance of website
 
-  // While using this hook, "user" which is a token (unique for all) is being accessed from the local storage and if that "user" is altered or tinkered with then user is simply logged out and an alert is show and if it is authorized then "user" is stored in the state named "token"
-
+  //Renders when page is loaded
   React.useEffect(() => {
     const user = localStorage.getItem("user");
     if (!user) {
@@ -23,8 +19,7 @@ function Selection() {
     setToken(user);
   }, []);
 
-  // While using the below hook, the token is posted on the route if it is'nt altered and the response to that token is then stored in a state named "data".
-
+  //After token is set, that is after we validate that user is authorized, following useEffect will be triggered
   React.useEffect(() => {
     if (token) {
       axios
@@ -42,7 +37,7 @@ function Selection() {
   }, [token]);
 
 
-
+  //if student is selected by company, we change its status to true and rerender page, if not selected, changing status to false
   function handleSelect(props, checked) {
     if (checked) {
       iterate2(props);
@@ -50,6 +45,9 @@ function Selection() {
       iterate3(props);
     }
   }
+
+  //sets select status of particular student(id passed in props) to true
+
   function iterate2(props) {
     for (var i in data) {
       if (data[i]._id == props) {
@@ -58,6 +56,7 @@ function Selection() {
     }
     iterate();
   }
+  //sets select status of particular student(id passed in props) to false
   function iterate3(props) {
     for (var i in data) {
       if (data[i]._id == props) {
@@ -66,8 +65,8 @@ function Selection() {
     }
     iterate();
   }
-
-  function handleClick(props) {
+//this function sets the salary of individual person
+  function handleClick(props){
     const d = new Date();
     let year1 = d.getFullYear();
     const val = document.getElementById(props).value
@@ -78,15 +77,15 @@ function Selection() {
     }
     ids.push(tempData);
   }
-  function handleComplete() {
+
+  // after company completes loging data of all students, this function will be triggered and status of students will be changed in databases
+  function handleComplete(){
     const notSelected = [];
     for (var i in data) {
       if (data[i].isSelected == false) {
         notSelected.push({ "id": data[i]._id });
       }
     }
-
-
     const finalData = {
       selected: ids,
       rejected: notSelected,
@@ -95,19 +94,22 @@ function Selection() {
     console.log("hello")
     console.log(finalData)
     axios
-      .post(
-        "http://localhost:8000/api/v1/interaction/selectedCandidate",
-        finalData
-      )
-      .then((res) => {
-        console.log("success");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+        .post(
+          "http://localhost:8000/api/v1/interaction/selectedCandidate",
+           finalData 
+        )
+        .then((res) => {
+          console.log("success");
+          window.alert("Thank you, we have updated status of selected students")
+        })
+        .catch((err) => {
+          console.log(err);
+        });
 
 
   }
+
+//renders data  in table
   function iterate() {
     const elements1 = data.map((items) => (
       <tr key={items.rollNo}>
@@ -148,6 +150,10 @@ function Selection() {
     ));
     setElements(elements1);
   }
+
+
+
+//As soon as we fetch data, we render it
   React.useEffect(() => {
     if (data) {
       iterate();
@@ -188,7 +194,9 @@ function Selection() {
           </thead>
           <tbody>{elements}</tbody>
         </table>
+        <div className="d-flex justify-content-center align-items-center">
         <button onClick={handleComplete} className='btn btn-custom1 p-1 mt-2'>Complete</button>
+        </div>
       </div>
     </section>
   );

@@ -131,7 +131,7 @@ function Shortlisting() {
       >
         <div>
           <h3 style={{ color: "rgb(120,123,206)" }}>
-            List of Shortlisted Students :{" "}
+            List of Eligible Students :{" "}
           </h3>
 
           <table className="my-3">

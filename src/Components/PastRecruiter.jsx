@@ -43,8 +43,6 @@ function PastRecruiter() {
       <h3 className='ms-3'>Past Recruiters:</h3>
       <div className='row p-3 d-flex justify-content-start align-items-center' style={{ flexDirection: 'row' }}>
         {PastRecruiter}
-        <div className='card col-4 d-flex justify-content-center align-items-center' style={{ height: '10vh' }}><h5>Bibek Sir</h5></div>
-        <div className='card col-4 d-flex justify-content-center align-items-center' style={{ height: '10vh' }}><h5>Bibek Sir</h5></div>
       </div>
 
     </>

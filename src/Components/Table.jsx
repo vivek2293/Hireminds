@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import "./CSS/Table.css";
 export default function Table() {
+
+  //varibale to data
   const [showBranch, setShowBranch] = React.useState(false);
   const [showData, setShowData] = React.useState(false);
   const [whichYear, setWhichYear] = React.useState();
@@ -10,15 +12,19 @@ export default function Table() {
   const [show, setShow] = React.useState(false);
   const [elements, setElements] = React.useState();
   const [data, setData] = React.useState([{}]);
+
+
+  //get Data of all students and set in data
   React.useEffect(() => {
     axios
       .post("http://localhost:8000/api/v1/record/alldata", {})
       .then((info) => {
-        console.log(info);
         setData(info.data);
       });
   }, []);
 
+
+  //as soon as we set data, this useEffect renders and sorts according to year of studying
   React.useEffect(() => {
     const numberOfYears = [];
     const elements = data.map((myList) =>
@@ -32,15 +38,22 @@ export default function Table() {
     ));
     setYearElements(tempYearElements);
   }, [data]);
+
+
+  //set what year data need to be shown
   function handleClick(params) {
     if (params != "default") {
       setWhichYear(params);
     }
   }
+
+  //after we setshow to true and then display option to select year
   React.useEffect(() => {
     setShow(true);
   }, [yearElements]);
 
+
+  //sets which year and which branch
   React.useEffect(() => {
     const numberOfBranches = [];
     const tempElements = data.map((myList) => {
@@ -57,9 +70,14 @@ export default function Table() {
 
     setBranchElements(tempBranchElements);
   }, [whichYear]);
+
+  //shows option to select branch
   React.useEffect(() => {
     setShowBranch(true);
   }, [branchElements]);
+
+
+  //renders data after year and branch is being selected
   function handleClick2(props) {
     const tempElements = data.map((myList) => {
       if (props == myList.branch && myList.yearOfPassingOut == whichYear) {
@@ -78,6 +96,8 @@ export default function Table() {
     });
     setElements(tempElements);
   }
+
+  //setting showdata to true so that data is being stored
   React.useEffect(() => {
     if (elements) {
       setShowData(true);

@@ -94,7 +94,7 @@ function RegisterPage2() {
 
             <div className="d-flex flex-row align-items-center justify-content-center pb-4 my-3">
               <p className="">Already have an account?</p>
-              <a className="mx-2 login-link" style={{ textDecoration: 'none', color: '#797CCE' }}>Login</a>
+              <p className="mx-2 login-link" style={{ textDecoration: 'none', color: '#797CCE' }} onClick={window.location.href = "/login"}>Login</p>
             </div>
           </div>
         </div>

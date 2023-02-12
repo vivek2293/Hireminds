@@ -56,6 +56,7 @@ export default function Form() {
         axios.post("http://localhost:8000/api/v1/record/createData", data)
             .then(() => {
                 console.log("Sent");
+                window.alert("Student Sucessfully Registered")
             }).catch((err) => {
                 console.log(err);
             })
