@@ -177,50 +177,35 @@ const shortlistedCandidate = async (req, res) => {
     list: arr,
   });
 
-  // Update status of all Students with the interview date and time
-  const query = await studentData.find().where("_id").in(ids_list).exec();
-  await studentData
-    .updateMany(
-      { query },
-      {
-        currentStatus: "Shortlisted",
-        interviewDate: date,
-        interviewTiming: time,
-      }
-    )
-    .then(() => {
-      const data = {
-        companyName: payload.companyName,
-        email: payload.email,
-        _id: record._id,
-      };
+  try {
+    // Update status of all Students with the interview date and time
+    const query = await studentData.find().where('_id').in(ids_list).exec();
+    for(let i = 0;i < query.length;i++){
+      await studentData.updateOne( { _id: query[i]._id },{$set: { currentStatus: "Shortlisted", interviewDate: date, interviewTiming: time }})
+    }
 
-      // generate new jwt token for authorisation purposes
-      const accesstoken = jwt.sign(data, process.env.JWT_SECRET, {
-        expiresIn: "15d",
-      });
+    // Revert status of all non-shortlisted students
+    const query1 = await studentData.find().where("_id").in(rejected_list).exec();
+    for(let i = 0;i < query1.length;i++){
+      const doc = await studentData.updateOne( { _id: query1[i]._id },{$set: { currentStatus: "NA", interviewDate: "NA", interviewTiming: "NA" }})
+    }
+  } catch (err) {
+    return res.status(400).json({ msg: err });
+  }
+  
+    const data = {
+      companyName: payload.companyName,
+      email: payload.email,
+      _id: record._id,
+    };
 
-      // send new generated token
-      return res.status(200).json({ token: accesstoken });
-    })
-    .catch((err) => {
-      return res.status(400).json({ msg: err });
+    // generate new jwt token for authorisation purposes
+    const accesstoken = jwt.sign(data, process.env.JWT_SECRET, {
+      expiresIn: "15d",
     });
 
-  // Revert status of all non-shortlisted students
-  const query1 = await studentData.find().where("_id").in(rejected_list).exec();
-  await studentData
-    .updateMany(
-      { query1 },
-      {
-        currentStatus: "NA",
-        interviewDate: "NA",
-        interviewTiming: "NA",
-      }
-    )
-    .catch((err) => {
-      return res.status(400).json({ msg: err });
-    });
+    // send new generated token
+    return res.status(200).json({ token: accesstoken });
 };
 
 // Authenticate with the jwt token and if correct then send relevant student data
