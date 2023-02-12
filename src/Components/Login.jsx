@@ -46,6 +46,8 @@ function Login() {
     window.location.href = "/register"
   }
 
+  // It returns the structure of this particular page
+
   return (
     <>
       <div

@@ -2,10 +2,18 @@ import React from "react";
 import axios from "axios";
 
 function Selection() {
+
+  // Made states for all the entries in the form
+
   const [token, setToken] = React.useState();
   const [data, setData] = React.useState();
   const [elements, setElements] = React.useState();
   const [ids, setIds] = React.useState([]);
+
+  // This hook is basically used to prevent website to re-render and render only when a particular state/field is varied hence contributing in overall performance of website
+
+  // While using this hook, "user" which is a token (unique for all) is being accessed from the local storage and if that "user" is altered or tinkered with then user is simply logged out and an alert is show and if it is authorized then "user" is stored in the state named "token"
+
   React.useEffect(() => {
     const user = localStorage.getItem("user");
     if (!user) {
@@ -14,9 +22,11 @@ function Selection() {
     }
     setToken(user);
   }, []);
+
+  // While using the below hook, the token is posted on the route if it is'nt altered and the response to that token is then stored in a state named "data".
+
   React.useEffect(() => {
     if (token) {
-      console.log(token);
       axios
         .post(
           "http://localhost:8000/api/v1/interaction/renderShortlistedCandidate",
@@ -30,6 +40,9 @@ function Selection() {
         });
     }
   }, [token]);
+
+
+
   function handleSelect(props, checked) {
     if (checked) {
       iterate2(props);
@@ -54,44 +67,44 @@ function Selection() {
     iterate();
   }
 
-  function handleClick(props){
+  function handleClick(props) {
     const d = new Date();
     let year1 = d.getFullYear();
-      const val = document.getElementById(props).value
-      const tempData = {
-        id : props,
-        salary : val,
-        year : year1
-      }
-      ids.push(tempData);
+    const val = document.getElementById(props).value
+    const tempData = {
+      id: props,
+      salary: val,
+      year: year1
+    }
+    ids.push(tempData);
   }
-  function handleComplete(){
+  function handleComplete() {
     const notSelected = [];
-    for(var i in data){
-      if(data[i].isSelected == false){
-        notSelected.push({"id" : data[i]._id});
+    for (var i in data) {
+      if (data[i].isSelected == false) {
+        notSelected.push({ "id": data[i]._id });
       }
     }
 
-    
+
     const finalData = {
-       selected : ids,
-       rejected: notSelected,
-       token : token
+      selected: ids,
+      rejected: notSelected,
+      token: token
     }
     console.log("hello")
     console.log(finalData)
     axios
-        .post(
-          "http://localhost:8000/api/v1/interaction/selectedCandidate",
-           finalData 
-        )
-        .then((res) => {
-          console.log("success");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      .post(
+        "http://localhost:8000/api/v1/interaction/selectedCandidate",
+        finalData
+      )
+      .then((res) => {
+        console.log("success");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
 
   }
@@ -127,7 +140,7 @@ function Selection() {
               ></input>
             </td>
             <td>
-              <button onClick={()=>handleClick(items._id)}>Submit</button>
+              <button onClick={() => handleClick(items._id)}>Submit</button>
             </td>
           </>
         )}
@@ -137,7 +150,6 @@ function Selection() {
   }
   React.useEffect(() => {
     if (data) {
-      console.log(data);
       iterate();
     }
   }, [data]);

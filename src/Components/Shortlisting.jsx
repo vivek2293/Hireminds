@@ -1,9 +1,11 @@
 import React from "react";
-// import data from '../Data'
 import axios from "axios";
-
 import "./CSS/Shortlisting.css";
+
 function Shortlisting() {
+
+  // Made states for all the entries in the form
+
   const [data, setData] = React.useState();
   const [date, setDate] = React.useState();
   const [time, setTime] = React.useState();
@@ -16,6 +18,8 @@ function Shortlisting() {
     token: "",
     rejected: "",
   });
+
+  
 
   React.useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -77,10 +81,10 @@ function Shortlisting() {
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get("token");
     const rejected = [];
-    for(var i in data){
-        if(!Ids.includes(data[i]._id)){
-            rejected.push(data[i]._id);
-        }
+    for (var i in data) {
+      if (!Ids.includes(data[i]._id)) {
+        rejected.push(data[i]._id);
+      }
     }
     selected.ids = Ids;
     selected.time = time;
