@@ -163,7 +163,7 @@ const updateUserData = async(req, res) => {
 const deleteUser = async(req, res) => {
   const { _id } = req.body;
   try{
-    await studentData.findByIdAndRemove({ _id });
+    await studentData.findOneAndDelete({ _id });
   }
   catch(err){
     return res.status(400).json(err);
