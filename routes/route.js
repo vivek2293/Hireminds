@@ -22,15 +22,21 @@ const {
   selectedCandidate
 } = require("../functions/company.interaction");
 
-router.post("/record/alldata", getAllrecords);
+// User data Routes
 router.post("/record/createData", createStudentRecord);
+router.post("/record/alldata", getAllrecords);
+router.post("/record/getPlacementData", getPlacementData);
+
+
+// Company data Routes
 router.post("/company/alldata", getAllCompanyrecords);
 router.post("/company/createCompanyRecord", createCompanyRecord);
+router.post("/company/getAllCompanyname", getAllCompanyname);
+
+// Interaction routes 
 router.post("/interaction/eligibleList", eligibleCandidateslist);
 router.post("/interaction/getEligibileCandidateList", getEligibileCandidateList );
 router.post("/interaction/renderEligible", renderEligibleCandidate);
-router.post("/company/getAllCompanyname", getAllCompanyname);
-router.post("/record/getPlacementData", getPlacementData);
 router.post("/interaction/shortlistedCandidate", shortlistedCandidate);
 router.post("/interaction/renderShortlistedCandidate", renderShortlistedCandidate);
 router.post("/interaction/selectedCandidate", selectedCandidate);
