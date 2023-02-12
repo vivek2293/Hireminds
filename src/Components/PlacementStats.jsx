@@ -19,6 +19,7 @@ export default function Exgraph() {
     const [year,setYear] = React.useState([]);
     const [avg,setAvg] = React.useState([]);
     const [max,setMax] = React.useState([]);
+    // const [students,setStudents] = React.useState();
     React.useEffect(()=>{
         if(data1){
         console.log(data1);
@@ -27,6 +28,7 @@ export default function Exgraph() {
             var average = (data1[i].value.ctc) / (data1[i].value.total);
             avg.push(average);
             max.push(data1[i].value.max);
+            // students.push(data[i].value.total);
         }
         setDone(true);
     }
@@ -116,7 +118,11 @@ export default function Exgraph() {
                 {
                     name: "&nbsp Max &nbsp &nbsp",
                     data: max
-                }
+                },
+                // {
+                //     name: "&nbsp Total Students &nbsp &nbsp",
+                //     data: students
+                // }
             ],
             options: {
                 xaxis: {
