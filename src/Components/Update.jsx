@@ -24,13 +24,24 @@ export default function Update() {
         github: "NA",
         resumeLink: "NA"
     });
-    const [gender, setGender] = React.useState("male");
-    const [degree, setDegree] = React.useState("BTech");
     const [show1,setShow1] = React.useState(true);
     const [show2,setShow2] = React.useState(false);
+    const [data,setData] = React.useState()
 
 
+    function handleDelete(prop){
+        const data1 = {
+            "_id" : prop
+        }
+        axios.post("http://localhost:8000/api/v1/record/deleteUser",data1)
+        .then((res) => {
+            console.log(res);
+            console.log(data1)
 
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
     function handleChange(event) {
         setFormdata((prevdata) => {
             return {
@@ -43,17 +54,58 @@ export default function Update() {
     function saveData1() {
         const data = { ...formdata };
         console.log(data);
-        // axios.post("http://localhost:8000/api/v1/record/createData", data)
-        //     .then(() => {
-        //         console.log("Sent");
-        //     }).catch((err) => {
-        //         console.log(err);
-        //     })
-        setShow1(false);
-        setShow2(true);
+        axios.post("http://localhost:8000/api/v1/record/getUpdateQuery", data)
+            .then((res) => {
+                console.log("Sent");
+                if(res.data.length !=0){
+                    console.log(res)
+                    console.log(res.data);
+                    setData(res.data);
+                }
+                else{
+                window.alert("Invalid User")
+                }
+
+            }).catch((err) => {
+                console.log(err);
+            })
     }
+    React.useEffect(()=>{
+        console.log("came here");
+        if(data){
+            console.log("came");
+            setShow1(false);
+            setShow2(true);
+        }
+    },[data])
     function saveData2(){
-            //axios post this saved data;
+        if(data.linkedIn == ""){
+            data.linkedIn = "NA";
+        }
+        if(data.github == ""){
+            data.github = "NA"
+        }
+        if(data.resumeLink == ""){
+            data.resumeLink = "NA"
+        }
+        console.log(data);
+        // axios.patch("http://localhost:8000/api/v1/record/updateUserData", data)
+        // .then((res) => {
+        //     console.log(res);
+
+        // }).catch((err) => {
+        //     console.log(err);
+        // })
+
+    }
+    function handleChange1(props,value){
+        setData((prevdata)=>{
+            return{
+                ...prevdata,
+                [props] : value
+            }
+        })
+        // console.log(data);
     }
 
 
@@ -188,9 +240,10 @@ export default function Update() {
                                     <input
                                         type="text"
                                         name="name"
+                                        value={data.name}
                                         className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
-                                        onChange={handleChange}
+                                        onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                         placeholder="Enter student name"
                                         required
                                     />
@@ -208,9 +261,11 @@ export default function Update() {
                                     <input
                                         type="tel"
                                         name="contactNo"
+                                        value={data.contactNo}
+
                                         className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
-                                        onChange={handleChange}
+                                        onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                         placeholder="Enter contact Number"
                                         required
                                     />
@@ -228,9 +283,11 @@ export default function Update() {
                                     <input
                                         type="text"
                                         name="branch"
+                                        value={data.branch}
+
                                         className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
-                                        onChange={handleChange}
+                                        onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                         placeholder="Enter branch name"
                                         required
                                     />
@@ -248,9 +305,11 @@ export default function Update() {
                                     <input
                                         type="number"
                                         name="yearOfPassingOut"
+                                        value={data.yearOfPassingOut}
+
                                         className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
-                                        onChange={handleChange}
+                                        onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                         placeholder="Enter graduation year"
                                         required
                                     />
@@ -268,7 +327,9 @@ export default function Update() {
                                     <select
                                         className="form-select p-1"
                                         aria-label="Default select example"
-                                        onChange={(event) => setGender(event.target.value)}
+                                        value={data.gender}
+                                        name = "gender"
+                                        onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                     >
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
@@ -289,9 +350,11 @@ export default function Update() {
                                         type="number"
                                         step="0.01"
                                         name="CGPA"
+                                        value={data.CGPA}
+
                                         className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
-                                        onChange={handleChange}
+                                        onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                         placeholder="Enter CGPA"
                                         required
                                     />
@@ -308,9 +371,11 @@ export default function Update() {
                                     <input
                                         type="number"
                                         name="age"
+                                        value={data.age}
+
                                         className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
-                                        onChange={handleChange}
+                                        onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                         placeholder="Enter Age"
                                         required
                                     />
@@ -328,9 +393,11 @@ export default function Update() {
                                     <input
                                         type="email"
                                         name="email"
+                                        value={data.email}
+
                                         className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
-                                        onChange={handleChange}
+                                        onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                         placeholder="Enter Email ID"
                                         required
                                     />
@@ -348,7 +415,9 @@ export default function Update() {
                                     <select
                                         className="form-select p-1"
                                         aria-label="Default select example"
-                                        onChange={(event) => setDegree(event.target.value)}
+                                        value={data.degree}
+                                        name = "degree"
+                                        onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                     >
                                         <option value="BTech">BTech</option>
                                         <option value="BE">BE</option>
@@ -369,9 +438,11 @@ export default function Update() {
                                     <input
                                         type="url"
                                         name="linkedIn"
+                                        value=""
+
                                         className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
-                                        onChange={handleChange}
+                                        onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                         placeholder="Enter linkedIn link"
                                     />
                                 </div>
@@ -388,9 +459,11 @@ export default function Update() {
                                     <input
                                         type="url"
                                         name="github"
+                                        value=""
+                                        
                                         className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
-                                        onChange={handleChange}
+                                        onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                         placeholder="Enter github link"
                                     />
                                 </div>
@@ -407,19 +480,84 @@ export default function Update() {
                                     <input
                                         type="url"
                                         name="resumeLink"
+                                        value=""
                                         className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
-                                        onChange={handleChange}
+                                        onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                         placeholder="Enter resumeLink"
                                     />
                                 </div>
                             </div>
+                            {/* <div className="form-group row m-2">
+                                <label
+                                    htmlFor="colFormLabelSm"
+                                    className="col-md-4 col-form-label col-form-label-sm ps-4 required"
+                                >
+                                    Current Status
+                                </label>
+                                <div className="col-md-5">
+                                    <select
+                                        className="form-select p-1"
+                                        aria-label="Default select example"
+                                        value={data.currentStatus}
+                                        name = "currentStatus"
+                                        onChange={(e)=>handleChange1(e.target.name,e.target.value)}
+                                    >
+                                        <option value="BTech">inProgress</option>
+                                        <option value="Shortlisted">Shortlisted</option>
+                                        <option value="BSc">BSc</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div> */}
+                            <div className="form-group row m-2">
+                                <label
+                                    htmlFor="colFormLabelSm"
+                                    className="col-md-4 col-form-label col-form-label-sm ps-4 required"
+                                >
+                                    Interview Date
+                                </label>
+                                <div className="col-md-5">
+                                    <input
+                                        type="date"
+                                        name="interviewDate"
+                                        value={data.interviewDate}
+                                        className="form-control form-control-sm px-1"
+                                        id="colFormLabelSm"
+                                        onChange={(e)=>handleChange1(e.target.name,e.target.value)}
+                                        placeholder="Enter student name"
+                                    />
+                                </div>
+                            </div>
+                            <div className="form-group row m-2">
+                                <label
+                                    htmlFor="colFormLabelSm"
+                                    className="col-md-4 col-form-label col-form-label-sm ps-4 required"
+                                >
+                                    Interview Time
+                                </label>
+                                <div className="col-md-5">
+                                    <input
+                                        type="time"
+                                        name="interviewTiming"
+                                        value={data.interviewTiming}
+                                        className="form-control form-control-sm px-1"
+                                        id="colFormLabelSm"
+                                        onChange={(e)=>handleChange1(e.target.name,e.target.value)}
+                                        placeholder="Enter student name"
+                                    />
+                                </div>
+                            </div>
+
+                            
 
                             <div className="btn-div d-flex justify-content-center" id="btn-div">
                                 <button type="submit" className="btn btn-custom1 p-1 mt-3">Submit</button>
+
                             </div>
 
                         </form>
+                     <button className="btn btn-custom1 p-1 mt-3"  onClick={()=>handleDelete(data._id)}>Delete</button>
                     </div>
                 </div>
                 )
