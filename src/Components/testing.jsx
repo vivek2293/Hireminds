@@ -1,5 +1,5 @@
 import React from "react";
-
+import axios from "axios";
 export default function Testing() {
     const [msg, setMsg] = React.useState(false);
     const [data,setData] = React.useState();
@@ -15,12 +15,29 @@ export default function Testing() {
         }
         else {
             setMsg(false);
+            
         }
     }
     function handleClick(){
         console.log(sendTo)
         console.log(year);
         console.log(inputMessage)
+        if(sendTo == "Students"){
+            axios.post("http://localhost:8000/api/v1/interaction/announceToStudent", {year,inputMessage})
+            .then(() => {
+                console.log("Sent");
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+        else{
+            axios.post("http://localhost:8000/api/v1/interaction/announceToCompany", {inputMessage})
+            .then(() => {
+                console.log("Sent");
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
     }
     function handleChange2(e){
         setYear(e.target.value);

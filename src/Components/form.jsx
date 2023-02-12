@@ -43,7 +43,7 @@ export default function Form() {
     // This function posts the data provided in the input fields to the particular route provided below and apart from posting the data it is also typecasting variables, in the function below if data entry is year or age it is converting it into number whereas float when it CGPA    
 
     function saveData() {
-        const data = { ...formdata, gender: gender, instituteName: "ABCD" };
+        const data = { ...formdata, gender: gender, instituteName: "IIIT SURAT" };
         for (var i in data) {
             if (i == "yearOfPassingOut" || i == "age") {
                 data[i] = Number(data[i]);
