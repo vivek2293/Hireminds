@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import "./CSS/Update.css";
+import { ToastContainer, toast } from 'react-toastify';
+
 export default function Update() {
   //states to store data
   const [formdata, setFormdata] = React.useState({
@@ -35,7 +37,7 @@ export default function Update() {
     axios
       .post("http://localhost:8000/api/v1/record/deleteUser", data1)
       .then((res) => {
-        window.alert("Your Data is Deleted");
+        toast.success("Data successfully deleted");
       })
       .catch((err) => {
         console.log(err);
@@ -58,26 +60,23 @@ export default function Update() {
     axios
       .post("http://localhost:8000/api/v1/record/getUpdateQuery", data)
       .then((res) => {
-        console.log("Sent");
         if (res.data.length != 0) {
           console.log(res);
           console.log(res.data);
           setData(res.data);
         } else {
-          window.alert("Invalid User");
+          toast.error("Invalid User");
         }
       })
       .catch((err) => {
         console.log(err);
-        window.alert("Invalid User");
+        toast.error("Invalid User");
       });
   }
 
   //after we validate that user is valid, then we show next page by setting show2 to true
   React.useEffect(() => {
-    console.log("came here");
     if (data) {
-      console.log("came");
       setShow1(false);
       setShow2(true);
     }
@@ -101,7 +100,7 @@ export default function Update() {
       .patch("http://localhost:8000/api/v1/record/updateUserData", data)
       .then((res) => {
         console.log(res);
-        window.alert("Data updated Successfully");
+        toast.success("Data updated Successfully")
       })
       .catch((err) => {
         console.log(err);
@@ -116,7 +115,6 @@ export default function Update() {
         [props]: value,
       };
     });
-    console.log(data);
   }
 
   return (
@@ -645,6 +643,17 @@ export default function Update() {
                 </button>
               </div>
             </div>
+            <ToastContainer
+              position="top-center"
+              autoClose={3000}
+              hideProgressBar={false}
+              newestOnTop={true}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
           </div>
         )}
       </section>

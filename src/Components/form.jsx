@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import "./CSS/form.css";
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function Form() {
 
@@ -55,8 +56,7 @@ export default function Form() {
         console.log(data);
         axios.post("http://localhost:8000/api/v1/record/createData", data)
             .then(() => {
-                console.log("Sent");
-                window.alert("Student Sucessfully Registered")
+                toast.success("Student Sucessfully Registered");
             }).catch((err) => {
                 console.log(err);
             })
@@ -345,6 +345,17 @@ export default function Form() {
 
                         </form>
                     </div>
+                    <ToastContainer
+                        position="top-center"
+                        autoClose={3000}
+                        hideProgressBar={false}
+                        newestOnTop={true}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                    />
                 </div>
             </section>
         </>

@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function Filter() {
 
@@ -21,10 +22,10 @@ export default function Filter() {
         axios.post("http://localhost:8000/api/v1/interaction/getEligibileCandidateList", data)
             .then((res) => {
                 console.log("Sent");
-                window.alert("Please check your email for shortlisted student details");
+                toast.success("Please check your email for shortlisted student details")
             }).catch((err) => {
                 console.log(err);
-                window.alert("Please register Company First");
+                toast.success("Please register Company First")
             })
     }
 
@@ -162,6 +163,17 @@ export default function Filter() {
 
                         </form>
                     </div>
+                    <ToastContainer
+                        position="top-center"
+                        autoClose={3000}
+                        hideProgressBar={false}
+                        newestOnTop={true}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                    />
                 </div>
             </section>
         </>

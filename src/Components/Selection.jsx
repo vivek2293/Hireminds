@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
 
 function Selection() {
   //States to store Data's
@@ -13,7 +14,7 @@ function Selection() {
   React.useEffect(() => {
     const user = localStorage.getItem("user");
     if (!user) {
-      window.alert("unauthorized")
+      toast.error("unauthorized");
       window.location.href = "/"
     }
     setToken(user);
@@ -65,8 +66,8 @@ function Selection() {
     }
     iterate();
   }
-//this function sets the salary of individual person
-  function handleClick(props){
+  //this function sets the salary of individual person
+  function handleClick(props) {
     const d = new Date();
     let year1 = d.getFullYear();
     const val = document.getElementById(props).value
@@ -79,7 +80,7 @@ function Selection() {
   }
 
   // after company completes loging data of all students, this function will be triggered and status of students will be changed in databases
-  function handleComplete(){
+  function handleComplete() {
     const notSelected = [];
     for (var i in data) {
       if (data[i].isSelected == false) {
@@ -94,22 +95,21 @@ function Selection() {
     console.log("hello")
     console.log(finalData)
     axios
-        .post(
-          "http://localhost:8000/api/v1/interaction/selectedCandidate",
-           finalData 
-        )
-        .then((res) => {
-          console.log("success");
-          window.alert("Thank you, we have updated status of selected students")
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      .post(
+        "http://localhost:8000/api/v1/interaction/selectedCandidate",
+        finalData
+      )
+      .then((res) => {
+        toast.success("Thank you, we have updated status of selected students");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
 
   }
 
-//renders data  in table
+  //renders data  in table
   function iterate() {
     const elements1 = data.map((items) => (
       <tr key={items.rollNo}>
@@ -153,7 +153,7 @@ function Selection() {
 
 
 
-//As soon as we fetch data, we render it
+  //As soon as we fetch data, we render it
   React.useEffect(() => {
     if (data) {
       iterate();
@@ -195,8 +195,19 @@ function Selection() {
           <tbody>{elements}</tbody>
         </table>
         <div className="d-flex justify-content-center align-items-center">
-        <button onClick={handleComplete} className='btn btn-custom1 p-1 mt-2'>Complete</button>
+          <button onClick={handleComplete} className='btn btn-custom1 p-1 mt-2'>Complete</button>
         </div>
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={true}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </div>
     </section>
   );

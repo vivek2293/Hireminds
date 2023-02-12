@@ -2,6 +2,7 @@ import React from 'react'
 import {BrowserRouter, Route,Routes} from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
+import 'react-toastify/dist/ReactToastify.css';
 import "./App.css"
 import Dashboard from './Components/Dashboard';
 import Homepage from './Components/Homepage';
