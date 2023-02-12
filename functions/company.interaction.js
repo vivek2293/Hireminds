@@ -215,8 +215,6 @@ const shortlistedCandidate = async (req, res) => {
       );
     }
 
-    // Delete the doc from temporary collection (Collection with Auto-expire docs)
-    await eligibleCandidates.deleteOne({ _id: payload._id });
   } catch (err) {
     return res.status(400).json({ msg: err });
   }
@@ -360,8 +358,7 @@ const selectedCandidate = async (req, res) => {
       );
     }
 
-    // Delete the doc from temporary collection (Collection with Auto-expire docs)
-    await eligibleCandidates.deleteOne({ _id: temp_id });
+
   } catch (err) {
     console.log(err);
     return res.status(400).json(err);
