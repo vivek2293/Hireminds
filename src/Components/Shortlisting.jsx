@@ -14,6 +14,7 @@ function Shortlisting() {
     time: "",
     date: "",
     token: "",
+    rejected: "",
   });
 
   React.useEffect(() => {
@@ -42,7 +43,6 @@ function Shortlisting() {
     } else {
       console.log(prop);
       const index = Ids.indexOf(prop);
-
       const x = Ids.splice(index, 1);
     }
   }
@@ -76,11 +76,19 @@ function Shortlisting() {
   function handleClick() {
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get("token");
+    const rejected = [];
+    for(var i in data){
+        if(!Ids.includes(data[i]._id)){
+            rejected.push(data[i]._id);
+        }
+    }
     selected.ids = Ids;
     selected.time = time;
     selected.date = date;
     selected.token = token;
+    selected.rejected = rejected;
     console.log(selected)
+
     axios
       .post(
         "http://localhost:8000/api/v1/interaction/shortlistedCandidate",
@@ -89,7 +97,7 @@ function Shortlisting() {
       .then((res) => {
         if (typeof res.data.token !== "undefined")
           localStorage.setItem("user", res.data.token);
-        window.location.href = "/selection";
+        // window.location.href = "/selection";
       })
       .catch((err) => {
         console.log(err);

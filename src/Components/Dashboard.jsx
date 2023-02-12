@@ -10,6 +10,7 @@ import AddCompany from "./AddCompany";
 import Filter from "./Filter";
 import PastRecruiter from "./PastRecruiter";
 import logo from "./Assets/Logo2.png";
+import Update from "./Update";
 
 export default function Dashboard() {
   const [show, setShow] = React.useState({
@@ -20,6 +21,7 @@ export default function Dashboard() {
     PastRecuriters: false,
     CompanyStats: false,
     CompanyRegister: false,
+    update: false,
   });
 
   function handleClick(props) {
@@ -32,6 +34,7 @@ export default function Dashboard() {
       PastRecuriters: false,
       CompanyStats: false,
       CompanyRegister: false,
+      update: false,
     };
     if ("Data" != props) {
       tempShow.Data = false;
@@ -69,6 +72,11 @@ export default function Dashboard() {
     } else {
       tempShow.CompanyRegister = true;
     }
+    if (props != "update") {
+        tempShow.update = false;
+      }else {
+        tempShow.update = true;
+      }
     setShow(tempShow);
   }
 
@@ -140,16 +148,10 @@ export default function Dashboard() {
             <button
               className="diff-btn my-3 p-1"
               style={{ borderRadius: "20px" }}
+              name = "update"
               onClick={(e) => handleClick(e.target.name)}
             >
               Update
-            </button>
-            <button
-              className="diff-btn my-3 p-1"
-              style={{ borderRadius: "20px" }}
-              onClick={(e) => handleClick(e.target.name)}
-            >
-              Delete
             </button>
           </div>
         </div>
@@ -188,6 +190,8 @@ export default function Dashboard() {
             {show.CompanyRegister && <AddCompany />}
             {show.FilterCandidates && <Filter />}
             {show.PastRecuriters && <PastRecruiter />}
+            {show.update && <Update />}
+
           </div>
         </div>
       </div>
