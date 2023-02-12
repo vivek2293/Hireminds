@@ -80,6 +80,7 @@ function Shortlisting() {
     selected.time = time;
     selected.date = date;
     selected.token = token;
+    console.log(selected)
     axios
       .post(
         "http://localhost:8000/api/v1/interaction/shortlistedCandidate",
