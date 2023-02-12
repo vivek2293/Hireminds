@@ -22,13 +22,13 @@ function Login() {
     // console.log(user);
     // console.log(!user);
     axios.post(
-        host + "/auth/login",
-        {
-          email: userEmail,
-          password: passWord,
-        },
-        { withCredentials: true }
-      )
+      host + "/auth/login",
+      {
+        email: userEmail,
+        password: passWord,
+      },
+      { withCredentials: true }
+    )
       .then((res) => {
         console.log(res);
         if (typeof res.data.token !== "undefined")
@@ -74,6 +74,7 @@ function Login() {
               style={{ height: "5vh", borderRadius: "6px" }}
               onChange={(e) => setUserEmail(e.target.value)}
               placeholder="Email"
+              required
             />
             <input
               type="Password"
@@ -81,6 +82,7 @@ function Login() {
               style={{ height: "5vh", borderRadius: "6px" }}
               onChange={(e) => setPassWord(e.target.value)}
               placeholder="Password"
+              required
             />
             <div className="text-center pt-1 mb-3 pb-1">
               <button
@@ -95,7 +97,7 @@ function Login() {
 
             <div className="d-flex flex-row align-items-center justify-content-center pb-4 mb-4">
               <p className="mx-1">Don't have an account?</p>
-              <p className="signup-link" style={{ textDecoration: 'none', color: '#797CCE' }} onClick = {()=> window.location.href = "/register"}>Sign Up</p>
+              <p className="signup-link" style={{ textDecoration: 'none', color: '#797CCE' }} onClick={() => window.location.href = "/register"}>Sign Up</p>
             </div>
           </div>
         </div>
