@@ -411,8 +411,10 @@ const announceToCompany = async(req, res) => {
 
 const announceToStudent = async(req, res) => {
   const { year, message } = req.body;
+  let Year = new Date().getFullYear(); 
+  Year += parseInt(year);
   try{
-    const doc = await studentData.find({ isSelected: false, yearOfPassingOut: year }).select("email");
+    const doc = await studentData.find({ isSelected: false, yearOfPassingOut: Year }).select("email");
 
     for(let i = 0;i < doc.length; i++){
       mail(doc[i],"Training and Placement Cell",message);
