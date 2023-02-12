@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-// import data from "../Data";
 import "./CSS/Table.css";
 export default function Table() {
   const [showBranch, setShowBranch] = React.useState(false);
@@ -89,11 +88,9 @@ export default function Table() {
       <section className="card p-3">
         {setShow && (
           <div className="my-3">
-          <h3>Student Data</h3>
+          <h4>Student Data:</h4>
             <p className="my-2">Please select year</p>
             <div className="d-flex justify-content-center align-items-center"></div>
-            {/* {yearElements}
-             */}
             <select
               className="form-select p-1"
               aria-label="Default select example"
@@ -110,8 +107,6 @@ export default function Table() {
           <div className="my-3">
             <p className="my-2">Please select Branch</p>
             <div className="d-flex justify-content-center align-items-center"></div>
-            {/* {yearElements}
-             */}
             <select
               className="form-select p-1"
               aria-label="Default select example"
@@ -138,135 +133,11 @@ export default function Table() {
             <tbody>{elements}</tbody>
           </table>
         )}
-        {/* {showData && (
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">RollNumber</th>
-                <th scope="col">Name</th>
-                <th scope="col">year</th>
-                <th scope="col">contact</th>
-                <th scope="col">branch</th>
-                <th scope="col">CGPA</th>
-                <th scope="col">email</th>
 
-
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                {
-
-                }
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
-        )} */}
       </section>
     </>
   );
 }
 
 {
-  /* <section className="d-flex justify-content-start align-items-center">
-            <div
-              className=" d-flex justify-content-center align-items-center"
-              style={{
-                minHeight: "10vh",
-                flexDirection: "column",
-                border: "1px solid black",
-                minWidth: '7vw'
-
-              }}
-              id="rollNumberDiv"
-            >
-              <h6 className="mb-3">Roll Number</h6>
-              {show && data1.roll}
-            </div>
-            <div
-              className=" d-flex justify-content-center align-items-center"
-              style={{
-                minHeight: "10vh",
-                flexDirection: "column",
-                border: "1px solid black",
-                minWidth: '20vw'
-
-              }}
-            >
-              <h6 className="mb-3">Name</h6>
-              {data1.name}
-            </div>
-            <div
-              className=" d-flex justify-content-center align-items-center"
-              style={{
-                minHeight: "10vh",
-                flexDirection: "column",
-                border: "1px solid black",
-                minWidth: '5vw'
-
-              }}
-            >
-              <h6 className="mb-3">Year</h6>
-              {data1.year}
-            </div>
-            <div
-              className=" d-flex justify-content-center align-items-center"
-              style={{
-                minHeight: "10vh",
-                flexDirection: "column",
-                border: "1px solid black",
-                minWidth: '5vw'
-
-              }}
-            >
-              <h6 className="mb-3">Branch</h6>
-              {data1.branch}
-            </div>
-            <div
-              className=" d-flex justify-content-center align-items-center"
-              style={{
-                minHeight: "10vh",
-                flexDirection: "column",
-                border: "1px solid black",
-                minWidth: '10vw'
-
-              }}
-            >
-              <h6 className="mb-3"> Contact</h6>{data1.contact}
-            </div>
-            <div
-              className="  d-flex justify-content-center align-items-center"
-              style={{
-                minHeight: "10vh",
-                flexDirection: "column",
-                border: "1px solid black",
-                minWidth: '6vw'
-              }}
-            >
-              <h6 className="mb-3">CGPA</h6>{data1.CGPA}
-            </div>
-            <div
-              className=" d-flex justify-content-center align-items-center"
-              style={{
-                minHeight: "10vh",
-                flexDirection: "column",
-                border: "1px solid black",
-                minWidth: '27vw'
-              }}
-            >
-              <h6 className="mb-3">Email</h6>{data1.email}
-            </div>
-          </section> */
 }

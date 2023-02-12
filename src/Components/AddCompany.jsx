@@ -31,8 +31,6 @@ function saveData() {
         })
 }
 
-console.log(formdata);
-
 return (
     <>
         <section className="" style={{ width: "85vw" }}>

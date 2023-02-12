@@ -9,67 +9,74 @@ import Company from "./Company";
 import AddCompany from "./AddCompany";
 import Filter from "./Filter";
 import PastRecruiter from "./PastRecruiter";
+import logo from "./Assets/Logo2.png";
+
 export default function Dashboard() {
-  const [showData, setShowData] = React.useState();
-  const [showRegister, setShowRegister] = React.useState();
-  const [showPlacementStats, setShowPlacementStats] = React.useState();
-  const [showFilterCandidates, setShowFilterCandidates] = React.useState();
-  const [showPastRecuriters, setShowPastRecuriters] = React.useState();
-  const [showCompanyStats, setShowCompanyStats] = React.useState();
-  const [showCompanyRegister, setShowCompanyRegister] = React.useState();
+  const [show, setShow] = React.useState({
+    Data: false,
+    Register: false,
+    PlacementStats: false,
+    FilterCandidates: false,
+    PastRecuriters: false,
+    CompanyStats: false,
+    CompanyRegister: false,
+  });
+
   function handleClick(props) {
     console.log(props);
-    if ("showData" != props) {
-      setShowData(false);
+    const tempShow = {
+      Data: false,
+      Register: false,
+      PlacementStats: false,
+      FilterCandidates: false,
+      PastRecuriters: false,
+      CompanyStats: false,
+      CompanyRegister: false,
+    };
+    if ("Data" != props) {
+      tempShow.Data = false;
     } else {
       console.log("came");
-      setShowData(true);
+      tempShow.Data = true;
     }
-    if (props != "showRegister") {
-      setShowRegister(false);
+    if (props != "Register") {
+      tempShow.Register = false;
     } else {
-      setShowRegister(true);
+      tempShow.Register = true;
     }
-    if (props != "showPlacementStats") {
-      setShowPlacementStats(false);
+    if (props != "PlacementStats") {
+      tempShow.PlacementStats = false;
     } else {
-      setShowPlacementStats(true);
+      tempShow.PlacementStats = true;
     }
-    if (props != "showCompanyStats") {
-      setShowCompanyStats(false);
+    if (props != "CompanyStats") {
+      tempShow.CompanyStats = false;
     } else {
-      setShowCompanyStats(true);
+      tempShow.CompanyStats = true;
     }
-    if (props != "showFilterCandidates") {
-      setShowFilterCandidates(false);
+    if (props != "FilterCandidates") {
+      tempShow.FilterCandidates = false;
     } else {
-      setShowFilterCandidates(true);
+      tempShow.FilterCandidates = true;
     }
-    if (props != "showPastRecuriters") {
-      setShowPastRecuriters(false);
+    if (props != "PastRecuriters") {
+      tempShow.PastRecuriters = false;
     } else {
-      setShowPastRecuriters(true);
+      tempShow.PastRecuriters = true;
     }
-    if (props != "showCompanyRegister") {
-      setShowCompanyRegister(false);
+    if (props != "CompanyRegister") {
+      tempShow.CompanyRegister = false;
     } else {
-      setShowCompanyRegister(true);
+      tempShow.CompanyRegister = true;
     }
+    setShow(tempShow);
   }
 
   return (
     <>
       <div className="main-div row">
         <div className=" shadow-lg col-md-2 left-div ">
-          <div className="profile-div mt-4">
-            <FontAwesomeIcon
-              icon={faUniversity}
-              style={{ color: "rgb(160,90,255)" }}
-            ></FontAwesomeIcon>{" "}
-            <span className="mx-2" style={{ color: "rgb(160,90,255)"}} id="collegeName">
-              IIIT SURAT
-            </span>
-          </div>
+          <img src={logo} style={{ height: "14vh" }} className="mt-2"></img>
           <div
             className="options-div my-5 d-flex justify-content-center align-items-center"
             style={{ flexDirection: " column" }}
@@ -77,7 +84,7 @@ export default function Dashboard() {
             <button
               className="diff-btn my-3 p-1"
               style={{ borderRadius: "20px" }}
-              name="showData"
+              name="Data"
               onClick={(e) => handleClick(e.target.name)}
             >
               Student Data
@@ -85,7 +92,7 @@ export default function Dashboard() {
             <button
               className="diff-btn my-3 p-1"
               style={{ borderRadius: "20px" }}
-              name="showRegister"
+              name="Register"
               onClick={(e) => handleClick(e.target.name)}
             >
               Register
@@ -93,7 +100,7 @@ export default function Dashboard() {
             <button
               className="diff-btn my-3 p-1"
               style={{ borderRadius: "20px" }}
-              name="showPlacementStats"
+              name="PlacementStats"
               onClick={(e) => handleClick(e.target.name)}
             >
               Placement Statistics
@@ -101,7 +108,7 @@ export default function Dashboard() {
             <button
               className="diff-btn my-3 p-1"
               style={{ borderRadius: "20px" }}
-              name="showFilterCandidates"
+              name="FilterCandidates"
               onClick={(e) => handleClick(e.target.name)}
             >
               Filter Students
@@ -109,7 +116,7 @@ export default function Dashboard() {
             <button
               className="diff-btn my-3 p-1"
               style={{ borderRadius: "20px" }}
-              name="showPastRecuriters"
+              name="PastRecuriters"
               onClick={(e) => handleClick(e.target.name)}
             >
               Past Recruiters
@@ -117,7 +124,7 @@ export default function Dashboard() {
             <button
               className="diff-btn my-3 p-1"
               style={{ borderRadius: "20px" }}
-              name="showCompanyStats"
+              name="CompanyStats"
               onClick={(e) => handleClick(e.target.name)}
             >
               Company Statistics
@@ -125,7 +132,7 @@ export default function Dashboard() {
             <button
               className="diff-btn my-3 p-1"
               style={{ borderRadius: "20px" }}
-              name="showCompanyRegister"
+              name="CompanyRegister"
               onClick={(e) => handleClick(e.target.name)}
             >
               Add Company
@@ -150,7 +157,19 @@ export default function Dashboard() {
           <div className="right-up">
             <div className="up1-div">
               <div className="name-div m-4">
-                <h3 style={{ color: "rgb(160,90,255)" }}>Hola! IIIT SURAT</h3>
+                <div className="profile-div mt-1">
+                  <FontAwesomeIcon
+                    icon={faUniversity}
+                    style={{ color: "rgb(160,90,255)" }}
+                  ></FontAwesomeIcon>{" "}
+                  <span
+                    className="mx-2"
+                    style={{ color: "rgb(160,90,255)" }}
+                    id="collegeName"
+                  >
+                    IIIT SURAT
+                  </span>
+                </div>
               </div>
               <div className="logout-div m-4">
                 <FontAwesomeIcon
@@ -162,13 +181,13 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="p-1">
-            {showData && <Table />}
-            {showRegister && <Form />}
-            {showPlacementStats && <Graph />}
-            {showCompanyStats && <Company />}
-            {showCompanyRegister && <AddCompany />}
-            {showFilterCandidates && <Filter />}
-            {showPastRecuriters && <PastRecruiter />}
+            {show.Data && <Table />}
+            {show.Register && <Form />}
+            {show.PlacementStats && <Graph />}
+            {show.CompanyStats && <Company />}
+            {show.CompanyRegister && <AddCompany />}
+            {show.FilterCandidates && <Filter />}
+            {show.PastRecuriters && <PastRecruiter />}
           </div>
         </div>
       </div>

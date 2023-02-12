@@ -44,13 +44,6 @@ function Homepage() {
                 className="btn-div d-flex justify-content-center mx-2 my-1"
                 id="btn-div2"
               >
-                {/* <button type="submit"
-                  className="btn btn-custom3 p-1 mt-2 shadow bg-white rounded"
-                  style={{ height: "6vh", width: "9vw" }}
-                  onClick={() => window.location.href = "/register"}
-                  >
-                  Register
-                </button> */}
                 <button
                   type="submit "
                   className="btn btn-outline-light p-1 mt-2 "

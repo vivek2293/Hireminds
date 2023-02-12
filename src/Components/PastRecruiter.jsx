@@ -16,12 +16,6 @@ function PastRecruiter() {
     },[])
     React.useEffect(()=>{
         if(companies){
-            // const tempData = [];
-            // const tempData = companies.map((items)=>(
-            //     items.companyName
-            // ))
-            // setCompanies(tempData);
-            // console.log(tempData)
             const tempElements = companies.map((myList) => {
                 if (myList.companyName) {
                   return (

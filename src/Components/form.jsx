@@ -52,9 +52,6 @@ export default function Form() {
             })
     }
 
-    console.log(gender);
-    console.log(formdata);
-    console.log(degree);
 
     return (
         <>
