@@ -167,6 +167,7 @@ const selectedCandidate = async(req,res) => {
 
     const payload = jwt.decode(token , process.env.JWT_SECRET);
     const companyName = payload.companyName;
+    const temp_id = payload._id;
     try{
         for(let i = 0;i < selected.length; i++){
             const query = await studentData.findById(selected[i].id).exec();
@@ -175,17 +176,19 @@ const selectedCandidate = async(req,res) => {
                 isSelected : true, currentStatus : "Hired", selectedBy: companyName, interviewTiming: "NA",
                 interviewDate: "NA", CTC_offered: selected[i].salary, selectionYear: selected[i].year
             }, { new: true });
-            console.log(record);
         }
 
         for(let i = 0; i < rejected.length; i++){
             const query = await studentData.findById(rejected[i].id).exec();
             const id = query._id;
-            const record = await studentData.findByIdAndUpdate({ _id: rejected[i].id },{
+            const record = await studentData.findByIdAndUpdate({ _id: id },{
                 isSelected : false, currentStatus : "NA", selectedBy: "NA", interviewTiming: "NA",
                 interviewDate: "NA", CTC_offered: "NA"
             })
         }
+
+        await eligibleCandidates.deleteOne();
+          
     } catch(err){
        return res.status(400).json( err );
     }
