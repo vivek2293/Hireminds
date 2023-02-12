@@ -55,10 +55,13 @@ function Selection() {
   }
 
   function handleClick(props){
-      const val = document.getElementById("salary").value
+    const d = new Date();
+    let year1 = d.getFullYear();
+      const val = document.getElementById(props).value
       const tempData = {
         id : props,
-        salary : val
+        salary : val,
+        year : year1
       }
       ids.push(tempData);
   }
@@ -69,9 +72,10 @@ function Selection() {
         notSelected.push(data[i]._id);
       }
     }
+    
     const finalData = {
        selected : ids,
-       Rejected: notSelected
+       rejected: notSelected,
     }
     console.log("hello")
     console.log(finalData)
@@ -105,7 +109,7 @@ function Selection() {
               <input
                 type="number"
                 placeholder="Salary Offered"
-                id="salary"
+                id={items._id}
               ></input>
             </td>
             <td>
