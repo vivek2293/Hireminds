@@ -31,6 +31,7 @@ function AddCompany() {
         axios.post("http://localhost:8000/api/v1/company/createCompanyRecord", data)
             .then((res) => {
                 console.log("Sent");
+                window.alert("Company added")
             }).catch((err) => {
                 console.log(err);
             })

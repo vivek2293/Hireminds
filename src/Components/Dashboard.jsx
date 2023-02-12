@@ -11,6 +11,7 @@ import Filter from "./Filter";
 import PastRecruiter from "./PastRecruiter";
 import logo from "./Assets/Logo2.png";
 import Update from "./Update";
+import CheckStatus from "./CheckStatus";
 import Testing from "./testing";
 
 export default function Dashboard() {
@@ -26,7 +27,8 @@ export default function Dashboard() {
     CompanyStats: false,
     CompanyRegister: false,
     update: false,
-    broadcast: false
+    broadcast: false,
+    checkStatus : false,
   });
   function logout() {
     localStorage.removeItem("user");
@@ -50,7 +52,8 @@ export default function Dashboard() {
       CompanyStats: false,
       CompanyRegister: false,
       update: false,
-      broadcast: false
+      broadcast: false,
+      checkStatus: false,
     };
     if ("Data" != props) {
       tempShow.Data = false;
@@ -97,6 +100,11 @@ export default function Dashboard() {
     } else {
       tempShow.broadcast = true;
     }
+    if (props != "checkStatus") {
+      tempShow.checkStatus = false;
+    } else {
+      tempShow.checkStatus = true;
+    }
     setShow(tempShow);
   }
 
@@ -125,7 +133,7 @@ export default function Dashboard() {
               name="Register"
               onClick={(e) => handleClick(e.target.name)}
             >
-              Register
+              Register Student
             </button>
             <button
               className="diff-btn my-3 p-1"
@@ -183,6 +191,14 @@ export default function Dashboard() {
             >
               Broadcast
             </button>
+            <button
+              className="diff-btn my-3 p-1"
+              style={{ borderRadius: "20px" }}
+              name="checkStatus"
+              onClick={(e) => handleClick(e.target.name)}
+            >
+              CheckStatus
+            </button>
           </div>
         </div>
         <div className="col-md-10 right-div">
@@ -221,7 +237,8 @@ export default function Dashboard() {
             {show.FilterCandidates && <Filter />}
             {show.PastRecuriters && <PastRecruiter />}
             {show.update && <Update />}
-            {show.broadcast && <Testing />}
+            {show.broadcast && <Testing />}            {show.checkStatus && <CheckStatus />}
+
           </div>
         </div>
       </div>

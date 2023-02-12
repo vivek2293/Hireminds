@@ -11,20 +11,6 @@ export default function Update() {
     branch: "",
     yearOfPassingOut: "",
   });
-
-  const [formdata1, setFormdata1] = React.useState({
-    rollNo: "",
-    name: "",
-    contactNo: "",
-    branch: "",
-    yearOfPassingOut: "",
-    CGPA: "",
-    email: "",
-    age: "",
-    linkedIn: "NA",
-    github: "NA",
-    resumeLink: "NA",
-  });
   const [show1, setShow1] = React.useState(true);
   const [show2, setShow2] = React.useState(false);
   const [data, setData] = React.useState();
@@ -551,27 +537,6 @@ export default function Update() {
                       type="date"
                       name="interviewDate"
                       value={data.interviewDate}
-                      className="form-control form-control-sm px-1"
-                      id="colFormLabelSm"
-                      onChange={(e) =>
-                        handleChange1(e.target.name, e.target.value)
-                      }
-                      placeholder="Enter student name"
-                    />
-                  </div>
-                </div>
-                <div className="form-group row m-2">
-                  <label
-                    htmlFor="colFormLabelSm"
-                    className="col-md-4 col-form-label col-form-label-sm ps-4 required"
-                  >
-                    Interview Time
-                  </label>
-                  <div className="col-md-5">
-                    <input
-                      type="time"
-                      name="interviewTiming"
-                      value={data.interviewTiming}
                       className="form-control form-control-sm px-1"
                       id="colFormLabelSm"
                       onChange={(e) =>

@@ -1,12 +1,11 @@
 import React from "react";
-import data from "../Data.jsx";
+// import data from "../Data.jsx";
 import "./CSS/Company.css"
 import axios from "axios";
 
 export default function Company() {
 
     // Made states for all the entries in the form 
-
     const [display, setDisplay] = React.useState({
         companyName: "",
         year: "",
@@ -21,6 +20,7 @@ export default function Company() {
 
     const [show, setShow] = React.useState(false);
     const [elements1, setElements1] = React.useState(false);
+    const [data, setData] = React.useState();
 
     // This function handles all the changes in the input field i.e while entering company name, event.target.name and event.target.value helps specifying that in which field value has been updated.
 
@@ -38,11 +38,28 @@ export default function Company() {
     function handleChange1() {
         const elements = data.map((e) => {
             if (display.companyName == e.companyName) {
+                console.log("yer")
+                let tempyear = "";
+                let tempMax = "";
+                let tempNum = "";
+                let tempaverage = "";
+                for(var j in e.records){
+                    console.log(e.records[j].year);
+                    tempyear = e.records[j].year;
+                    tempMax = e.records[j].Maximum; 
+                    tempNum = e.records[j].numberOfStudents
+                    tempaverage = e.records[j].totalCTC / e.records[j].numberOfStudents
+                    
+                }
+                console.log(tempyear);
+                console.log(tempMax);
+                console.log(tempNum);
                 return (
                     <tr>
-                        <td>{e.year}</td>
-                        <td >{e.highest}</td>
-                        <td>{e.avg}</td>
+                        <td>{tempyear}</td>
+                        <td >{tempMax}</td>
+                        <td>{tempNum}</td>
+                        <td>{tempaverage}</td>
                     </tr>
 
                 );
@@ -54,6 +71,7 @@ export default function Company() {
     // This hook is basically used to prevent website to re-render and render only when a particular state/field is varied hence contributing in overall performance of website
 
     React.useEffect(() => {
+        console.log(elements1)
         if (elements1) {
             setShow(true);
         }
@@ -61,11 +79,16 @@ export default function Company() {
     React.useEffect(()=>{
         axios.post("http://localhost:8000/api/v1/company/alldata", {})
         .then((res) => {
-            console.log(res);
+            setData(res.data);
         }).catch((err) => {
             console.log(err);
         })
     },[])
+    React.useEffect(()=>{
+        if(data){
+        console.log(data);
+        }
+    },[data]);
 
 
     // It returns the structure of this particular page
@@ -100,7 +123,9 @@ export default function Company() {
                                 <tr>
                                     <th scope="col">Year</th>
                                     <th scope="col" >Highest</th>
+                                    <th scope="col"><center>Students Hired</center></th>
                                     <th scope="col"><center>Average</center></th>
+
                                 </tr>
                             </thead>
                             <tbody>{elements1}</tbody>
