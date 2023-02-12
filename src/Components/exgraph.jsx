@@ -5,7 +5,6 @@ import dummy from "./Dummy";
 export default function Exgraph() {
     const [yrbtn, setYrbtn] = React.useState(false);
     const [branchbtn, setBranchbtn] = React.useState(false);
-
     function yearwise() {
         setYrbtn(true);
     }
@@ -217,11 +216,11 @@ export default function Exgraph() {
                 <button onClick={branchwise}>Branch-wise Stats</button>
             </div>
 
-            {/* {yrbtn && <ReactApexChart
+            {yrbtn && <ReactApexChart
                 options={data.options}
                 series={data.series}
                 type="bar"
-                height={430} />} */}
+                height={430} />}
 
             {branchbtn && <ReactApexChart
                 options={brData.options}

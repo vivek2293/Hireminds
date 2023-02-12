@@ -1,6 +1,7 @@
 import React from "react";
 import data from "../Data.jsx";
 import "./CSS/Company.css"
+import axios from "axios";
 
 export default function Company() {
 
@@ -57,8 +58,18 @@ export default function Company() {
             setShow(true);
         }
     }, [elements1]);
+    React.useEffect(()=>{
+        axios.post("http://localhost:8000/api/v1/company/alldata", {})
+        .then((res) => {
+            console.log(res);
+        }).catch((err) => {
+            console.log(err);
+        })
+    },[])
+
 
     // It returns the structure of this particular page
+
 
     return (
         <section className="d-flex justify-content-center">

@@ -1,9 +1,8 @@
 import React from "react";
 import axios from "axios";
-import "./CSS/form.css";
-
+import "./CSS/Update.css"
 export default function Update() {
-
+    //states to store data
     const [formdata, setFormdata] = React.useState({
         rollNo: "",
         name: "",
@@ -29,19 +28,23 @@ export default function Update() {
     const [data,setData] = React.useState()
 
 
+
+    //delete permanently data of particular user
     function handleDelete(prop){
         const data1 = {
             "_id" : prop
         }
         axios.post("http://localhost:8000/api/v1/record/deleteUser",data1)
         .then((res) => {
-            console.log(res);
-            console.log(data1)
+            window.alert("Your Data is Deleted");
 
         }).catch((err) => {
             console.log(err);
         })
     }
+
+
+    //setting values as per input fields are changed
     function handleChange(event) {
         setFormdata((prevdata) => {
             return {
@@ -50,7 +53,7 @@ export default function Update() {
             };
         });
     }
-
+    //it posts data to backend, verifies if user exisit and then redirects to another page
     function saveData1() {
         const data = { ...formdata };
         console.log(data);
@@ -68,8 +71,12 @@ export default function Update() {
 
             }).catch((err) => {
                 console.log(err);
+                window.alert("Invalid User")
+
             })
     }
+
+        //after we validate that user is valid, then we show next page by setting show2 to true
     React.useEffect(()=>{
         console.log("came here");
         if(data){
@@ -78,6 +85,9 @@ export default function Update() {
             setShow2(true);
         }
     },[data])
+
+
+    //here we send updated information to backend so that it updates info in database
     function saveData2(){
         if(data.linkedIn == ""){
             data.linkedIn = "NA";
@@ -88,16 +98,21 @@ export default function Update() {
         if(data.resumeLink == ""){
             data.resumeLink = "NA"
         }
-        console.log(data);
+        if(data.currentStatus !='Hired'){
+            data.isSelected = false;
+        }
         axios.patch("http://localhost:8000/api/v1/record/updateUserData", data)
         .then((res) => {
             console.log(res);
-
+            window.alert("Data updated Successfully")
         }).catch((err) => {
             console.log(err);
         })
 
     }
+
+
+    //sets data according to change in input field
     function handleChange1(props,value){
         setData((prevdata)=>{
             return{
@@ -105,7 +120,7 @@ export default function Update() {
                 [props] : value
             }
         })
-        // console.log(data);
+        console.log(data);
     }
 
 
@@ -488,7 +503,7 @@ export default function Update() {
                                     />
                                 </div>
                             </div>
-                            {/* <div className="form-group row m-2">
+                            <div className="form-group row m-2">
                                 <label
                                     htmlFor="colFormLabelSm"
                                     className="col-md-4 col-form-label col-form-label-sm ps-4 required"
@@ -503,13 +518,13 @@ export default function Update() {
                                         name = "currentStatus"
                                         onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                     >
-                                        <option value="BTech">inProgress</option>
+                                        <option value="In Progress">In Progress</option>
                                         <option value="Shortlisted">Shortlisted</option>
-                                        <option value="BSc">BSc</option>
-                                        <option value="other">Other</option>
+                                        <option value="Hired">Hired</option>
+                                        <option value="NA">NA</option>
                                     </select>
                                 </div>
-                            </div> */}
+                            </div>
                             <div className="form-group row m-2">
                                 <label
                                     htmlFor="colFormLabelSm"
@@ -548,6 +563,44 @@ export default function Update() {
                                     />
                                 </div>
                             </div>
+                            <div className="form-group row m-2">
+                                <label
+                                    htmlFor="colFormLabelSm"
+                                    className="col-md-4 col-form-label col-form-label-sm ps-4 required"
+                                >
+                                    CTC Offered: 
+                                </label>
+                                <div className="col-md-5">
+                                    <input
+                                        type="text"
+                                        name="CTC_offered"
+                                        value={data.CTC_offered}
+                                        className="form-control form-control-sm px-1"
+                                        id="colFormLabelSm"
+                                        onChange={(e)=>handleChange1(e.target.name,e.target.value)}
+                                        placeholder="Enter student name"
+                                    />
+                                </div>
+                            </div>
+                            <div className="form-group row m-2">
+                                <label
+                                    htmlFor="colFormLabelSm"
+                                    className="col-md-4 col-form-label col-form-label-sm ps-4 required"
+                                >
+                                    Company: 
+                                </label>
+                                <div className="col-md-5">
+                                    <input
+                                        type="text"
+                                        name="selectedBy"
+                                        value={data.selectedBy}
+                                        className="form-control form-control-sm px-1"
+                                        id="colFormLabelSm"
+                                        onChange={(e)=>handleChange1(e.target.name,e.target.value)}
+                                        placeholder="Enter student name"
+                                    />
+                                </div>
+                            </div>
 
                             
 
@@ -557,7 +610,9 @@ export default function Update() {
                             </div>
 
                         </form>
-                     <button className="btn btn-custom1 p-1 mt-3"  onClick={()=>handleDelete(data._id)}>Delete</button>
+                    <div className="d-flex justify-content-center">
+                     <button className="btn btn-danger p-1 mt-3"  onClick={()=>handleDelete(data._id)}  id="del_Button">Delete my Data Permanently</button>
+                     </div>
                     </div>
                 </div>
                 )

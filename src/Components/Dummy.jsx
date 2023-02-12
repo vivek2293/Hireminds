@@ -6,13 +6,13 @@ export default [
     //     branch: "CSE"
     // },
     // {
-    //     year: "2021",
+    //     year: "2020",
     //     avg: "170",
     //     max: "2000",
     //     branch: "ECE"
     // },
     // {
-    //     year: "2021",
+    //     year: "2022",
     //     avg: "50",
     //     max: "100",
     //     branch: "CSE"

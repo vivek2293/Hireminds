@@ -17,11 +17,14 @@ export default function Filter() {
 
     function saveData() {
         const data = { ...formdata };
+        console.log(data)
         axios.post("http://localhost:8000/api/v1/interaction/getEligibileCandidateList", data)
-            .then(() => {
+            .then((res) => {
                 console.log("Sent");
+                window.alert("Please check your email for shortlisted student details");
             }).catch((err) => {
                 console.log(err);
+                window.alert("Please register Company First");
             })
     }
 
@@ -100,7 +103,7 @@ export default function Filter() {
                                     htmlFor="colFormLabelSm"
                                     className="col-md-4 col-form-label col-form-label-sm ps-4 required"
                                 >
-                                    Year
+                                    Year of Graduation
                                 </label>
                                 <div className="col-md-5">
                                     <input
@@ -121,7 +124,7 @@ export default function Filter() {
                                     htmlFor="colFormLabelSm"
                                     className="col-md-4 col-form-label col-form-label-sm ps-4 required"
                                 >
-                                    Age
+                                    Age Limit
                                 </label>
                                 <div className="col-md-5">
                                     <input
@@ -142,7 +145,7 @@ export default function Filter() {
                                     htmlFor="colFormLabelSm"
                                     className="col-md-4 col-form-label col-form-label-sm ps-4 required"
                                 >
-                                    Email ID
+                                    Company Email ID
                                 </label>
                                 <div className="col-md-5">
                                     <input
