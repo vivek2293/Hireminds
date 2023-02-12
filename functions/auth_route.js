@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const authentication = require("../models/auth_model");
+const authentication = require("../model/auth_model");
 const sendMail = require("../middlewares/mailer");
 
 const getRequest = async (req, res) => {
@@ -16,7 +16,7 @@ const register = async (req, res) => {
 
   const hashedpassword = await bcrypt.hash(password, 10);
   const profile = {
-    clubName,
+    instituteName,
     hashedpassword,
   };
 

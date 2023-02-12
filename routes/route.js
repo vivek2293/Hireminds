@@ -25,6 +25,23 @@ const {
   selectedCandidate
 } = require("../functions/company.interaction");
 
+const {
+  getRequest,
+  register,
+  login,
+  verify,
+  forgotPassword,
+  resetPassword,
+} = require("../functions/auth_route");
+
+// Auth routes
+router.get("/auth/getData", getRequest);
+router.post("/auth/create", register);
+router.post("/auth/login", login);
+router.post("/auth/verify", verify);
+router.post("/auth/forgotPassword", forgotPassword);
+router.post("/auth/resetPassword", resetPassword);
+
 // User data Routes
 router.post("/record/createData", createStudentRecord);
 router.post("/record/alldata", getAllrecords);
