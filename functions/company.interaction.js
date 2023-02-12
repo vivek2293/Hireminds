@@ -72,7 +72,7 @@ const createListOfEligibleCandidates = async (arr, companyName, email) => {
     Link: ${process.env.CLIENT + "?token=" + token}
     `;
   console.log(message);
-  // mail("preetkhatri07@gmail.com", subject, message);
+  // mail("rutwik2514@gmail.com", subject, message);
 };
 
 
@@ -168,7 +168,7 @@ const shortlistedCandidate = async (req, res) => {
   const companyName = payload.companyName;
 
   // verify if doc exists
-  const doc = await eligibleCandidates.findOne({ _id: payload.id }).exec();
+  const doc = await eligibleCandidates.findOne({ _id: payload._id }).exec();
   if (!doc) {
     return res.status(400).json({ msg: "Record not found." });
   }
