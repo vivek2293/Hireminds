@@ -97,10 +97,10 @@ function Shortlisting() {
       .then((res) => {
         if (typeof res.data.token !== "undefined")
           localStorage.setItem("user", res.data.token);
-        // window.location.href = "/selection";
+        window.location.href = "/selection";
       })
       .catch((err) => {
-        console.log(err);
+        window.alert(err);
       });
   }
 
