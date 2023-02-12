@@ -13,6 +13,9 @@ import logo from "./Assets/Logo2.png";
 import Update from "./Update";
 
 export default function Dashboard() {
+
+  //An arryay of object is created below as these states stores the value and on the basis of these states only conditional rendering takes place as on dashboard everything is rendered conditionally apart from left div 
+
   const [show, setShow] = React.useState({
     Data: false,
     Register: false,
@@ -24,8 +27,9 @@ export default function Dashboard() {
     update: false,
   });
 
+  // This function is triggered whenever any button is clicked, this function basically changes the state to true for corresponding button and sets all other states to false as it decides the conditional rendering that what to display/render 
+
   function handleClick(props) {
-    console.log(props);
     const tempShow = {
       Data: false,
       Register: false,
@@ -39,7 +43,6 @@ export default function Dashboard() {
     if ("Data" != props) {
       tempShow.Data = false;
     } else {
-      console.log("came");
       tempShow.Data = true;
     }
     if (props != "Register") {
@@ -73,12 +76,14 @@ export default function Dashboard() {
       tempShow.CompanyRegister = true;
     }
     if (props != "update") {
-        tempShow.update = false;
-      }else {
-        tempShow.update = true;
-      }
+      tempShow.update = false;
+    } else {
+      tempShow.update = true;
+    }
     setShow(tempShow);
   }
+
+  // It returns the structure of this particular page
 
   return (
     <>
@@ -148,7 +153,7 @@ export default function Dashboard() {
             <button
               className="diff-btn my-3 p-1"
               style={{ borderRadius: "20px" }}
-              name = "update"
+              name="update"
               onClick={(e) => handleClick(e.target.name)}
             >
               Update

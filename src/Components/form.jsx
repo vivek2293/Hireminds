@@ -4,6 +4,8 @@ import "./CSS/form.css";
 
 export default function Form() {
 
+    // Made states for all the entries in the form 
+
     const [formdata, setFormdata] = React.useState({
         rollNo: "",
         name: "",
@@ -17,6 +19,8 @@ export default function Form() {
         github: "NA",
         resumeLink: "NA"
     });
+
+    // Made states for drop down input field of form 
 
     const [gender, setGender] = React.useState("male");
     const [degree, setDegree] = React.useState("BTech");
@@ -33,15 +37,15 @@ export default function Form() {
     function saveData() {
         const data = { ...formdata, gender: gender, instituteName: "ABCD" };
         console.log("hello");
-        for(var i in data){
-        if(i=="yearOfPassingOut" || i == "age"){
-            data[i] = Number(data[i]);
-            console.log("came");
-            // console.log(i);
-        }
-        else if(i == "CGPA"){
-            data[i] = parseFloat(data[i]);
-        }
+        for (var i in data) {
+            if (i == "yearOfPassingOut" || i == "age") {
+                data[i] = Number(data[i]);
+                console.log("came");
+                // console.log(i);
+            }
+            else if (i == "CGPA") {
+                data[i] = parseFloat(data[i]);
+            }
         }
         console.log(data);
         axios.post("http://localhost:8000/api/v1/record/createData", data)
@@ -56,17 +60,17 @@ export default function Form() {
     console.log(formdata);
     console.log(degree);
     function fun() {
-        document.getElementById("formentry1").value='';
-        document.getElementById("formentry2").value='';
-        document.getElementById("formentry3").value='';
-        document.getElementById("formentry4").value='';
-        document.getElementById("formentry5").value='';
-        document.getElementById("formentry6").value='';
-        document.getElementById("formentry7").value='';
-        document.getElementById("formentry8").value='';
-        document.getElementById("formentry9").value='';
-        document.getElementById("formentry10").value='';
-        document.getElementById("formentry11").value='';
+        document.getElementById("formentry1").value = '';
+        document.getElementById("formentry2").value = '';
+        document.getElementById("formentry3").value = '';
+        document.getElementById("formentry4").value = '';
+        document.getElementById("formentry5").value = '';
+        document.getElementById("formentry6").value = '';
+        document.getElementById("formentry7").value = '';
+        document.getElementById("formentry8").value = '';
+        document.getElementById("formentry9").value = '';
+        document.getElementById("formentry10").value = '';
+        document.getElementById("formentry11").value = '';
         return false;
     }
 
