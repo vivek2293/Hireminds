@@ -162,9 +162,16 @@ const shortlistedCandidate = async (req, res) => {
     if (err) return res.status(401);
   });
 
+  
   // extract payload from jwt
   const payload = jwt.decode(token, process.env.JWT_SECRET);
   const companyName = payload.companyName;
+
+  // verify if doc exists
+  const doc = await eligibleCandidates.findOne({ _id: payload.id }).exec();
+  if (!doc) {
+    return res.status(400).json({ msg: "Record not found." });
+  }
 
   const arr = [];
   for (let i = 0; i < ids_list.length; i++) {
@@ -189,6 +196,9 @@ const shortlistedCandidate = async (req, res) => {
     for(let i = 0;i < query1.length;i++){
       const doc = await studentData.updateOne( { _id: query1[i]._id },{$set: { currentStatus: "NA", interviewDate: "NA", interviewTiming: "NA" }})
     }
+
+    // Delete the doc from temporary collection (Collection with Auto-expire docs)
+    await eligibleCandidates.deleteOne({ _id: payload.id });
   } catch (err) {
     return res.status(400).json({ msg: err });
   }
