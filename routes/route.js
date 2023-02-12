@@ -6,6 +6,8 @@ const {
   createStudentRecord,
   getPlacementData,
   getUpdateQuery,
+  updateUserData,
+  deleteUser
 } = require("../functions/user.operation");
 
 const {
@@ -28,6 +30,8 @@ router.post("/record/createData", createStudentRecord);
 router.post("/record/alldata", getAllrecords);
 router.post("/record/getPlacementData", getPlacementData);
 router.post("/record/getUpdateQuery", getUpdateQuery);
+router.patch("/record/updateUserData", updateUserData);
+router.delete("/record/deleteUser", deleteUser);
 
 
 // Company data Routes

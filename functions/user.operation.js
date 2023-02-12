@@ -100,9 +100,73 @@ const getUpdateQuery = async (req, res) => {
     });
 };
 
+const updateUserData = async(req, res) => {
+  const {
+    instituteName,
+    rollNo,
+    name,
+    branch,
+    yearOfPassingOut,
+    gender,
+    CGPA,
+    age,
+    email,
+    contactNo,
+    degree,
+    linkedIn,
+    github,
+    resumeLink,
+    isSelected,
+    currentStatus,
+    selectedBy,
+    interviewTiming,
+    interviewDate,
+    CTC_offered,
+    selectionYear
+  } = req.body;
+  const { _id } = req.body;
+
+  await studentData.findByIdAndUpdate({ _id }, {
+    instituteName,
+    rollNo,
+    name,
+    branch,
+    yearOfPassingOut,
+    gender,
+    CGPA,
+    age,
+    email,
+    contactNo,
+    degree,
+    linkedIn,
+    github,
+    resumeLink,
+    isSelected,
+    currentStatus,
+    selectedBy,
+    interviewTiming,
+    interviewDate,
+    CTC_offered,
+    selectionYear
+  }, (err) => {
+    if(err) return res.status(400).json({err})
+    else return res.status(200).json({ "msg": "Successfully Update."})
+  })
+  .exec();
+}
+
+const deleteUser = async(req, res) => {
+  // give id 
+  // check if there is a user
+  // delete the user
+
+}
+
 module.exports = {
   getAllrecords,
   createStudentRecord,
   getPlacementData,
   getUpdateQuery,
+  updateUserData,
+  deleteUser
 };
