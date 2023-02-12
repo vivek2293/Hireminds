@@ -381,7 +381,7 @@ const getCurrentStatusCompany = async(req, res) => {
     const tmp = [];
     for(let k = 0;k < arr.length; k++){
       const doc = await studentData.findById(arr[k]).select("name rollNo branch yearOfPassingOut currentStatus interviewDate");
-      tmp.push(doc);
+      if(doc !== null) tmp.push(doc);
     }
     console.log(tmp)
 
