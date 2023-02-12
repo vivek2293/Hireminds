@@ -67,10 +67,10 @@ function Homepage() {
               <div className="col-md-7 example-div">
                 <div className="head-div">
                   <h1
-                    className="ms-2 px-3 mt-1"
-                    style={{ color: "rgb(120,123,206)" }}
+                    className="ms-2 px-3 mt-1 streamline"
+                    style={{ color: "rgb(120,123,206)"}}
                   >
-                    Heading
+                    Streamlining Placements
                   </h1>
                 </div>
                 <div
@@ -78,12 +78,7 @@ function Homepage() {
                   style={{ height: "70%" }}
                 >
                   <p className="ms-2 col-8 px-3">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Odit deserunt sapiente dolore, ratione quam placeat voluptas
-                    nobis aspernatur esse animi accusamus dicta veritatis
-                    deleniti doloribus ea explicabo eos doloremque repellendus
-                    quasi eligendi autem totam sed. Quasi similique facere saepe
-                    quidem!
+                    Are you tired of the complex and time-consuming campus placement process in higher education institutions? Look no further! Our solution simplifies the placement process and reduces the burden on training and placement cells.
                   </p>
                 </div>
               </div>
@@ -102,7 +97,7 @@ function Homepage() {
                       className="ms-2 mb-3 col-8 px-3"
                       style={{ color: "rgb(120,123,206)" }}
                     >
-                      Heading
+                      Optimized Placements
                     </h1>
                   </div>
                   <div
@@ -110,12 +105,7 @@ function Homepage() {
                     style={{ height: "25vh" }}
                   >
                     <p className="ms-2 col-8 px-3">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Odit deserunt sapiente dolore, ratione quam placeat
-                      voluptas nobis aspernatur esse animi accusamus dicta
-                      veritatis deleniti doloribus ea explicabo eos doloremque
-                      repellendus quasi eligendi autem totam sed. Quasi
-                      similique facere saepe quidem!
+                      With our platform, you can automate the process of data entry and cleaning, so you don't have to spend hours on manual tasks. And if you choose, you can also take advantage of our resume shortlisting feature, which saves you even more time by pre-screening resumes for you.
                     </p>
                   </div>
                 </div>
@@ -128,7 +118,7 @@ function Homepage() {
                     className="ms-2 px-3"
                     style={{ color: "rgb(120,123,206)" }}
                   >
-                    Heading
+                    Optimizing it your way
                   </h1>
                 </div>
                 <div
@@ -136,12 +126,7 @@ function Homepage() {
                   style={{ height: "70%" }}
                 >
                   <p className="ms-2 col-8 px-3">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Odit deserunt sapiente dolore, ratione quam placeat voluptas
-                    nobis aspernatur esse animi accusamus dicta veritatis
-                    deleniti doloribus ea explicabo eos doloremque repellendus
-                    quasi eligendi autem totam sed. Quasi similique facere saepe
-                    quidem!
+                    We understand that every institution is unique, and that's why we've made our platform customizable to fit your specific needs. Our platform offers a range of options and features, allowing you to tailor it to your individual requirements and streamline the campus placement process in a way that works best for you and your students.
                   </p>
                 </div>
               </div>
