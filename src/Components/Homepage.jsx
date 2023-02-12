@@ -60,8 +60,8 @@ function Homepage() {
               <div className="col-md-7 example-div">
                 <div className="head-div">
                   <h1
-                    className="ms-2 px-3 mt-1 streamline"
-                    style={{ color: "rgb(120,123,206)"}}
+                    className="ms-2 px-3 mt-1 heading-font"
+                    style={{ color: "rgb(120,123,206)" }}
                   >
                     Streamlining Placements
                   </h1>
@@ -87,7 +87,7 @@ function Homepage() {
                 <div className="row justify-content-end">
                   <div className="head-div1 d-flex justify-content-center">
                     <h1
-                      className="ms-2 mb-3 col-8 px-3"
+                      className="ms-2 mb-3 col-8 px-3 heading-font"
                       style={{ color: "rgb(120,123,206)" }}
                     >
                       Optimized Placements
@@ -108,7 +108,7 @@ function Homepage() {
               <div className="col-md-7 ">
                 <div className="head-div2">
                   <h1
-                    className="ms-2 px-3"
+                    className="ms-2 px-3 heading-font"
                     style={{ color: "rgb(120,123,206)" }}
                   >
                     Optimizing it your way
