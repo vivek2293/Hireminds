@@ -29,7 +29,7 @@ function Homepage() {
             className=" col-md-12 d-flex justify-content-center align-items-start"
           >
             <div className="col-md-6" id="logo-div">
-              <img src={logo} style={{ height: '13vh' }} className="mt-2"></img>
+              <img src={logo} style={{ height: '20vh' }} className="mt-2"></img>
 
             </div>
             <div className="col-md-6" id="login-div">
@@ -53,7 +53,9 @@ function Homepage() {
               >
                 <button type="submit"
                   className="btn btn-custom1 p-1 mt-1 shadow bg-white rounded"
-                  style={{ height: "6vh", width: "9vw" }}>
+                  style={{ height: "6vh", width: "9vw" }}
+                  onClick={() => window.location.href = "/register"}
+                  >
                   Register
                 </button>
               </div>

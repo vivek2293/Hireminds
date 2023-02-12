@@ -1,9 +1,20 @@
 import React from 'react'
 import ReactApexChart from "react-apexcharts";
+import axios from "axios";
 
 
 function Graph() {
-
+  
+  React.useEffect(()=>{
+    axios.post("http://localhost:8000/api/v1/record/getPlacementData",{})
+    .then((res) => {
+        console.log("Sent");
+        console.log(res)
+    }).catch((err) => {
+        console.log(err);
+    })
+  },[])
+  //store sepereate datas in seperate states and just render them
   const [example,setExample]=React.useState({
     series: [{
       name: "&nbsp; Highest &nbsp; &nbsp;",
