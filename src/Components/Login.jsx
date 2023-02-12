@@ -12,7 +12,7 @@ function Login() {
   const [userName, setUserName] = React.useState();
   const [passWord, setPassWrod] = React.useState();
 
-  // This function is triggered when login button is clicked, basically this function posts 
+  // This function is triggered when login button is clicked, basically this function posts the data entered in the login form to the dedicated route, in response of posting of data backend sends/responds with a token which is then checked if and if token is found to be valid then only user is taken to further pages of the website otherwise is immediately logged out. 
 
   function handleClick() {
     // console.log(passWord);
@@ -41,9 +41,13 @@ function Login() {
     //     window.alert(err);
     //   });
   }
+
   function handleClick2() {
     window.location.href = "/register"
   }
+
+  // It returns the structure of this particular page
+
   return (
     <>
       <div

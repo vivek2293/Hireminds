@@ -22,7 +22,6 @@ function Selection() {
   //After token is set, that is after we validate that user is authorized, following useEffect will be triggered
   React.useEffect(() => {
     if (token) {
-      console.log(token);
       axios
         .post(
           "http://localhost:8000/api/v1/interaction/renderShortlistedCandidate",
@@ -70,27 +69,27 @@ function Selection() {
   function handleClick(props){
     const d = new Date();
     let year1 = d.getFullYear();
-      const val = document.getElementById(props).value
-      const tempData = {
-        id : props,
-        salary : val,
-        year : year1
-      }
-      ids.push(tempData);
+    const val = document.getElementById(props).value
+    const tempData = {
+      id: props,
+      salary: val,
+      year: year1
+    }
+    ids.push(tempData);
   }
 
   // after company completes loging data of all students, this function will be triggered and status of students will be changed in databases
   function handleComplete(){
     const notSelected = [];
-    for(var i in data){
-      if(data[i].isSelected == false){
-        notSelected.push({"id" : data[i]._id});
+    for (var i in data) {
+      if (data[i].isSelected == false) {
+        notSelected.push({ "id": data[i]._id });
       }
     }
     const finalData = {
-       selected : ids,
-       rejected: notSelected,
-       token : token
+      selected: ids,
+      rejected: notSelected,
+      token: token
     }
     console.log("hello")
     console.log(finalData)
@@ -143,7 +142,7 @@ function Selection() {
               ></input>
             </td>
             <td>
-              <button onClick={()=>handleClick(items._id)}>Submit</button>
+              <button onClick={() => handleClick(items._id)}>Submit</button>
             </td>
           </>
         )}
@@ -157,7 +156,6 @@ function Selection() {
 //As soon as we fetch data, we render it
   React.useEffect(() => {
     if (data) {
-      console.log(data);
       iterate();
     }
   }, [data]);

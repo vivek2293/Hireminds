@@ -33,7 +33,7 @@ export default function Company() {
         });
     }
 
-    // This function is triggered when submit button is clicked it basically maps the data which comes from the database and stores it, if the input company name matches the company name from database while mapping.
+    // This function is triggered when submit button is clicked it basically maps the data which comes from the database and stores it, if the input company name matches the company name from database while mapping and when it traverses through all of the data it stores the necessary information in a variable which is then used later on to.
 
     function handleChange1() {
         const elements = data.map((e) => {

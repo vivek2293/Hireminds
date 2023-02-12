@@ -20,6 +20,10 @@ export default function Form() {
         resumeLink: "NA"
     });
 
+    // Temporaray state to store the value of formdata's initial value
+
+    const [temp, setTemp] = React.useState(formdata);
+
     // Made states for drop down input field of form 
 
     const [gender, setGender] = React.useState("male");
@@ -61,18 +65,7 @@ export default function Form() {
     // This function is triggered when form is submitted and it basically empties all the fields of the form
 
     function fun() {
-        document.getElementById("formentry1").value = '';
-        document.getElementById("formentry2").value = '';
-        document.getElementById("formentry3").value = '';
-        document.getElementById("formentry4").value = '';
-        document.getElementById("formentry5").value = '';
-        document.getElementById("formentry6").value = '';
-        document.getElementById("formentry7").value = '';
-        document.getElementById("formentry8").value = '';
-        document.getElementById("formentry9").value = '';
-        document.getElementById("formentry10").value = '';
-        document.getElementById("formentry11").value = '';
-        return false;
+        setFormdata(temp);
     }
 
     // It returns the structure of this particular page
