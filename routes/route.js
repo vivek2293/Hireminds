@@ -31,7 +31,7 @@ router.post("/record/alldata", getAllrecords);
 router.post("/record/getPlacementData", getPlacementData);
 router.post("/record/getUpdateQuery", getUpdateQuery);
 router.patch("/record/updateUserData", updateUserData);
-router.delete("/record/deleteUser", deleteUser);
+router.post("/record/deleteUser", deleteUser);
 
 
 // Company data Routes

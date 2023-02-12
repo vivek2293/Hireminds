@@ -161,6 +161,7 @@ const updateUserData = async(req, res) => {
 }
 
 const deleteUser = async(req, res) => {
+  console.log(req.body)
   const { _id } = req.body;
   try{
     await studentData.findOneAndDelete({ _id });
