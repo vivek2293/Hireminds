@@ -13,15 +13,15 @@ const refreshToken = async (req,res,next) => {
         if(isCorrectToken === false) return res.sendStatus(401);
 
         const payload = jwt.decode(req.cookies.jwt, process.env.JWT_REFRESH_SECRET);
-        const club = payload.club;
+        const profile = payload.profile;
         
-        const accesstoken = jwt.sign({ club }, process.env.JWT_SECRET,{ expiresIn: "2m" });
-        const refreshtoken = jwt.sign({ club }, process.env.JWT_REFRESH_SECRET, { expiresIn: "7 day" });
+        const accesstoken = jwt.sign({ profile }, process.env.JWT_SECRET,{ expiresIn: "2m" });
+        const refreshtoken = jwt.sign({ profile }, process.env.JWT_REFRESH_SECRET, { expiresIn: "7 day" });
         req.token = accesstoken;
         res.clearCookie('jwt');
         res.cookie('jwt', refreshtoken, {
             httpOnly: true,
-            maxAge: 10*24*60*60*1000
+            maxAge: 7*24*60*60*1000
         });
         console.log("Token refreshed.")
         next();
