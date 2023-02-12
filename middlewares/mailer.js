@@ -1,6 +1,8 @@
 const nodemailer = require("nodemailer");
 
+// Middlewares to send mail
 const mail = async ( clientMail, subject, message) => {
+    // Create a transport
     const transporter = nodemailer.createTransport({
         host: "smtp-mail.outlook.com",
         secureConnection: false,
@@ -15,6 +17,7 @@ const mail = async ( clientMail, subject, message) => {
         from: process.env.MY_EMAIL_ACC,
     });
 
+    // Configure options
     const options = {
         from: process.env.MY_EMAIL_ACC,
         to: clientMail,
@@ -22,6 +25,7 @@ const mail = async ( clientMail, subject, message) => {
         text: `${message}`
     }
 
+    // Send mail
     transporter.sendMail(options, (err, info) => {
         if(err){
             console.log(err);

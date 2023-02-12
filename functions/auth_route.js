@@ -10,10 +10,13 @@ const getRequest = async (req, res) => {
 
 const register = async (req, res) => {
   const { instituteName, email, password, confirmPassword } = req.body;
+
+  // Verify if password and confirmPassword is correct
   if (password !== confirmPassword) {
     return res.status(403).json({ msg: "Invalid credentials." });
   }
 
+  // Encrypt the password
   const hashedpassword = await bcrypt.hash(password, 10);
   const profile = {
     instituteName,
@@ -29,11 +32,12 @@ const register = async (req, res) => {
       console.log(err);
     });
 
+  
   const accesstoken = jwt.sign({ profile }, process.env.JWT_SECRET, {
-    expiresIn: "2m",
+    expiresIn: "7d",
   });
   const refreshtoken = jwt.sign({ profile }, process.env.JWT_REFRESH_SECRET, {
-    expiresIn: "7 day",
+    expiresIn: "7d",
   });
 
   return res

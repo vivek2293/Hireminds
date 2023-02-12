@@ -1,6 +1,6 @@
 const verifyToken = (req,res,next) => {
     const bearerHeader = req.headers["authorization"];
-    // check if accesstoken and refreshtoken 
+    // check if accesstoken and refreshtoken are present
     if(typeof(bearerHeader) !== "undefined" && typeof(req.cookies.jwt) !== "undefined"){
         req.token = bearerHeader;
         next();

@@ -1,12 +1,12 @@
 const studentData = require("../model/student");
 
-// get whole student docs
+// Get whole student docs
 const getAllrecords = async (req, res) => {
   const data = await studentData.find({});
   res.send(data);
 };
 
-// create a student doc
+// Create a student doc
 const createStudentRecord = async (req, res) => {
   const {
     instituteName,
@@ -51,7 +51,7 @@ const createStudentRecord = async (req, res) => {
     });
 };
 
-// get Placement Data
+// Get Placement Data
 const getPlacementData = async (req, res) => {
   // All students who are selected
   const query = studentData.find({ isSelected: true });
