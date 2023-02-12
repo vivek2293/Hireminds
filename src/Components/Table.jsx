@@ -104,18 +104,18 @@ export default function Table() {
     }
   }, [elements]);
   return (
-    <section  className='d-flex justify-content-center'>
-      <section className="card p-3" style={{width : 'fit-content', height: 'fit-content'}}>
+    <section className='d-flex justify-content-center'>
+      <section className="card p-3" style={{ width: 'fit-content', height: 'fit-content' }}>
         {setShow && (
-          <div className="my-4" style={{width:'30vw'}}>
-          <h4 style={{width:'30vw'}}>Student Data:</h4>
+          <div className="my-4" style={{ width: '30vw' }}>
+            <h4 style={{ width: '30vw' }}>Student Data:</h4>
             <p className="my-2">Please select year</p>
             <div className="d-flex justify-content-center align-items-center"></div>
             <select
               className="form-select p-1"
               aria-label="Default select example"
               onChange={(event) => handleClick(event.target.value)}
-              style={{width:'30vw'}}
+              style={{ width: '30vw' }}
             >
               <option value="default" key="defaultYear">
                 Select Year
@@ -125,14 +125,14 @@ export default function Table() {
           </div>
         )}
         {showBranch && (
-          <div className="my-3" style={{width:'30vw'}}>
-            <p className="my-2" style={{width:'30vw'}}>Please select Branch</p>
+          <div className="my-3" style={{ width: '30vw' }}>
+            <p className="my-2" style={{ width: '30vw' }}>Please select Branch</p>
             <div className="d-flex justify-content-center align-items-center"></div>
             <select
               className="form-select p-1"
               aria-label="Default select example"
               onChange={(event) => handleClick2(event.target.value)}
-              style={{width:'30vw'}}
+              style={{ width: '30vw' }}
             >
               <option key="selectBranch">Select Branch</option>
               {branchElements}

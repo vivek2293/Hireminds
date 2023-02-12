@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOut, faUniversity } from "@fortawesome/free-solid-svg-icons";
 import Table from "./Table";
 import Form from "./form";
-import Graph from "./Graph";
+import Graph from "./PlacementStats.jsx";
 import Company from "./Company";
 import AddCompany from "./AddCompany";
 import Filter from "./Filter";
