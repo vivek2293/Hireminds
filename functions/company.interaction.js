@@ -137,6 +137,7 @@ const renderEligibleCandidate = async (req, res) => {
 // Function that gets triggered when company shorlists the candidate for the further rounds
 const shortlistedCandidate = async (req, res) => {
   const ids_list = req.body.ids;
+  const rejected_list = req.body.rejected;
   const { time, date, token } = req.body;
 
   // verify authentication of the token
@@ -185,6 +186,21 @@ const shortlistedCandidate = async (req, res) => {
       // send new generated token
       return res.status(200).json({ token: accesstoken });
     })
+    .catch((err) => {
+      return res.status(400).json({ msg: err });
+    });
+
+  // Revert status of all non-shortlisted students
+  const query1 = await studentData.find().where("_id").in(rejected_list).exec();
+  await studentData
+    .updateMany(
+      { query1 },
+      {
+        currentStatus: "NA",
+        interviewDate: "NA",
+        interviewTiming: "NA",
+      }
+    )
     .catch((err) => {
       return res.status(400).json({ msg: err });
     });
