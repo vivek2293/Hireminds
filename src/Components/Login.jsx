@@ -6,8 +6,13 @@ import "./CSS/Login.css"
 import axios from "axios";
 
 function Login() {
+
+  // Made the states for password, username in the form 
+
   const [userName, setUserName] = React.useState();
   const [passWord, setPassWrod] = React.useState();
+
+  // This function is triggered when login button is clicked, basically this function posts 
 
   function handleClick() {
     // console.log(passWord);
@@ -60,8 +65,6 @@ function Login() {
               <Lottie animationData={hello} id="heelo" />
               <p className="text-glad">Glad to have you back</p>
             </div>
-            {/* <h3>Welcome back</h3>
-            <p className="my-2">Please enter your details</p> */}
             <input
               type="email"
               className="my-2 p-2"
@@ -92,7 +95,7 @@ function Login() {
 
             <div className="d-flex flex-row align-items-center justify-content-center pb-4 mb-4">
               <p className="mx-1">Don't have an account?</p>
-              <a className="signup-link" style={{textDecoration:'none', color:'#797CCE'}}>Sign Up</a>
+              <a className="signup-link" style={{ textDecoration: 'none', color: '#797CCE' }}>Sign Up</a>
             </div>
           </div>
         </div>

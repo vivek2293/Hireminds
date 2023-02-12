@@ -8,6 +8,9 @@ import "./CSS/Homepage.css";
 import Footer from "./Footer";
 
 function Homepage() {
+
+  // It returns the structure of this particular page
+
   return (
     <>
       <section style={{ width: "100vw" }} className="row" id="container">

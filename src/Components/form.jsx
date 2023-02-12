@@ -25,6 +25,8 @@ export default function Form() {
     const [gender, setGender] = React.useState("male");
     const [degree, setDegree] = React.useState("BTech");
 
+    // This function handles all the changes in the input field i.e while entering company name, event.target.name and event.target.value helps specifying that in which field value has been updated.
+
     function handleChange(event) {
         setFormdata((prevdata) => {
             return {
@@ -34,14 +36,13 @@ export default function Form() {
         });
     }
 
+    // This function posts the data provided in the input fields to the particular route provided below and apart from posting the data it is also typecasting variables, in the function below if data entry is year or age it is converting it into number whereas float when it CGPA    
+
     function saveData() {
         const data = { ...formdata, gender: gender, instituteName: "ABCD" };
-        console.log("hello");
         for (var i in data) {
             if (i == "yearOfPassingOut" || i == "age") {
                 data[i] = Number(data[i]);
-                console.log("came");
-                // console.log(i);
             }
             else if (i == "CGPA") {
                 data[i] = parseFloat(data[i]);
@@ -56,9 +57,8 @@ export default function Form() {
             })
     }
 
-    console.log(gender);
-    console.log(formdata);
-    console.log(degree);
+    // This function is triggered when form is submitted and it basically empties all the fields of the form
+
     function fun() {
         document.getElementById("formentry1").value = '';
         document.getElementById("formentry2").value = '';
@@ -73,6 +73,8 @@ export default function Form() {
         document.getElementById("formentry11").value = '';
         return false;
     }
+
+    // It returns the structure of this particular page
 
     return (
         <>

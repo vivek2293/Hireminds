@@ -14,7 +14,7 @@ import Update from "./Update";
 
 export default function Dashboard() {
 
-  //An arryay of object is created below as these states stores the value and on the basis of these states only conditional rendering takes place as on dashboard everything is rendered conditionally apart from left div 
+  //An array of object is created below as these states stores the value and on the basis of these states only conditional rendering takes place as on dashboard everything is rendered conditionally apart from left div 
 
   const [show, setShow] = React.useState({
     Data: false,

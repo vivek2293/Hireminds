@@ -13,7 +13,7 @@ export default function Filter() {
         email: ""
     })
 
-    // This function posts the data provided in the input fields to particular route provided below, 
+    // This function posts the data provided in the input fields to the particular route provided below.
 
     function saveData() {
         const data = { ...formdata };
