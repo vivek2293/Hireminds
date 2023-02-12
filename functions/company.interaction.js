@@ -198,7 +198,7 @@ const shortlistedCandidate = async (req, res) => {
     }
 
     // Delete the doc from temporary collection (Collection with Auto-expire docs)
-    await eligibleCandidates.deleteOne({ _id: payload.id });
+    await eligibleCandidates.deleteOne({ _id: payload._id });
   } catch (err) {
     return res.status(400).json({ msg: err });
   }
