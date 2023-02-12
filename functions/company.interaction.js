@@ -154,7 +154,7 @@ const renderEligibleCandidate = async (req, res) => {
 const shortlistedCandidate = async (req, res) => {
   const ids_list = req.body.ids;
   const rejected_list = req.body.rejected;
-  const { time, date, token } = req.body;
+  const { date, token } = req.body;
 
   // verify authentication of the token
   jwt.verify(token, process.env.JWT_SECRET, (err) => {
@@ -183,7 +183,7 @@ const shortlistedCandidate = async (req, res) => {
   });
 
   try {
-    // Update status of all Students with the interview date and time
+    // Update status of all Students with the interview date 
     const query = await studentData.find().where("_id").in(ids_list).exec();
     for (let i = 0; i < query.length; i++) {
       await studentData.updateOne(
@@ -192,7 +192,6 @@ const shortlistedCandidate = async (req, res) => {
           $set: {
             currentStatus: "Shortlisted",
             interviewDate: date,
-            interviewTiming: time,
           },
         }
       );
@@ -211,7 +210,6 @@ const shortlistedCandidate = async (req, res) => {
           $set: {
             currentStatus: "NA",
             interviewDate: "NA",
-            interviewTiming: "NA",
           },
         }
       );

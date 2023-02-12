@@ -120,7 +120,6 @@ const updateUserData = async(req, res) => {
     isSelected,
     currentStatus,
     selectedBy,
-    interviewTiming,
     interviewDate,
     CTC_offered,
     selectionYear
@@ -146,7 +145,6 @@ const updateUserData = async(req, res) => {
       isSelected,
       currentStatus,
       selectedBy,
-      interviewTiming,
       interviewDate,
       CTC_offered,
       selectionYear
