@@ -89,13 +89,13 @@ export default function Update() {
             data.resumeLink = "NA"
         }
         console.log(data);
-        // axios.patch("http://localhost:8000/api/v1/record/updateUserData", data)
-        // .then((res) => {
-        //     console.log(res);
+        axios.patch("http://localhost:8000/api/v1/record/updateUserData", data)
+        .then((res) => {
+            console.log(res);
 
-        // }).catch((err) => {
-        //     console.log(err);
-        // })
+        }).catch((err) => {
+            console.log(err);
+        })
 
     }
     function handleChange1(props,value){
