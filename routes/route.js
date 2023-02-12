@@ -5,6 +5,7 @@ const {
   getAllrecords,
   createStudentRecord,
   getPlacementData,
+  getUpdateQuery,
 } = require("../functions/user.operation");
 
 const {
@@ -26,6 +27,7 @@ const {
 router.post("/record/createData", createStudentRecord);
 router.post("/record/alldata", getAllrecords);
 router.post("/record/getPlacementData", getPlacementData);
+router.post("/record/getUpdateQuery", getUpdateQuery);
 
 
 // Company data Routes

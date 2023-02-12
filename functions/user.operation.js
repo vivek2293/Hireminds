@@ -87,4 +87,22 @@ const getPlacementData = async (req, res) => {
   });
 };
 
-module.exports = { getAllrecords, createStudentRecord, getPlacementData };
+const getUpdateQuery = async (req, res) => {
+  const { rollNo, name, branch, yearOfPassingOut } = req.body;
+  await studentData
+    .find({ rollNo, name, branch, yearOfPassingOut })
+    .exec()
+    .then((info) => {
+      return res.status(200).json(info);
+    })
+    .catch((err) => {
+      return res.status(400).json(err);
+    });
+};
+
+module.exports = {
+  getAllrecords,
+  createStudentRecord,
+  getPlacementData,
+  getUpdateQuery,
+};
