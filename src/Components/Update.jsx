@@ -2,9 +2,16 @@ import React from "react";
 import axios from "axios";
 import "./CSS/form.css";
 
-export default function Form() {
+export default function Update() {
 
     const [formdata, setFormdata] = React.useState({
+        rollNo: "",
+        name: "",
+        branch: "",
+        yearOfPassingOut: ""
+    });
+
+    const [formdata1, setFormdata1] = React.useState({
         rollNo: "",
         name: "",
         contactNo: "",
@@ -17,9 +24,12 @@ export default function Form() {
         github: "NA",
         resumeLink: "NA"
     });
-
     const [gender, setGender] = React.useState("male");
     const [degree, setDegree] = React.useState("BTech");
+    const [show1,setShow1] = React.useState(true);
+    const [show2,setShow2] = React.useState(false);
+
+
 
     function handleChange(event) {
         setFormdata((prevdata) => {
@@ -30,44 +40,35 @@ export default function Form() {
         });
     }
 
-    function saveData() {
-        const data = { ...formdata, gender: gender, instituteName: "ABCD" };
-        console.log("hello");
-        for(var i in data){
-        if(i=="yearOfPassingOut" || i == "age"){
-            data[i] = Number(data[i]);
-            console.log("came");
-            // console.log(i);
-        }
-        else if(i == "CGPA"){
-            data[i] = parseFloat(data[i]);
-        }
-        }
+    function saveData1() {
+        const data = { ...formdata };
         console.log(data);
-        axios.post("http://localhost:8000/api/v1/record/createData", data)
-            .then(() => {
-                console.log("Sent");
-            }).catch((err) => {
-                console.log(err);
-            })
+        // axios.post("http://localhost:8000/api/v1/record/createData", data)
+        //     .then(() => {
+        //         console.log("Sent");
+        //     }).catch((err) => {
+        //         console.log(err);
+        //     })
+        setShow1(false);
+        setShow2(true);
+    }
+    function saveData2(){
+            //axios post this saved data;
     }
 
-    console.log(gender);
-    console.log(formdata);
-    console.log(degree);
 
     return (
         <>
             <section className="" style={{ width: "85vw" }}>
-                <div className="form-div d-flex justify-content-center ">
-                    <div className="card col-md-5 p-2 shadow p-3 mb-5 bg-white rounded w-75">
+                {show1 && <div className="form-div d-flex justify-content-center ">
+                    <div className="card col-md-5 shadow p-3 mb-5 bg-white rounded w-75">
                         <div className="d-flex justify-content-center pt-2 pb-2 mb-2 mt-1">
                             <h4>Student Details</h4>
                         </div>
                         <form
                             onSubmit={(e) => {
                                 e.preventDefault();
-                                saveData();
+                                saveData1();
                             }}
                         >
                             <div className="form-group row m-2">
@@ -112,26 +113,6 @@ export default function Form() {
                                 </div>
                             </div>
 
-                            <div className="form-group row m-2">
-                                <label
-                                    htmlFor="colFormLabelSm"
-                                    className="col-md-4 col-form-label col-form-label-sm ps-4 required"
-                                >
-                                    Contact No.
-                                </label>
-                                <div className="col-md-5">
-                                    <input
-                                        type="tel"
-                                        name="contactNo"
-                                        value={formdata.contactNo}
-                                        className="form-control form-control-sm px-1"
-                                        id="colFormLabelSm"
-                                        onChange={handleChange}
-                                        placeholder="Enter contact Number"
-                                        required
-                                    />
-                                </div>
-                            </div>
 
                             <div className="form-group row m-2">
                                 <label
@@ -175,6 +156,107 @@ export default function Form() {
                                 </div>
                             </div>
 
+
+                            <div className="btn-div d-flex justify-content-center" id="btn-div">
+                                <button type="submit" className="btn btn-custom1 p-1 mt-3">Submit</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>}
+                {show2&& (
+                    <div className="form-div d-flex justify-content-center ">
+                    <div className="card col-md-5 shadow p-3 mb-5 bg-white rounded w-75">
+                        <div className="d-flex justify-content-center pt-2 pb-2 mb-2 mt-1">
+                            <h4>Student Details</h4>
+                        </div>
+                        <form
+                            onSubmit={(e) => {
+                                e.preventDefault();
+                                saveData2();
+                            }}
+                        >
+
+                            <div className="form-group row m-2">
+                                <label
+                                    htmlFor="colFormLabelSm"
+                                    className="col-md-4 col-form-label col-form-label-sm ps-4 required"
+                                >
+                                    Student Name
+                                </label>
+                                <div className="col-md-5">
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        className="form-control form-control-sm px-1"
+                                        id="colFormLabelSm"
+                                        onChange={handleChange}
+                                        placeholder="Enter student name"
+                                        required
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="form-group row m-2">
+                                <label
+                                    htmlFor="colFormLabelSm"
+                                    className="col-md-4 col-form-label col-form-label-sm ps-4 required"
+                                >
+                                    Contact No.
+                                </label>
+                                <div className="col-md-5">
+                                    <input
+                                        type="tel"
+                                        name="contactNo"
+                                        className="form-control form-control-sm px-1"
+                                        id="colFormLabelSm"
+                                        onChange={handleChange}
+                                        placeholder="Enter contact Number"
+                                        required
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="form-group row m-2">
+                                <label
+                                    htmlFor="colFormLabelSm"
+                                    className="col-md-4 col-form-label col-form-label-sm ps-4 required"
+                                >
+                                    Branch
+                                </label>
+                                <div className="col-md-5">
+                                    <input
+                                        type="text"
+                                        name="branch"
+                                        className="form-control form-control-sm px-1"
+                                        id="colFormLabelSm"
+                                        onChange={handleChange}
+                                        placeholder="Enter branch name"
+                                        required
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="form-group row m-2">
+                                <label
+                                    htmlFor="colFormLabelSm"
+                                    className="col-md-4 col-form-label col-form-label-sm ps-4 required"
+                                >
+                                    Year of Graduation
+                                </label>
+                                <div className="col-md-5">
+                                    <input
+                                        type="number"
+                                        name="yearOfPassingOut"
+                                        className="form-control form-control-sm px-1"
+                                        id="colFormLabelSm"
+                                        onChange={handleChange}
+                                        placeholder="Enter graduation year"
+                                        required
+                                    />
+                                </div>
+                            </div>
+
                             <div className="form-group row m-2">
                                 <label
                                     htmlFor="colFormLabelSm"
@@ -207,7 +289,6 @@ export default function Form() {
                                         type="number"
                                         step="0.01"
                                         name="CGPA"
-                                        value={formdata.CGPA}
                                         className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
@@ -226,9 +307,7 @@ export default function Form() {
                                 <div className="col-md-5">
                                     <input
                                         type="number"
-                                        // step="0.01"
                                         name="age"
-                                        // value={formdata.age}
                                         className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
@@ -249,7 +328,6 @@ export default function Form() {
                                     <input
                                         type="email"
                                         name="email"
-                                        value={formdata.email}
                                         className="form-control form-control-sm px-1"
                                         id="colFormLabelSm"
                                         onChange={handleChange}
@@ -338,12 +416,14 @@ export default function Form() {
                             </div>
 
                             <div className="btn-div d-flex justify-content-center" id="btn-div">
-                                <button type="submit" className="btn btn-custom1 p-1 mt-2">Submit</button>
+                                <button type="submit" className="btn btn-custom1 p-1 mt-3">Submit</button>
                             </div>
 
                         </form>
                     </div>
                 </div>
+                )
+                }
             </section>
         </>
     )

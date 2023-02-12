@@ -69,16 +69,30 @@ function Selection() {
     const notSelected = [];
     for(var i in data){
       if(data[i].isSelected == false){
-        notSelected.push(data[i]._id);
+        notSelected.push({"id" : data[i]._id});
       }
     }
+
     
     const finalData = {
        selected : ids,
        rejected: notSelected,
+       token : token
     }
     console.log("hello")
     console.log(finalData)
+    axios
+        .post(
+          "http://localhost:8000/api/v1/interaction/selectedCandidate",
+           finalData 
+        )
+        .then((res) => {
+          console.log("success");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
 
   }
   function iterate() {
