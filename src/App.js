@@ -9,6 +9,7 @@ import Shortlisting from './Components/Shortlisting';
 import Login from './Components/Login';
 import Selection from './Components/Selection';
 import RegisterPage2 from './Components/Signup';
+import Testing from './Components/testing';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
           <Route exact path="/shortlisted" element={<Shortlisting />} /> 
           <Route exact path="/login" element={<Login />} /> 
           <Route exact path="/selection" element={<Selection />} /> 
-          <Route exact path="/register" element={<RegisterPage2 />} /> 
+          <Route exact path="/register" element={<RegisterPage2 />} />  
+          <Route exact path="/testing" element={<Testing />} />  
         </Routes>
       </BrowserRouter>
     </>

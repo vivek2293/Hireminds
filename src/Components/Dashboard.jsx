@@ -12,6 +12,7 @@ import PastRecruiter from "./PastRecruiter";
 import logo from "./Assets/Logo2.png";
 import Update from "./Update";
 import CheckStatus from "./CheckStatus";
+import Testing from "./testing";
 
 export default function Dashboard() {
 
@@ -26,6 +27,7 @@ export default function Dashboard() {
     CompanyStats: false,
     CompanyRegister: false,
     update: false,
+    broadcast: false,
     checkStatus : false,
   });
   function logout() {
@@ -50,6 +52,7 @@ export default function Dashboard() {
       CompanyStats: false,
       CompanyRegister: false,
       update: false,
+      broadcast: false,
       checkStatus: false,
     };
     if ("Data" != props) {
@@ -91,6 +94,11 @@ export default function Dashboard() {
       tempShow.update = false;
     } else {
       tempShow.update = true;
+    }
+    if(props != "broadcast") {
+      tempShow.broadcast = false;
+    } else {
+      tempShow.broadcast = true;
     }
     if (props != "checkStatus") {
       tempShow.checkStatus = false;
@@ -178,6 +186,14 @@ export default function Dashboard() {
             <button
               className="diff-btn my-3 p-1"
               style={{ borderRadius: "20px" }}
+              name="broadcast"
+              onClick={(e) => handleClick(e.target.name)}
+            >
+              Broadcast
+            </button>
+            <button
+              className="diff-btn my-3 p-1"
+              style={{ borderRadius: "20px" }}
               name="checkStatus"
               onClick={(e) => handleClick(e.target.name)}
             >
@@ -221,7 +237,7 @@ export default function Dashboard() {
             {show.FilterCandidates && <Filter />}
             {show.PastRecuriters && <PastRecruiter />}
             {show.update && <Update />}
-            {show.checkStatus && <CheckStatus />}
+            {show.broadcast && <Testing />}            {show.checkStatus && <CheckStatus />}
 
           </div>
         </div>
