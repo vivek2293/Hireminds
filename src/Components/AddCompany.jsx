@@ -66,7 +66,6 @@ function AddCompany() {
                                         name="companyName"
                                         value={formdata.name}
                                         className="form-control form-control-sm p-1"
-                                        id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter student name"
                                         required
@@ -88,7 +87,6 @@ function AddCompany() {
                                         name="location"
                                         value={formdata.branch}
                                         className="form-control form-control-sm p-1"
-                                        id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter Location of company"
                                         required
@@ -112,7 +110,6 @@ function AddCompany() {
                                         name="email"
                                         value={formdata.email}
                                         className="form-control form-control-sm p-1"
-                                        id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter Email ID"
                                         required
@@ -132,7 +129,6 @@ function AddCompany() {
                                         type="url"
                                         name="websiteUrl"
                                         className="form-control form-control-sm p-1"
-                                        id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter Company Website url"
                                     />

@@ -68,7 +68,6 @@ export default function Filter() {
                                         name="companyName"
                                         value={formdata.companyName}
                                         className="form-control form-control-sm p-1"
-                                        id="colFormLabelSm"
                                         placeholder="Enter Company Name"
                                         onChange={handleChange}
                                         required
@@ -90,7 +89,6 @@ export default function Filter() {
                                         step="0.01"
                                         value={formdata.CGPA}
                                         className="form-control form-control-sm p-1"
-                                        id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter CGPA"
                                         required
@@ -111,7 +109,6 @@ export default function Filter() {
                                         name="year"
                                         value={formdata.year}
                                         className="form-control form-control-sm p-1"
-                                        id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter Year"
                                         required
@@ -132,7 +129,6 @@ export default function Filter() {
                                         name="age"
                                         value={formdata.age}
                                         className="form-control form-control-sm p-1"
-                                        id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter Age"
                                         required
@@ -153,7 +149,6 @@ export default function Filter() {
                                         name="email"
                                         value={formdata.email}
                                         className="form-control form-control-sm p-1"
-                                        id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter Email"
                                         required

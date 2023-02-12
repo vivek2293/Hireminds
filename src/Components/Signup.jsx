@@ -3,32 +3,36 @@ import "./CSS/Signup.css"
 import axios from "axios";
 import Lottie from "lottie-react";
 import Signup from "./Assets/signup1.json";
+import host from "../host"
 
 function RegisterPage2() {
 
   // Made states for all the entries in the form
 
   const [userEmail, setUserEmail] = React.useState();
-  const [passWord, setPassWrod] = React.useState();
+  const [passWord, setPassWord] = React.useState();
   const [confirmPassword, setConfirmPassword] = React.useState();
   const [institute, setInstitute] = React.useState();
 
   function handleClick() {
-    // if(passWord === confirmPassword)
-    // {
-    //     axios.post(host + "/auth/create", {
-    //         email: userEmail,
-    //         password: passWord,
-    //         confirmPassword: confirmPassword,
-    //     },{withCredentials : true}).then((res)=>{
-    //         window.alert("success")
-    //     }).catch((err)=>{
-    //         window.alert(err);
-    //     })
-    // }
-    // else{
-    //     window.alert("Password and Confirm Password does not match")
-    // }
+    if(passWord === confirmPassword)
+    {
+        axios.post(host + "/auth/create", {
+            instituteName: institute,
+            email: userEmail,
+            password: passWord,
+            confirmPassword: confirmPassword,
+        },{withCredentials : true}).then((res)=>{
+          console.log(res)
+            window.alert("success")
+        }).catch((err)=>{
+          console.log(err)
+            window.alert(err);
+        })
+    }
+    else{
+        window.alert("Password and Confirm Password does not match")
+    }
 
   }
 
@@ -67,7 +71,7 @@ function RegisterPage2() {
               type="Password"
               className="mb-1 p-2"
               style={{ height: "5vh", borderRadius: "6px" }}
-              onChange={(e) => setPassWrod(e.target.value)}
+              onChange={(e) => setPassWord(e.target.value)}
               required
             />
             <div className="my-1">Confirm Password:</div>
@@ -94,7 +98,7 @@ function RegisterPage2() {
 
             <div className="d-flex flex-row align-items-center justify-content-center pb-4 my-3">
               <p className="">Already have an account?</p>
-              <p className="mx-2 login-link" style={{ textDecoration: 'none', color: '#797CCE' }} onClick={window.location.href = "/login"}>Login</p>
+              <p className="mx-2 login-link" style={{ textDecoration: 'none', color: '#797CCE' }} onClick={() => window.location.href = "/login"}>Login</p>
             </div>
           </div>
         </div>
