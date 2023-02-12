@@ -69,7 +69,7 @@ function Graph() {
 
   return (
     <>
-      <h1>graph</h1>
+      <h3 className='ms-3'>Past Year's Placement Statistics:</h3>
 
       <ReactApexChart 
       options={example.options} 
