@@ -293,6 +293,7 @@ const selectedCandidate = async (req, res) => {
       numberOfStudents = 0,
       time = 0,
       maxi = 0;
+
     // Update all selected student status
     for (let i = 0; i < selected.length; i++) {
       (total += parseInt(selected[i].salary)),
@@ -314,7 +315,8 @@ const selectedCandidate = async (req, res) => {
         },
         { new: true }
       );
-      
+
+      // Maintain company database
       const data = await companyData.findOne({ companyName }).exec();
       let ok = false;
       for (let i = 0; i < data.records.length; i++) {
