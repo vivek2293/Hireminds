@@ -89,15 +89,16 @@ const getPlacementData = async (req, res) => {
 
 const getUpdateQuery = async (req, res) => {
   const { rollNo, name, branch, yearOfPassingOut } = req.body;
-  await studentData
-    .find({ rollNo, name, branch, yearOfPassingOut })
-    .exec()
-    .then((info) => {
-      return res.status(200).json(info);
-    })
-    .catch((err) => {
-      return res.status(400).json(err);
-    });
+  const doc = await studentData
+    .findOne({ rollNo, name, branch, yearOfPassingOut })
+    .exec();
+
+
+    if(!doc){
+      return res.status(400).json({ "msg" : "User not found."})
+    }
+
+    return res.status(200).json( doc );
 };
 
 const updateUserData = async(req, res) => {
@@ -126,33 +127,37 @@ const updateUserData = async(req, res) => {
   } = req.body;
   const { _id } = req.body;
 
-  await studentData.findByIdAndUpdate({ _id }, {
-    instituteName,
-    rollNo,
-    name,
-    branch,
-    yearOfPassingOut,
-    gender,
-    CGPA,
-    age,
-    email,
-    contactNo,
-    degree,
-    linkedIn,
-    github,
-    resumeLink,
-    isSelected,
-    currentStatus,
-    selectedBy,
-    interviewTiming,
-    interviewDate,
-    CTC_offered,
-    selectionYear
-  }, (err) => {
-    if(err) return res.status(400).json({err})
-    else return res.status(200).json({ "msg": "Successfully Update."})
-  })
-  .exec();
+  try{
+    await studentData.findByIdAndUpdate({ _id }, {
+      instituteName,
+      rollNo,
+      name,
+      branch,
+      yearOfPassingOut,
+      gender,
+      CGPA,
+      age,
+      email,
+      contactNo,
+      degree,
+      linkedIn,
+      github,
+      resumeLink,
+      isSelected,
+      currentStatus,
+      selectedBy,
+      interviewTiming,
+      interviewDate,
+      CTC_offered,
+      selectionYear
+    });
+  
+    return res.status(200).json({ "msg": "Update Successful." });
+  }
+  catch(err){
+    return res.status(400).json(err);
+  }
+  
 }
 
 const deleteUser = async(req, res) => {
