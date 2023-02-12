@@ -24,7 +24,7 @@ function Homepage() {
             className=" col-md-12 d-flex justify-content-center align-items-start"
           >
             <div className="col-md-6" id="logo-div">
-              <img src={logo} style={{ height: "20vh" }} className="mt-2"></img>
+              <img src={logo} style={{ height: "15vh" }} className="mt-2"></img>
             </div>
             <div className="col-md-6" id="login-div">
               <div

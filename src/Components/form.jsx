@@ -57,7 +57,7 @@ export default function Form() {
         <>
             <section className="" style={{ width: "85vw" }}>
                 <div className="form-div d-flex justify-content-center ">
-                    <div className="card col-md-5 p-2 shadow p-3 mb-5 bg-white rounded w-75">
+                    <div className="card col-md-5 shadow p-3 mb-5 bg-white rounded w-75">
                         <div className="d-flex justify-content-center pt-2 pb-2 mb-2 mt-1">
                             <h4>Student Details</h4>
                         </div>

@@ -31,8 +31,8 @@ export default function Company() {
                 return (
                     <tr>
                         <td>{e.year}</td>
-                        <td className="d-flex justify-content-center">{e.highest}</td>
-                        <td><center>{e.avg}</center></td>
+                        <td >{e.highest}</td>
+                        <td>{e.avg}</td>
                     </tr>
 
                 );
@@ -48,8 +48,8 @@ export default function Company() {
     }, [elements1]);
 
     return (
-        <>
-            <div className="card col-md-12 p-2 shadow p-3 mb-5 bg-white rounded">
+        <section className="d-flex justify-content-center">
+            <div className="card col-md-12 p-2 shadow p-3 mb-5 bg-white rounded" style={{width : 'fit-content'}}>
                 <div className="d-flex justify-content-center align-items-center" style={{ flexDirection: "column" }}>
                     <div className="heading-div d-flex justify-content-center pt-2 pb-2 my-1">
                         <h4>Statistics of the Visited Companies</h4>
@@ -75,7 +75,7 @@ export default function Company() {
                             <thead>
                                 <tr>
                                     <th scope="col">Year</th>
-                                    <th scope="col" className="d-flex justify-content-center">Highest</th>
+                                    <th scope="col" >Highest</th>
                                     <th scope="col"><center>Average</center></th>
                                 </tr>
                             </thead>
@@ -84,6 +84,6 @@ export default function Company() {
                     )}
                 </div>
             </div>
-        </>
+        </section>
     );
 }
