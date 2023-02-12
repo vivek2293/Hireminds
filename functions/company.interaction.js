@@ -10,8 +10,8 @@ const eligibleCandidateslist = async (req, res) => {
 
   // verify if company exists
   const doc = await companyData.findOne({ companyName }).exec();
-  if(!doc){
-    return res.status(400).json({ "msg": "Company not found."})
+  if (!doc) {
+    return res.status(400).json({ msg: "Company not found." });
   }
 
   const record = req.body.record;
@@ -74,7 +74,6 @@ const createListOfEligibleCandidates = async (arr, companyName, email) => {
   console.log(message);
   // mail("rutwik2514@gmail.com", subject, message);
 };
-
 
 // Initiate the process of campus placement
 const getEligibileCandidateList = async (req, res) => {
@@ -162,7 +161,6 @@ const shortlistedCandidate = async (req, res) => {
     if (err) return res.status(401);
   });
 
-  
   // extract payload from jwt
   const payload = jwt.decode(token, process.env.JWT_SECRET);
   const companyName = payload.companyName;
@@ -186,15 +184,37 @@ const shortlistedCandidate = async (req, res) => {
 
   try {
     // Update status of all Students with the interview date and time
-    const query = await studentData.find().where('_id').in(ids_list).exec();
-    for(let i = 0;i < query.length;i++){
-      await studentData.updateOne( { _id: query[i]._id },{$set: { currentStatus: "Shortlisted", interviewDate: date, interviewTiming: time }})
+    const query = await studentData.find().where("_id").in(ids_list).exec();
+    for (let i = 0; i < query.length; i++) {
+      await studentData.updateOne(
+        { _id: query[i]._id },
+        {
+          $set: {
+            currentStatus: "Shortlisted",
+            interviewDate: date,
+            interviewTiming: time,
+          },
+        }
+      );
     }
 
     // Revert status of all non-shortlisted students
-    const query1 = await studentData.find().where("_id").in(rejected_list).exec();
-    for(let i = 0;i < query1.length;i++){
-      const doc = await studentData.updateOne( { _id: query1[i]._id },{$set: { currentStatus: "NA", interviewDate: "NA", interviewTiming: "NA" }})
+    const query1 = await studentData
+      .find()
+      .where("_id")
+      .in(rejected_list)
+      .exec();
+    for (let i = 0; i < query1.length; i++) {
+      const doc = await studentData.updateOne(
+        { _id: query1[i]._id },
+        {
+          $set: {
+            currentStatus: "NA",
+            interviewDate: "NA",
+            interviewTiming: "NA",
+          },
+        }
+      );
     }
 
     // Delete the doc from temporary collection (Collection with Auto-expire docs)
@@ -202,20 +222,20 @@ const shortlistedCandidate = async (req, res) => {
   } catch (err) {
     return res.status(400).json({ msg: err });
   }
-  
-    const data = {
-      companyName: payload.companyName,
-      email: payload.email,
-      _id: record._id,
-    };
 
-    // generate new jwt token for authorisation purposes
-    const accesstoken = jwt.sign(data, process.env.JWT_SECRET, {
-      expiresIn: "15d",
-    });
+  const data = {
+    companyName: payload.companyName,
+    email: payload.email,
+    _id: record._id,
+  };
 
-    // send new generated token
-    return res.status(200).json({ token: accesstoken });
+  // generate new jwt token for authorisation purposes
+  const accesstoken = jwt.sign(data, process.env.JWT_SECRET, {
+    expiresIn: "15d",
+  });
+
+  // send new generated token
+  return res.status(200).json({ token: accesstoken });
 };
 
 // Authenticate with the jwt token and if correct then send relevant student data
@@ -254,6 +274,7 @@ const renderShortlistedCandidate = async (req, res) => {
 
 // Get info about all selected and rejected students
 const selectedCandidate = async (req, res) => {
+  console.log(req.body);
   const selected = req.body.selected;
   const rejected = req.body.rejected;
   const token = req.body.token;
@@ -268,8 +289,16 @@ const selectedCandidate = async (req, res) => {
   const companyName = payload.companyName;
   const temp_id = payload._id;
   try {
+    let total = 0,
+      numberOfStudents = 0,
+      time = 0,
+      maxi = 0;
     // Update all selected student status
     for (let i = 0; i < selected.length; i++) {
+      (total += parseInt(selected[i].salary)),
+        (numberOfStudents += 1),
+        (time = selected[i].year),
+        (maxi = Math.max(maxi, selected[i].salary));
       const query = await studentData.findById(selected[i].id).exec();
       const id = query._id;
       const record = await studentData.findByIdAndUpdate(
@@ -285,6 +314,33 @@ const selectedCandidate = async (req, res) => {
         },
         { new: true }
       );
+      
+      const data = await companyData.findOne({ companyName }).exec();
+      let ok = false;
+      for (let i = 0; i < data.records.length; i++) {
+        console.log(parseInt(data.records[i].year) === parseInt(time));
+        if (parseInt(data.records[i].year) === parseInt(time)) {
+          ok = true;
+          data.records[i].totalCTC += total;
+          data.records[i].numberOfStudents += numberOfStudents;
+          data.records[i].Maximum = Math.max(maxi, data.records[i].Maximum);
+          break;
+        }
+      }
+
+      if (ok === false) {
+        const pkg = {
+          year: time,
+          totalCTC: total,
+          numberOfStudents,
+          Maximum: maxi,
+        };
+        console.log(pkg);
+        data.records.push(pkg);
+      }
+      await data.save();
+      const data1 = await companyData.findOne({ companyName }).exec();
+      console.log(data1);
     }
 
     // Update all rejected student status
@@ -307,6 +363,7 @@ const selectedCandidate = async (req, res) => {
     // Delete the doc from temporary collection (Collection with Auto-expire docs)
     await eligibleCandidates.deleteOne({ _id: temp_id });
   } catch (err) {
+    console.log(err);
     return res.status(400).json(err);
   }
   return res.status(200).json({ msg: "Updated successfully." });
