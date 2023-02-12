@@ -4,42 +4,41 @@ import login from "../Components/Assets/login.json";
 import hello from "../Components/Assets/hello.json";
 import "./CSS/Login.css"
 import axios from "axios";
+import host from "../host"
 
 function Login() {
 
-  // Made the states for password, username in the form 
+  // Made the states for password, userEmail in the form 
 
-  const [userName, setUserName] = React.useState();
-  const [passWord, setPassWrod] = React.useState();
+  const [userEmail, setUserEmail] = React.useState();
+  const [passWord, setPassWord] = React.useState();
 
   // This function is triggered when login button is clicked, basically this function posts the data entered in the login form to the dedicated route, in response of posting of data backend sends/responds with a token which is then checked if and if token is found to be valid then only user is taken to further pages of the website otherwise is immediately logged out. 
 
   function handleClick() {
     // console.log(passWord);
-    // console.log(userName);
+    // console.log(userEmail);
     // const user = localStorage.getItem("user");
     // console.log(user);
     // console.log(!user);
-    // axios
-    //   .post(
-    //     host + "/auth/login",
-    //     {
-    //       clubname: userName,
-    //       password: passWord,
-    //     },
-    //     { withCredentials: true }
-    //   )
-    //   .then((res) => {
-    //     console.log(res);
-    //     window.alert(res);
-    //     if (typeof res.data.token !== "undefined")
-    //       localStorage.setItem("user", res.data.token);
+    axios.post(
+        host + "/auth/login",
+        {
+          email: userEmail,
+          password: passWord,
+        },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        console.log(res);
+        if (typeof res.data.token !== "undefined")
+          localStorage.setItem("user", res.data.token);
 
-    //     window.location.href = "/page1";
-    //   })
-    //   .catch((err) => {
-    //     window.alert(err);
-    //   });
+        window.location.href = "/dashboard";
+      })
+      .catch((err) => {
+        window.alert(err);
+      });
   }
 
   function handleClick2() {
@@ -73,14 +72,14 @@ function Login() {
               type="email"
               className="my-2 p-2"
               style={{ height: "5vh", borderRadius: "6px" }}
-              onChange={(e) => setUserName(e.target.value)}
+              onChange={(e) => setUserEmail(e.target.value)}
               placeholder="Email"
             />
             <input
               type="Password"
               className="my-2 p-2"
               style={{ height: "5vh", borderRadius: "6px" }}
-              onChange={(e) => setPassWrod(e.target.value)}
+              onChange={(e) => setPassWord(e.target.value)}
               placeholder="Password"
             />
             <div className="text-center pt-1 mb-3 pb-1">
