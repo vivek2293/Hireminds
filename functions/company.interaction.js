@@ -2,6 +2,8 @@ const eligibleCandidates = require("../model/interaction");
 const studentData = require("../model/student");
 const { mail } = require("../middlewares/mailer");
 const jwt = require("jsonwebtoken");
+const student = require("../model/student");
+const { findByIdAndUpdate } = require("../model/interaction");
 
 const eligibleCandidateslist = async(req, res) => {
     const { companyName } = req.body
@@ -158,5 +160,36 @@ const renderShortlistedCandidate = async(req, res) => {
     }
 }
 
+const selectedCandidate = async(req,res) => {
+    const selected = req.body.selected;
+    const rejected = req.body.rejected;
+    const token = req.body.token;
 
-module.exports = { eligibleCandidateslist, getEligibileCandidateList, renderEligibleCandidate, shortlistedCandidate, renderShortlistedCandidate };
+    const payload = jwt.decode(token , process.env.JWT_SECRET);
+    const companyName = payload.companyName;
+    try{
+        for(let i = 0;i < selected.length; i++){
+            const query = await studentData.findById(selected[i].id).exec();
+            const id = query._id;
+            const record = await studentData.findByIdAndUpdate({ _id: id }, {
+                isSelected : true, currentStatus : "Hired", selectedBy: companyName, interviewTiming: "NA",
+                interviewDate: "NA", CTC_offered: selected[i].salary, selectionYear: selected[i].year
+            }, { new: true });
+            console.log(record);
+        }
+
+        for(let i = 0; i < rejected.length; i++){
+            const query = await studentData.findById(rejected[i].id).exec();
+            const id = query._id;
+            const record = await studentData.findByIdAndUpdate({ _id: rejected[i].id },{
+                isSelected : false, currentStatus : "NA", selectedBy: "NA", interviewTiming: "NA",
+                interviewDate: "NA", CTC_offered: "NA"
+            })
+        }
+    } catch(err){
+       return res.status(400).json( err );
+    }
+    return res.status(200).json({"msg": "Updated successfully."});
+}
+
+module.exports = { eligibleCandidateslist, getEligibileCandidateList, renderEligibleCandidate, shortlistedCandidate, renderShortlistedCandidate, selectedCandidate };
