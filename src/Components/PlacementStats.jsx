@@ -4,33 +4,32 @@ import axios from "axios";
 
 export default function Exgraph() {
     const [yrbtn, setYrbtn] = React.useState(false);
-    const [done,setDone] = React.useState(false);
-    const [data1,setData1] = React.useState();
+    const [done, setDone] = React.useState(false);
+    const [data1, setData1] = React.useState();
     const [tempData, setTempData] = React.useState();
-    React.useEffect(()=>{
-        axios.post("http://localhost:8000/api/v1/record/getPlacementData",{})
-        .then((res) => {
-            console.log("Sent");
-            setData1(res.data.info);
-        }).catch((err) => {
-            console.log(err);
-        })
+    React.useEffect(() => {
+        axios.post("http://localhost:8000/api/v1/record/getPlacementData", {})
+            .then((res) => {
+                setData1(res.data.info);
+            }).catch((err) => {
+                console.log(err);
+            })
     }, [])
-    const [year,setYear] = React.useState([]);
-    const [avg,setAvg] = React.useState([]);
-    const [max,setMax] = React.useState([]);
-    React.useEffect(()=>{
-        if(data1){
-        console.log(data1);
-        for(var i in data1){
-            year.push(data1[i].year);
-            var average = (data1[i].value.ctc) / (data1[i].value.total);
-            avg.push(average);
-            max.push(data1[i].value.max);
+    const [year, setYear] = React.useState([]);
+    const [avg, setAvg] = React.useState([]);
+    const [max, setMax] = React.useState([]);
+    React.useEffect(() => {
+        if (data1) {
+            console.log(data1);
+            for (var i in data1) {
+                year.push(data1[i].year);
+                var average = (data1[i].value.ctc) / (data1[i].value.total);
+                avg.push(average);
+                max.push(data1[i].value.max);
+            }
+            setDone(true);
         }
-        setDone(true);
-    }
-    },[data1])
+    }, [data1])
     const [data, setData] = React.useState({
         series: [
             {
@@ -101,10 +100,10 @@ export default function Exgraph() {
             },
         },
     });
- 
 
 
-    
+
+
 
     React.useEffect(() => {
         setData({
@@ -125,13 +124,13 @@ export default function Exgraph() {
             }
         })
     }, [done])
-    React.useEffect(()=>{
-        if(data){
+    React.useEffect(() => {
+        if (data) {
             console.log("cameherer")
             console.log(data);
-        setYrbtn(true);
+            setYrbtn(true);
         }
-    },[data])
+    }, [data])
 
 
 

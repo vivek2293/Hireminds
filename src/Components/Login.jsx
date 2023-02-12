@@ -4,7 +4,8 @@ import login from "../Components/Assets/login.json";
 import hello from "../Components/Assets/hello.json";
 import "./CSS/Login.css"
 import axios from "axios";
-import host from "../host"
+import host from "../host";
+import { ToastContainer, toast } from 'react-toastify';
 
 function Login() {
 
@@ -37,7 +38,7 @@ function Login() {
         window.location.href = "/dashboard";
       })
       .catch((err) => {
-        window.alert(err);
+        toast.error('Bad user Credentials')
       });
   }
 
@@ -101,7 +102,17 @@ function Login() {
             </div>
           </div>
         </div>
-
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={true}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </div>
     </>
   );

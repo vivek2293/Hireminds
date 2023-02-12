@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import "./CSS/Shortlisting.css";
+import { ToastContainer, toast } from 'react-toastify';
 
 function Shortlisting() {
 
@@ -30,7 +31,6 @@ function Shortlisting() {
         token,
       })
       .then((res) => {
-        console.log("Sent");
         console.log(res.data);
         setData(res.data);
       })
@@ -109,7 +109,7 @@ function Shortlisting() {
         window.location.href = "/selection";
       })
       .catch((err) => {
-        window.alert(err);
+        toast.error("Bad User Credentials");
       });
   }
 
@@ -151,6 +151,17 @@ function Shortlisting() {
           </table>
         </div>
         <button onClick={handleClick}>Submit</button>
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={true}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </section>
     </>
   );

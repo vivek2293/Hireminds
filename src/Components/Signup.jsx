@@ -3,7 +3,8 @@ import "./CSS/Signup.css"
 import axios from "axios";
 import Lottie from "lottie-react";
 import Signup from "./Assets/signup1.json";
-import host from "../host"
+import host from "../host";
+import { ToastContainer, toast } from 'react-toastify';
 
 function RegisterPage2() {
 
@@ -15,23 +16,22 @@ function RegisterPage2() {
   const [institute, setInstitute] = React.useState();
 
   function handleClick() {
-    if(passWord === confirmPassword)
-    {
-        axios.post(host + "/auth/create", {
-            instituteName: institute,
-            email: userEmail,
-            password: passWord,
-            confirmPassword: confirmPassword,
-        },{withCredentials : true}).then((res)=>{
-          console.log(res)
-            window.alert("success")
-        }).catch((err)=>{
-          console.log(err)
-            window.alert(err);
-        })
+    if (passWord === confirmPassword) {
+      axios.post(host + "/auth/create", {
+        instituteName: institute,
+        email: userEmail,
+        password: passWord,
+        confirmPassword: confirmPassword,
+      }, { withCredentials: true }).then((res) => {
+        console.log(res)
+        toast.success("Success")
+      }).catch((err) => {
+        console.log(err)
+        toast.error("Bad user Credentials");
+      })
     }
-    else{
-        window.alert("Password and Confirm Password does not match")
+    else {
+      toast.error("Password and Confirm Password does not match")
     }
 
   }
@@ -111,6 +111,17 @@ function RegisterPage2() {
             <Lottie animationData={Signup} />
           </div>
         </div>
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={true}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </div>
     </>
   );
