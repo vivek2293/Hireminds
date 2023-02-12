@@ -393,6 +393,41 @@ const getCurrentStatusCompany = async(req, res) => {
   
 }
 
+const announceToCompany = async(req, res) => {
+  const { message } = req.body;
+  try{
+    const doc = await companyData.find({}).select("email");
+    console.log(doc);
+
+    for(let i = 0;i < doc.length; i++){
+      
+    }
+
+    return res.status(200).json("Email sent.");
+  }
+  catch(err){
+    return res.status(400).json(err);
+  }
+}
+
+const announceToStudent = async(req, res) => {
+  const { year, message } = req.body;
+  try{
+    const doc = await studentData.find({ isSelected: false, yearOfPassingOut: year }).select("email");
+    console.log(doc);
+
+    for(let i = 0;i < doc.length; i++){
+      mail(doc[i],"Training and Placement Cell")
+    }
+
+    return res.status(200).json("Email sent.");
+  }
+  catch(err){
+    return res.status(400).json(err);
+  }
+  
+}
+
 module.exports = {
   eligibleCandidateslist,
   getEligibileCandidateList,
@@ -400,5 +435,7 @@ module.exports = {
   shortlistedCandidate,
   renderShortlistedCandidate,
   selectedCandidate,
-  getCurrentStatusCompany
+  getCurrentStatusCompany,
+  announceToCompany,
+  announceToStudent
 };

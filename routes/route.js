@@ -23,7 +23,9 @@ const {
   shortlistedCandidate,
   renderShortlistedCandidate,
   selectedCandidate,
-  getCurrentStatusCompany
+  getCurrentStatusCompany,
+  announceToCompany,
+  announceToStudent
 } = require("../functions/company.interaction");
 
 const {
@@ -73,5 +75,7 @@ router.post("/interaction/shortlistedCandidate", shortlistedCandidate);
 router.post("/interaction/renderShortlistedCandidate", renderShortlistedCandidate);
 router.post("/interaction/selectedCandidate", selectedCandidate);
 router.post("/interaction/getCurrentStatusCompany", getCurrentStatusCompany);
+router.post("/interaction/announceToCompany", announceToCompany);
+router.post("/interaction/announceToStudent", announceToStudent);
 
 module.exports = router;
