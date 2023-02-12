@@ -8,6 +8,8 @@ function RegisterPage2() {
   const [userEmail, setUserEmail] = React.useState();
   const [passWord, setPassWrod] = React.useState();
   const [confirmPassword, setConfirmPassword] = React.useState();
+  const [institute, setInstitute] = React.useState();
+
   function handleClick() {
     // if(passWord === confirmPassword)
     // {
@@ -41,6 +43,14 @@ function RegisterPage2() {
 
             <center className="my-3 main-head"><h4>Create your account</h4></center>
 
+            <div className="my-1">Institue Name:</div>
+            <input
+              type="email"
+              className="mb-1 p-2"
+              style={{ height: "5vh", borderRadius: "6px" }}
+              onChange={(e) => setInstitute(e.target.value)}
+              required
+            />
             <div className="my-1">Email:</div>
             <input
               type="email"
