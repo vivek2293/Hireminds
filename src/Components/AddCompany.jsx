@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from "axios";
 
+// Made states for all the entries in the form
+
 function AddCompany() {
     const [formdata, setFormdata] = React.useState({
         companyName: "",
@@ -9,6 +11,8 @@ function AddCompany() {
         websiteUrl: "",
 
     });
+
+    // This function handles all the changes in the input field i.e while entering company name, event.target.name and event.target.value helps specifying that in which field value has been updated.
 
     function handleChange(event) {
         setFormdata((prevdata) => {
@@ -19,17 +23,20 @@ function AddCompany() {
         });
     }
 
+    // This function posts, when form is submitted, the data provided in the input fields to the particular route provided below.
+
     function saveData() {
         const data = { ...formdata };
         console.log(data);
         axios.post("http://localhost:8000/api/v1/company/createCompanyRecord", data)
             .then((res) => {
                 console.log("Sent");
-                console.log(res.status);
             }).catch((err) => {
                 console.log(err);
             })
     }
+
+    // It returns the structure of this particular page
 
     return (
         <>

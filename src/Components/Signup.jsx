@@ -5,6 +5,9 @@ import Lottie from "lottie-react";
 import Signup from "./Assets/signup1.json";
 
 function RegisterPage2() {
+
+  // Made states for all the entries in the form
+
   const [userEmail, setUserEmail] = React.useState();
   const [passWord, setPassWrod] = React.useState();
   const [confirmPassword, setConfirmPassword] = React.useState();
@@ -28,9 +31,9 @@ function RegisterPage2() {
     // }
 
   }
-  function handleClick2() {
-    window.location.href = "/login"
-  }
+
+  // It returns the structure of this particular page
+
   return (
     <>
       <div

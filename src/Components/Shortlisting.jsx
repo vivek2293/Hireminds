@@ -19,7 +19,9 @@ function Shortlisting() {
     rejected: "",
   });
 
-  
+  // This hook is basically used to prevent website to re-render and render only when a particular state/field is varied hence contributing in overall performance of website
+
+  // Inside this hook, first of all the token is being extracted from the url which is very crucial as with the help of this token only company will be able to see the shortlisted candidates, this extracted toke is then posted on pre defined route and the response to this token is being saved or set to state name "data"
 
   React.useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -39,6 +41,8 @@ function Shortlisting() {
       });
   }, []);
 
+  // The following function is triggered when there is change in checkbox, this function has 2 parameters. It basically stores the id of the data if checkbox is checked
+
   function handleSelect(prop, checked) {
     if (checked) {
       const tempData = Ids;
@@ -50,6 +54,8 @@ function Shortlisting() {
       const x = Ids.splice(index, 1);
     }
   }
+
+  //If state named "data" is non empty then only data is mapped over and all the essential info is stored in var named "elements1", which is then used to another state and it is re-rendered only when data is altered
 
   React.useEffect(() => {
     if (data) {
@@ -77,6 +83,9 @@ function Shortlisting() {
       setElements(elements1);
     }
   }, [data]);
+
+  // The following function is triggered when the form is submitted and as described above that first token is extracted from url and then for loop is used to traverse "data" and if any particular element does not contain "Ids" then it is stored in an array named "rejected". The desried data is then stored in state named "selected" and then posted on a particular route and in response if token is defined or unaltered then it is stored in local storage and user is redirected to further location otherwise error is thrown
+
   function handleClick() {
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get("token");
@@ -91,7 +100,6 @@ function Shortlisting() {
     selected.date = date;
     selected.token = token;
     selected.rejected = rejected;
-    console.log(selected)
 
     axios
       .post(
@@ -107,6 +115,8 @@ function Shortlisting() {
         window.alert(err);
       });
   }
+
+  // It returns the structure of this particular page
 
   return (
     <>
