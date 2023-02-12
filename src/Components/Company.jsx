@@ -1,8 +1,11 @@
-
 import React from "react";
 import data from "../Data.jsx";
 import "./CSS/Company.css"
+
 export default function Company() {
+
+    // Made states for all the entries in the form 
+
     const [display, setDisplay] = React.useState({
         companyName: "",
         year: "",
@@ -13,8 +16,12 @@ export default function Company() {
         median: "",
     });
 
+    // The states below is used for conditional rendering and data storage respectively
+
     const [show, setShow] = React.useState(false);
     const [elements1, setElements1] = React.useState(false);
+
+    // This function handles all the changes in the input field i.e while entering company name, event.target.name and event.target.value helps specifying that in which field value has been updated.
 
     function handleChange(event) {
         setDisplay((prevdata) => {
@@ -24,6 +31,8 @@ export default function Company() {
             };
         });
     }
+
+    // This function is triggered when submit button is clicked it basically maps the data which comes from the database and stores it, if the input company name matches the company name from database while mapping.
 
     function handleChange1() {
         const elements = data.map((e) => {
@@ -41,15 +50,19 @@ export default function Company() {
         setElements1(elements);
     }
 
+    // This hook is basically used to prevent website to re-render and render only when a particular state/field is varied hence contributing in overall performance of website
+
     React.useEffect(() => {
         if (elements1) {
             setShow(true);
         }
     }, [elements1]);
 
+    // It returns the structure of this particular page
+
     return (
         <section className="d-flex justify-content-center">
-            <div className="card col-md-12 p-2 shadow p-3 mb-5 bg-white rounded" style={{width : 'fit-content'}}>
+            <div className="card col-md-12 p-2 shadow p-3 mb-5 bg-white rounded" style={{ width: 'fit-content' }}>
                 <div className="d-flex justify-content-center align-items-center" style={{ flexDirection: "column" }}>
                     <div className="heading-div d-flex justify-content-center pt-2 pb-2 my-1">
                         <h4>Statistics of the Visited Companies</h4>

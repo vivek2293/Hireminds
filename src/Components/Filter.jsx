@@ -2,6 +2,9 @@ import React from "react";
 import axios from "axios";
 
 export default function Filter() {
+
+    // Made states for all the entries in the form 
+
     const [formdata, setFormdata] = React.useState({
         companyName: "",
         CGPA: "",
@@ -10,10 +13,10 @@ export default function Filter() {
         email: ""
     })
 
+    // This function posts the data provided in the input fields to particular route provided below, 
+
     function saveData() {
         const data = { ...formdata };
-        console.log("hello");
-        console.log(data);
         axios.post("http://localhost:8000/api/v1/interaction/getEligibileCandidateList", data)
             .then(() => {
                 console.log("Sent");
@@ -21,6 +24,8 @@ export default function Filter() {
                 console.log(err);
             })
     }
+
+    // This function handles all the changes in the input field i.e while entering company name, event.target.name and event.target.value helps specifying that in which field value has been updated.
 
     function handleChange(event) {
         setFormdata((prevdata) => {
@@ -31,7 +36,7 @@ export default function Filter() {
         });
     }
 
-    console.log(formdata);
+    // It returns the structure of this particular page
 
     return (
         <>

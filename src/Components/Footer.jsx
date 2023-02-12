@@ -4,6 +4,9 @@ import { faFacebookF, faInstagram, faLinkedin, faTwitter, faSkype, faGithub } fr
 import { faMapLocationDot, faPhone, faMailReply } from "@fortawesome/free-solid-svg-icons";
 
 function Footer() {
+
+  // It returns the structure of this particular page
+
   return (
     <>
       <div className="footer-upperdiv pb-3">
