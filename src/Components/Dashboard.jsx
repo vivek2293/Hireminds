@@ -26,9 +26,18 @@ export default function Dashboard() {
     CompanyRegister: false,
     update: false,
   });
+  function logout() {
+    localStorage.removeItem("user");
+    window.location.href = "/login";
+  }
 
   // This function is triggered whenever any button is clicked, this function basically changes the state to true for corresponding button and sets all other states to false as it decides the conditional rendering that what to display/render 
-
+  React.useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (!user) {
+      window.location.href = "/";
+    }
+  }, []);
   function handleClick(props) {
     const tempShow = {
       Data: false,
@@ -183,7 +192,7 @@ export default function Dashboard() {
                   icon={faSignOut}
                   style={{ color: "rgb(160,90,255)" }}
                 ></FontAwesomeIcon>{" "}
-                <span style={{ color: "rgb(160,90,255)" }}>Logout</span>
+                <span style={{ color: "rgb(160,90,255)", cursor : 'pointer' }}  onClick={logout}>Logout</span>
               </div>
             </div>
           </div>
