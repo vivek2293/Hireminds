@@ -93,7 +93,6 @@ export default function Form() {
                                 </label>
                                 <div className="col-md-5">
                                     <input
-                                        id="formentry1"
                                         type="text"
                                         name="rollNo"
                                         value={formdata.rollNo}
@@ -116,7 +115,6 @@ export default function Form() {
                                     <input
                                         type="text"
                                         name="name"
-                                        id="formentry2"
                                         value={formdata.name}
                                         className="form-control form-control-sm px-1"
                                         onChange={handleChange}
@@ -139,7 +137,6 @@ export default function Form() {
                                         name="contactNo"
                                         value={formdata.contactNo}
                                         className="form-control form-control-sm px-1"
-                                        id="formentry3"
                                         onChange={handleChange}
                                         placeholder="Enter contact Number"
                                         required
@@ -160,7 +157,6 @@ export default function Form() {
                                         name="branch"
                                         value={formdata.branch}
                                         className="form-control form-control-sm px-1"
-                                        id="formentry4"
                                         onChange={handleChange}
                                         placeholder="Enter branch name"
                                         required
@@ -181,7 +177,6 @@ export default function Form() {
                                         name="yearOfPassingOut"
                                         value={formdata.yearOfPassingOut}
                                         className="form-control form-control-sm px-1"
-                                        id="formentry5"
                                         onChange={handleChange}
                                         placeholder="Enter graduation year"
                                         required
@@ -223,7 +218,6 @@ export default function Form() {
                                         name="CGPA"
                                         value={formdata.CGPA}
                                         className="form-control form-control-sm px-1"
-                                        id="formentry6"
                                         onChange={handleChange}
                                         placeholder="Enter CGPA"
                                         required
@@ -240,11 +234,8 @@ export default function Form() {
                                 <div className="col-md-5">
                                     <input
                                         type="number"
-                                        // step="0.01"
                                         name="age"
-                                        // value={formdata.age}
                                         className="form-control form-control-sm px-1"
-                                        id="formentry7"
                                         onChange={handleChange}
                                         placeholder="Enter Age"
                                         required
@@ -265,7 +256,6 @@ export default function Form() {
                                         name="email"
                                         value={formdata.email}
                                         className="form-control form-control-sm px-1"
-                                        id="formentry8"
                                         onChange={handleChange}
                                         placeholder="Enter Email ID"
                                         required
@@ -306,7 +296,6 @@ export default function Form() {
                                         type="url"
                                         name="linkedIn"
                                         className="form-control form-control-sm px-1"
-                                        id="formentry9"
                                         onChange={handleChange}
                                         placeholder="Enter linkedIn link"
                                     />
@@ -325,7 +314,6 @@ export default function Form() {
                                         type="url"
                                         name="github"
                                         className="form-control form-control-sm px-1"
-                                        id="formentry10"
                                         onChange={handleChange}
                                         placeholder="Enter github link"
                                     />
@@ -344,7 +332,6 @@ export default function Form() {
                                         type="url"
                                         name="resumeLink"
                                         className="form-control form-control-sm px-1"
-                                        id="formentry11"
                                         onChange={handleChange}
                                         placeholder="Enter resumeLink"
                                     />

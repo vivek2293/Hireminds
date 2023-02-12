@@ -136,7 +136,6 @@ export default function Update() {
                                         name="rollNo"
                                         value={formdata.rollNo}
                                         className="form-control form-control-sm px-1"
-                                        id="colFormLabelSm"
                                         placeholder="Enter Roll No."
                                         onChange={handleChange}
                                         required
@@ -157,7 +156,6 @@ export default function Update() {
                                         name="name"
                                         value={formdata.name}
                                         className="form-control form-control-sm px-1"
-                                        id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter student name"
                                         required
@@ -179,7 +177,6 @@ export default function Update() {
                                         name="branch"
                                         value={formdata.branch}
                                         className="form-control form-control-sm px-1"
-                                        id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter branch name"
                                         required
@@ -200,7 +197,6 @@ export default function Update() {
                                         name="yearOfPassingOut"
                                         value={formdata.yearOfPassingOut}
                                         className="form-control form-control-sm px-1"
-                                        id="colFormLabelSm"
                                         onChange={handleChange}
                                         placeholder="Enter graduation year"
                                         required
@@ -242,7 +238,6 @@ export default function Update() {
                                         name="name"
                                         value={data.name}
                                         className="form-control form-control-sm px-1"
-                                        id="colFormLabelSm"
                                         onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                         placeholder="Enter student name"
                                         required
@@ -262,9 +257,7 @@ export default function Update() {
                                         type="tel"
                                         name="contactNo"
                                         value={data.contactNo}
-
                                         className="form-control form-control-sm px-1"
-                                        id="colFormLabelSm"
                                         onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                         placeholder="Enter contact Number"
                                         required
@@ -284,9 +277,7 @@ export default function Update() {
                                         type="text"
                                         name="branch"
                                         value={data.branch}
-
                                         className="form-control form-control-sm px-1"
-                                        id="colFormLabelSm"
                                         onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                         placeholder="Enter branch name"
                                         required
@@ -306,9 +297,7 @@ export default function Update() {
                                         type="number"
                                         name="yearOfPassingOut"
                                         value={data.yearOfPassingOut}
-
                                         className="form-control form-control-sm px-1"
-                                        id="colFormLabelSm"
                                         onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                         placeholder="Enter graduation year"
                                         required
@@ -351,9 +340,7 @@ export default function Update() {
                                         step="0.01"
                                         name="CGPA"
                                         value={data.CGPA}
-
                                         className="form-control form-control-sm px-1"
-                                        id="colFormLabelSm"
                                         onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                         placeholder="Enter CGPA"
                                         required
@@ -372,9 +359,7 @@ export default function Update() {
                                         type="number"
                                         name="age"
                                         value={data.age}
-
                                         className="form-control form-control-sm px-1"
-                                        id="colFormLabelSm"
                                         onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                         placeholder="Enter Age"
                                         required
@@ -394,9 +379,7 @@ export default function Update() {
                                         type="email"
                                         name="email"
                                         value={data.email}
-
                                         className="form-control form-control-sm px-1"
-                                        id="colFormLabelSm"
                                         onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                         placeholder="Enter Email ID"
                                         required
@@ -439,9 +422,7 @@ export default function Update() {
                                         type="url"
                                         name="linkedIn"
                                         value=""
-
                                         className="form-control form-control-sm px-1"
-                                        id="colFormLabelSm"
                                         onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                         placeholder="Enter linkedIn link"
                                     />
@@ -462,7 +443,6 @@ export default function Update() {
                                         value=""
                                         
                                         className="form-control form-control-sm px-1"
-                                        id="colFormLabelSm"
                                         onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                         placeholder="Enter github link"
                                     />
@@ -482,7 +462,6 @@ export default function Update() {
                                         name="resumeLink"
                                         value=""
                                         className="form-control form-control-sm px-1"
-                                        id="colFormLabelSm"
                                         onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                         placeholder="Enter resumeLink"
                                     />
@@ -523,7 +502,6 @@ export default function Update() {
                                         name="interviewDate"
                                         value={data.interviewDate}
                                         className="form-control form-control-sm px-1"
-                                        id="colFormLabelSm"
                                         onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                         placeholder="Enter student name"
                                     />
@@ -542,7 +520,6 @@ export default function Update() {
                                         name="interviewTiming"
                                         value={data.interviewTiming}
                                         className="form-control form-control-sm px-1"
-                                        id="colFormLabelSm"
                                         onChange={(e)=>handleChange1(e.target.name,e.target.value)}
                                         placeholder="Enter student name"
                                     />

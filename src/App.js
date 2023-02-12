@@ -16,6 +16,7 @@ import Login from './Components/Login';
 import Selection from './Components/Selection';
 import RegisterPage2 from './Components/Signup';
 import Exgraph from './Components/exgraph';
+import Testing from './Components/testing';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route exact path="/selection" element={<Selection />} /> 
           <Route exact path="/register" element={<RegisterPage2 />} /> 
           <Route exact path="/graph2" element={<Exgraph />} /> 
+          <Route exact path="/testing" element={<Testing />} /> 
 
 
 
