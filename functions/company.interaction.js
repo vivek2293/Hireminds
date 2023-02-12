@@ -1,17 +1,26 @@
 const eligibleCandidates = require("../model/interaction");
 const studentData = require("../model/student");
+const companyData = require("../model/company");
 const { mail } = require("../middlewares/mailer");
 const jwt = require("jsonwebtoken");
 
 // Make a doc of all candidates who are eligible according to the company's eligibility criteria
 const eligibleCandidateslist = async (req, res) => {
   const { companyName } = req.body;
+
+  // verify if company exists
+  const doc = await companyData.findOne({ companyName }).exec();
+  if(!doc){
+    return res.status(400).json({ "msg": "Company not found."})
+  }
+
   const record = req.body.record;
   const arr = [];
   for (let i = 0; i < record.length; i++) {
     arr.push(record[i]);
   }
   console.log(arr);
+
   await eligibleCandidates
     .create({
       companyName,
@@ -66,9 +75,17 @@ const createListOfEligibleCandidates = async (arr, companyName, email) => {
   // mail("preetkhatri07@gmail.com", subject, message);
 };
 
+
+// Initiate the process of campus placement
 const getEligibileCandidateList = async (req, res) => {
-  // CGPA // year // age // email
   const { companyName, CGPA, year, age, email } = req.body;
+
+  // verify if company exists
+  const doc = await companyData.findOne({ companyName }).exec();
+  if (!doc) {
+    return res.status(400).json({ msg: "Company not found." });
+  }
+
   studentData
     .find({
       CGPA: { $gt: CGPA },
