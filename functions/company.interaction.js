@@ -187,7 +187,7 @@ const selectedCandidate = async(req,res) => {
             })
         }
 
-        await eligibleCandidates.deleteOne();
+        await eligibleCandidates.deleteOne({ _id: temp_id });
           
     } catch(err){
        return res.status(400).json( err );
