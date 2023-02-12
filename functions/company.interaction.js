@@ -397,10 +397,9 @@ const announceToCompany = async(req, res) => {
   const { message } = req.body;
   try{
     const doc = await companyData.find({}).select("email");
-    console.log(doc);
 
     for(let i = 0;i < doc.length; i++){
-      
+      mail(doc[i],"Training and Placement Cell", message);
     }
 
     return res.status(200).json("Email sent.");
@@ -414,10 +413,9 @@ const announceToStudent = async(req, res) => {
   const { year, message } = req.body;
   try{
     const doc = await studentData.find({ isSelected: false, yearOfPassingOut: year }).select("email");
-    console.log(doc);
 
     for(let i = 0;i < doc.length; i++){
-      mail(doc[i],"Training and Placement Cell")
+      mail(doc[i],"Training and Placement Cell",message);
     }
 
     return res.status(200).json("Email sent.");
