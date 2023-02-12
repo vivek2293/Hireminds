@@ -15,8 +15,8 @@ const refreshToken = async (req,res,next) => {
         const payload = jwt.decode(req.cookies.jwt, process.env.JWT_REFRESH_SECRET);
         const profile = payload.profile;
         
-        const accesstoken = jwt.sign({ profile }, process.env.JWT_SECRET,{ expiresIn: "2m" });
-        const refreshtoken = jwt.sign({ profile }, process.env.JWT_REFRESH_SECRET, { expiresIn: "7 day" });
+        const accesstoken = jwt.sign({ profile }, process.env.JWT_SECRET,{ expiresIn: "1d" });
+        const refreshtoken = jwt.sign({ profile }, process.env.JWT_REFRESH_SECRET, { expiresIn: "7d" });
         req.token = accesstoken;
         res.clearCookie('jwt');
         res.cookie('jwt', refreshtoken, {

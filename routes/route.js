@@ -34,6 +34,14 @@ const {
   resetPassword,
 } = require("../functions/auth_route");
 
+const {
+  verifyToken
+} = require("../middlewares/verify_token");
+
+const {
+  refreshToken
+} = require("../middlewares/refresh_token");
+
 // Auth routes
 router.get("/auth/getData", getRequest);
 router.post("/auth/create", register);
