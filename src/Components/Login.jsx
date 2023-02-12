@@ -70,7 +70,7 @@ function Login() {
             </div>
             <input
               type="email"
-              className="my-2 p-2"
+              className="mt-4 p-2 mb-2"
               style={{ height: "5vh", borderRadius: "6px" }}
               onChange={(e) => setUserEmail(e.target.value)}
               placeholder="Email"
